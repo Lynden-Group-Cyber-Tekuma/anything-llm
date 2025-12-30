@@ -1,65 +1,91 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useLogo } from '@/composables/useLogo'
-import Workspace from '@/models/workspace'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { RouterLink } from 'vue-router'
+import { List, Plus } from '@phosphor-icons/vue'
+import { useI18n } from 'vue-i18n'
+import paths from '@/utils/paths'
+import { useAuthStore } from '@/stores/auth'
+import { useLogoStore } from '@/stores/logo'
+import { useSidebarToggle } from './SidebarToggle/index.vue'
+import SearchBox from './SearchBox/index.vue'
+import ActiveWorkspaces from './ActiveWorkspaces/index.vue'
+import Footer from '../Footer/index.vue'
+import SettingsButton from '../SettingsButton/index.vue'
 
-const router = useRouter()
-const { logo } = useLogo()
-const workspaces = ref([])
-const loading = ref(true)
-
-onMounted(async () => {
-  try {
-    const { workspaces: ws } = await Workspace.all()
-    workspaces.value = ws || []
-  } finally {
-    loading.value = false
+// Composable for NewWorkspace modal management
+function useNewWorkspaceModal() {
+  const showing = ref(false)
+  const showModal = () => {
+    showing.value = true
   }
-})
-
-function goToWorkspace(slug) {
-  router.push(`/workspace/${slug}`)
+  const hideModal = () => {
+    showing.value = false
+  }
+  return { showing, showModal, hideModal }
 }
+
+// Setup
+const authStore = useAuthStore()
+const logoStore = useLogoStore()
+const { t } = useI18n()
+
+const sidebarRef = ref(null)
+const { showSidebar, setShowSidebar, canToggleSidebar } = useSidebarToggle()
+const { showing: showingNewWsModal, showModal: showNewWsModal, hideModal: hideNewWsModal } = useNewWorkspaceModal()
+
+const user = computed(() => authStore.user)
+const logo = computed(() => logoStore.logo)
 </script>
 
 <template>
-  <div class="w-64 bg-theme-bg-sidebar h-full flex flex-col border-r border-theme-sidebar-border">
-    <!-- Logo -->
-    <div class="p-4 flex items-center justify-center">
-      <router-link to="/">
-        <img :src="logo" alt="Logo" class="h-10 object-contain" />
-      </router-link>
-    </div>
-
-    <!-- Workspace List -->
-    <div class="flex-1 overflow-y-auto p-2">
-      <div v-if="loading" class="text-theme-text-secondary text-sm p-2">
-        Loading workspaces...
+  <div>
+    <!-- Desktop Sidebar -->
+    <div
+      :style="{
+        width: showSidebar ? '292px' : '0px',
+        paddingLeft: showSidebar ? '0px' : '16px'
+      }"
+      class="transition-all duration-500"
+    >
+      <div class="flex shrink-0 w-full justify-center my-[18px]">
+        <div class="flex justify-between w-[250px] min-w-[250px]">
+          <RouterLink :to="paths.home()" aria-label="Home">
+            <img
+              :src="logo"
+              alt="Logo"
+              :class="[
+                'rounded max-h-[24px] object-contain transition-opacity duration-500',
+                showSidebar ? 'opacity-100' : 'opacity-0'
+              ]"
+            />
+          </RouterLink>
+          <SidebarToggle
+            v-if="canToggleSidebar"
+            :showSidebar="showSidebar"
+            :setShowSidebar="setShowSidebar"
+          />
+        </div>
       </div>
-      <div v-else-if="workspaces.length === 0" class="text-theme-text-secondary text-sm p-2">
-        No workspaces yet
-      </div>
-      <div v-else class="space-y-1">
-        <button
-          v-for="workspace in workspaces"
-          :key="workspace.id"
-          @click="goToWorkspace(workspace.slug)"
-          class="w-full text-left p-2 rounded hover:bg-theme-sidebar-item-hover text-theme-text-primary text-sm truncate"
-        >
-          {{ workspace.name }}
-        </button>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="p-4 border-t border-theme-sidebar-border">
-      <router-link
-        to="/settings/llm-preference"
-        class="flex items-center gap-2 text-theme-text-secondary hover:text-theme-text-primary text-sm"
+      <div
+        ref="sidebarRef"
+        class="relative m-[16px] rounded-[16px] bg-theme-bg-sidebar border-[2px] border-theme-sidebar-border light:border-none min-w-[250px] p-[10px] h-[calc(100%-76px)]"
       >
-        Settings
-      </router-link>
+        <div class="flex flex-col h-full overflow-x-hidden">
+          <div class="flex-grow flex flex-col min-w-[235px]">
+            <div class="relative h-[calc(100%-60px)] flex flex-col w-full justify-between pt-[10px] overflow-y-scroll no-scroll">
+              <div class="flex flex-col gap-y-2 pb-[60px] gap-y-[14px] overflow-y-scroll no-scroll">
+                <SearchBox :user="user" :showNewWsModal="showNewWsModal" />
+                <ActiveWorkspaces />
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 pt-4 pb-3 rounded-b-[16px] bg-theme-bg-sidebar bg-opacity-80 backdrop-filter backdrop-blur-md z-1">
+              <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Note: NewWorkspaceModal needs to be converted from React to Vue -->
+      <!-- <NewWorkspaceModal v-if="showingNewWsModal" :hideModal="hideNewWsModal" /> -->
     </div>
   </div>
 </template>
