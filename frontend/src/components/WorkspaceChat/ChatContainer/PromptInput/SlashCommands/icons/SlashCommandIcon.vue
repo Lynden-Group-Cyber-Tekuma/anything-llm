@@ -1,0 +1,32 @@
+<script setup>
+defineProps({
+  color: String,
+  class: String
+})
+</script>
+
+<template>
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="1.02539"
+      y="1.43799"
+      width="17.252"
+      height="17.252"
+      rx="2"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+    <path
+      d="M6.70312 14.5408L12.5996 5.8056"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+  </svg>
+</template>
