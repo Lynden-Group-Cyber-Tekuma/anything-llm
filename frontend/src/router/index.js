@@ -211,7 +211,7 @@ const routes = [
       {
         path: 'settings/beta-features/live-document-sync/manage',
         name: 'LiveDocumentSyncManage',
-        component: () => import('@/pages/Admin/ExperimentalFeatures/Features/LiveSync/manage.vue'),
+        component: () => import('@/pages/Admin/ExperimentalFeatures/Features/LiveSync/manage/index.vue'),
         meta: { requiresAuth: true, requiresAdmin: true }
       },
       {
