@@ -1,24 +1,15 @@
 <script setup>
-import { computed } from 'vue'
-import QuickLinks from './QuickLinks.vue'
-import ExploreFeatures from './ExploreFeatures.vue'
-import Updates from './Updates.vue'
-import Resources from './Resources.vue'
-import Checklist from './Checklist.vue'
-
-const isMobile = computed(() => {
-  if (typeof window === 'undefined') return false
-  return window.innerWidth < 768
-})
-
-const containerStyle = computed(() => ({
-  height: isMobile.value ? '100%' : 'calc(100% - 32px)'
-}))
+import QuickLinks from './QuickLinks/index.vue'
+import ExploreFeatures from './ExploreFeatures/index.vue'
+import Updates from './Updates/index.vue'
+import Resources from './Resources/index.vue'
+import Checklist from './Checklist/index.vue'
+import { isMobile } from 'react-device-detect'
 </script>
 
 <template>
   <div
-    :style="containerStyle"
+    :style="{ height: isMobile ? '100%' : 'calc(100% - 32px)' }"
     class="relative md:ml-[2px] md:mr-[16px] md:my-[16px] md:rounded-[16px] bg-theme-bg-container w-full h-full"
   >
     <div class="w-full h-full flex flex-col items-center overflow-y-auto no-scroll">

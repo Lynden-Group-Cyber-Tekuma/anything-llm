@@ -1,42 +1,55 @@
 <script setup>
-import { computed, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { usePasswordModal } from '@/composables/usePasswordModal'
-import { useSimpleSSO } from '@/composables/useSimpleSSO'
-import FullScreenLoader from '@/components/Preloader/FullScreenLoader.vue'
-import PasswordModal from '@/components/Modals/Password/index.vue'
+import PasswordModal, { usePasswordModal } from '@/components/Modals/Password'
+import { FullScreenLoader } from '@/components/Preloader'
+import { useRouter } from 'vue-router'
 import paths from '@/utils/paths'
+import useQuery from '@/hooks/useQuery'
+import useSimpleSSO from '@/hooks/useSimpleSSO'
+import { watch } from 'vue'
 
-const route = useRoute()
+/**
+ * Login page that handles both single and multi-user login.
+ *
+ * If Simple SSO is enabled and no login is allowed, the user will be redirected to the SSO login page
+ * which may not have a token so the login will fail.
+ */
+
+const query = useQuery()
 const router = useRouter()
-
-const hasNtQuery = computed(() => route.query.nt === '1')
-const hasTokenQuery = computed(() => 'token' in route.query)
-
 const { loading: ssoLoading, ssoConfig } = useSimpleSSO()
-const { loading, requiresAuth, mode } = usePasswordModal(hasNtQuery.value)
+const { loading, requiresAuth, mode } = usePasswordModal(!!query.get('nt'))
 
 // Handle SSO redirects
-watch([ssoLoading, ssoConfig], ([ssoLoad, ssoConf]) => {
-  if (ssoLoad) return
+watch(
+  [ssoLoading, ssoConfig],
+  ([isLoading, config]) => {
+    if (isLoading) return
 
-  if (ssoConf.enabled && ssoConf.noLogin) {
-    if (ssoConf.noLoginRedirect && !hasTokenQuery.value) {
-      window.location.replace(ssoConf.noLoginRedirect)
-    } else {
+    // If simple SSO is enabled and no login is allowed, redirect to the SSO login page.
+    if (config.enabled && config.noLogin) {
+      // If a noLoginRedirect is provided and no token is provided, redirect to that webpage.
+      if (!!config.noLoginRedirect && !query.has('token')) {
+        window.location.replace(config.noLoginRedirect)
+        return
+      }
+      // Otherwise, redirect to the SSO login page.
       router.push(paths.sso.login())
     }
-  }
-}, { immediate: true })
+  },
+  { immediate: true }
+)
 
-// Handle auth redirects
-watch([loading, requiresAuth], ([load, auth]) => {
-  if (load) return
-
-  if (auth === false) {
-    router.push(paths.home())
-  }
-}, { immediate: true })
+// Handle auth check redirects
+watch(
+  [loading, requiresAuth],
+  ([isLoading, auth]) => {
+    if (isLoading) return
+    if (auth === false) {
+      router.push(paths.home())
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
