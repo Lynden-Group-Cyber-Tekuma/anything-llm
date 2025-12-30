@@ -215,24 +215,6 @@ const routes = [
         meta: { requiresAuth: true, requiresAdmin: true }
       },
       {
-        path: 'settings/community-hub/trending',
-        name: 'CommunityHubTrending',
-        component: () => import('@/pages/GeneralSettings/CommunityHub/Trending/index.vue'),
-        meta: { requiresAuth: true, requiresAdmin: true }
-      },
-      {
-        path: 'settings/community-hub/authentication',
-        name: 'CommunityHubAuthentication',
-        component: () => import('@/pages/GeneralSettings/CommunityHub/Authentication/index.vue'),
-        meta: { requiresAuth: true, requiresAdmin: true }
-      },
-      {
-        path: 'settings/community-hub/import-item',
-        name: 'CommunityHubImportItem',
-        component: () => import('@/pages/GeneralSettings/CommunityHub/ImportItem/index.vue'),
-        meta: { requiresAuth: true, requiresAdmin: true }
-      },
-      {
         path: 'settings/mobile-connections',
         name: 'MobileConnections',
         component: () => import('@/pages/GeneralSettings/MobileConnections/index.vue'),
