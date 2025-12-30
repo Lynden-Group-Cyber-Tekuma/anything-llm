@@ -1,5 +1,5 @@
 import paths from "./paths";
-import { useEffect } from "react";
+import { onMounted, onUnmounted } from "vue";
 import { userFromStorage } from "./request";
 import { TOGGLE_LLM_SELECTOR_EVENT } from "@/components/WorkspaceChat/ChatContainer/PromptInput/LLMSelector/action";
 
@@ -116,20 +116,14 @@ export function initKeyboardShortcuts() {
   return () => window.removeEventListener("keydown", handleKeyDown);
 }
 
-function useKeyboardShortcuts() {
-  useEffect(() => {
+export function useKeyboardShortcuts() {
+  onMounted(() => {
     // If there is a user and the user is not an admin do not register the event listener
     // since some of the shortcuts are only available in multi-user mode as admin
     const user = userFromStorage();
     if (!!user && user?.role !== "admin") return;
     const cleanup = initKeyboardShortcuts();
 
-    return () => cleanup();
-  }, []);
-  return;
-}
-
-export function KeyboardShortcutWrapper({ children }) {
-  useKeyboardShortcuts();
-  return children;
+    onUnmounted(() => cleanup());
+  });
 }
