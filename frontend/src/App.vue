@@ -39,10 +39,12 @@ onMounted(async () => {
   <ErrorBoundary @error="console.error" :reset-keys="[$route.path]">
     <Suspense>
       <template #default>
-        <router-view v-slot="{ Component }">
-          <component :is="Component" />
-        </router-view>
-        <KeyboardShortcutsHelp />
+        <div>
+          <router-view v-slot="{ Component }">
+            <component :is="Component" />
+          </router-view>
+          <KeyboardShortcutsHelp />
+        </div>
       </template>
       <template #fallback>
         <FullScreenLoader />
