@@ -1,6 +1,7 @@
 <script setup>
-import PasswordModal, { usePasswordModal } from '@/components/Modals/Password'
-import { FullScreenLoader } from '@/components/Preloader'
+import PasswordModal from '@/components/Modals/Password/index.vue'
+import { usePasswordModal } from '@/composables/usePasswordModal'
+import FullScreenLoader from '@/components/Preloader/FullScreenLoader.vue'
 import { useRouter } from 'vue-router'
 import paths from '@/utils/paths'
 import useQuery from '@/hooks/useQuery'
