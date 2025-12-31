@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ConnectorImages from '@/components/DataConnectorOption/media'
-import { MagnifyingGlass } from '@phosphor-icons/vue'
+import { PhMagnifyingGlass } from '@phosphor-icons/vue'
 import GithubOptions from './Connectors/Github/index.vue'
 import GitlabOptions from './Connectors/Gitlab/index.vue'
 import YoutubeOptions from './Connectors/Youtube/index.vue'

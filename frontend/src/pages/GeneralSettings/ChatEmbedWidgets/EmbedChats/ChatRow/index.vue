@@ -70,7 +70,7 @@
 <script setup>
 import { ref } from 'vue'
 import truncate from 'truncate'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import { useModal } from '@/hooks/useModal'
 import paths from '@/utils/paths'
@@ -117,7 +117,7 @@ const handleDelete = async () => {
 
 <script>
 import { computed } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import { safeJsonParse } from '@/utils/request'
 
 export const TextPreview = {

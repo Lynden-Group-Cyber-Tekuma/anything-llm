@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Info } from '@phosphor-icons/vue'
+import { PhInfo } from '@phosphor-icons/vue'
 import LiteLLMModelSelection from './LiteLLMModelSelection.vue'
 
 const props = defineProps({
@@ -66,7 +66,7 @@ const handleScroll = (e) => {
           :title="'Maximum length of text chunks, in characters, for embedding.'"
           class="flex gap-x-1 items-center mb-3"
         >
-          <Info :size="16" class="text-theme-text-secondary cursor-pointer" />
+          <PhInfo :size="16" class="text-theme-text-secondary cursor-pointer" />
           <label class="text-white text-sm font-semibold block">
             Max embedding chunk length
           </label>

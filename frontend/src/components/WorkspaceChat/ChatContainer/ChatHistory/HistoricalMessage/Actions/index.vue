@@ -1,7 +1,7 @@
 <script setup>
 import { ref, defineComponent, h } from 'vue'
 import useCopyText from '@/hooks/useCopyText'
-import { Check, ThumbsUp, ArrowsClockwise, Copy } from '@phosphor-icons/vue'
+import { PhCheck, PhThumbsUp, PhArrowsClockwise, PhCopy } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import { EditMessageAction } from './EditMessage/index.vue'
 import RenderMetrics from './RenderMetrics/index.vue'

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
 

@@ -63,7 +63,7 @@ const sanitize = (html) => DOMPurify.sanitize(html)
 
 <script>
 import { ref } from 'vue'
-import { CaretDown } from '@phosphor-icons/vue'
+import { PhCaretDown } from '@phosphor-icons/vue'
 
 export const ThoughtBubble = {
   name: 'ThoughtBubble',

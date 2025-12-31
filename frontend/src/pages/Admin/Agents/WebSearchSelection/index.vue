@@ -131,12 +131,7 @@ import SearXNGSearchIcon from './icons/searxng.png'
 import TavilySearchIcon from './icons/tavily.svg'
 import DuckDuckGoIcon from './icons/duckduckgo.png'
 import ExaIcon from './icons/exa.png'
-import {
-  CaretUpDown,
-  MagnifyingGlass,
-  X,
-  ListMagnifyingGlass
-} from '@phosphor-icons/vue'
+import { PhCaretUpDown, PhMagnifyingGlass, PhX, PhListMagnifyingGlass } from '@phosphor-icons/vue'
 import SearchProviderItem from './SearchProviderItem/index.vue'
 import WebSearchImage from '@/media/agents/scrape-websites.png'
 import {

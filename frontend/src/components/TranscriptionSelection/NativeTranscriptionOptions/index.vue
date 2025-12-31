@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Gauge } from '@phosphor-icons/vue'
+import { PhGauge } from '@phosphor-icons/vue'
 
 const props = defineProps({
   settings: {

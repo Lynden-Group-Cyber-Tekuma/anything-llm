@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, defineComponent, h } from 'vue'
-import { At } from '@phosphor-icons/vue'
+import { PhAt } from '@phosphor-icons/vue'
 import { useIsAgentSessionActive } from '@/utils/chat/agent'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
@@ -65,7 +65,7 @@ const handleAgentClick = () => {
 
 <script>
 import { defineComponent, h } from 'vue'
-import { At } from '@phosphor-icons/vue'
+import { PhAt } from '@phosphor-icons/vue'
 import { useIsAgentSessionActive } from '@/utils/chat/agent'
 import { useI18n } from 'vue-i18n'
 

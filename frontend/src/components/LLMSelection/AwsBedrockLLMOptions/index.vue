@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { ArrowSquareOut, Info } from '@phosphor-icons/vue'
+import { PhArrowSquareOut, PhInfo } from '@phosphor-icons/vue'
 import { AWS_REGIONS } from './regions'
 
 const props = defineProps({
@@ -21,7 +21,7 @@ const handleScroll = (e) => {
   <div class="w-full flex flex-col">
     <div v-if="!settings?.credentialsOnly && connectionMethod !== 'apiKey'" class="flex flex-col md:flex-row md:items-center gap-x-2 text-white mb-4 bg-blue-800/30 w-fit rounded-lg px-4 py-2">
       <div class="gap-x-2 flex items-center">
-        <Info :size="40" />
+        <PhInfo :size="40" />
         <p class="text-base">
           You should use a properly defined IAM user for inferencing.
           <br />
@@ -32,7 +32,7 @@ const handleScroll = (e) => {
             rel="noreferrer"
           >
             Read more on how to use AWS Bedrock in AnythingLLM
-            <ArrowSquareOut :size="14" />
+            <PhArrowSquareOut :size="14" />
           </a>
         </p>
       </div>

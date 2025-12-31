@@ -1,5 +1,5 @@
 <script setup>
-import { CloudArrowUp } from '@phosphor-icons/vue'
+import { PhCloudArrowUp } from '@phosphor-icons/vue'
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import showToast from '@/utils/toast'

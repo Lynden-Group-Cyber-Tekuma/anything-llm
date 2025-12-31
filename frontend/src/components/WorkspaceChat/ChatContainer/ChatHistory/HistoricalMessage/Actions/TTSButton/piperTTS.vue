@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { SpeakerHigh, PauseCircle, CircleNotch } from '@phosphor-icons/vue'
+import { PhSpeakerHigh, PhPauseCircle, PhCircleNotch } from '@phosphor-icons/vue'
 import PiperTTSClient from '@/utils/piperTTS'
 
 const props = defineProps({

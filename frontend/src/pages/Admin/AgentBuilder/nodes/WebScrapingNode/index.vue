@@ -106,7 +106,7 @@
 
 <script setup>
 import { computed, inject } from 'vue'
-import { Info } from '@phosphor-icons/vue'
+import { PhInfo } from '@phosphor-icons/vue'
 import VariableSelect from '../VariableSelect.vue'
 
 defineProps({

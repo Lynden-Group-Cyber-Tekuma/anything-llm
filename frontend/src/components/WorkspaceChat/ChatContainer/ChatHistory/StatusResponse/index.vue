@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { CaretDown } from '@phosphor-icons/vue'
+import { PhCaretDown } from '@phosphor-icons/vue'
 import AgentAnimation from '@/media/animations/agent-animation.webm'
 import AgentStatic from '@/media/animations/agent-static.png'
 

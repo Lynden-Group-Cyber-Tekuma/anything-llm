@@ -1,5 +1,5 @@
 <script setup>
-import { Warning, X } from '@phosphor-icons/vue'
+import { PhWarning, PhX } from '@phosphor-icons/vue'
 
 defineProps({
   warningText: {
@@ -23,7 +23,7 @@ const handleConfirm = () => {
   <div class="w-full max-w-2xl bg-theme-bg-secondary rounded-lg shadow border-2 border-theme-modal-border overflow-hidden z-9999">
     <div class="relative px-6 py-5 border-b rounded-t border-theme-modal-border">
       <div class="w-full flex gap-x-2 items-center">
-        <Warning class="text-red-500 w-6 h-6" weight="fill" />
+        <PhWarning class="text-red-500 w-6 h-6" weight="fill" />
         <h3 class="text-xl font-semibold text-red-500 overflow-hidden overflow-ellipsis whitespace-nowrap">
           WARNING - This action is irreversible
         </h3>
@@ -33,7 +33,7 @@ const handleConfirm = () => {
         class="absolute top-4 right-4 transition-all duration-300 bg-transparent rounded-lg text-sm p-1 inline-flex items-center hover:bg-theme-modal-border hover:border-theme-modal-border hover:border-opacity-50 border-transparent border"
         @click="handleClose"
       >
-        <X :size="24" weight="bold" class="text-white" />
+        <PhX :size="24" weight="bold" class="text-white" />
       </button>
     </div>
     <div

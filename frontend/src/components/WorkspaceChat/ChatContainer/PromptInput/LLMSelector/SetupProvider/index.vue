@@ -1,7 +1,7 @@
 <script setup>
 import { Teleport } from 'vue'
 import ModalWrapper from '@/components/ModalWrapper'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
 import { useI18n } from 'vue-i18n'

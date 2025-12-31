@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { ArrowSquareOut } from '@phosphor-icons/vue'
+import { PhArrowSquareOut } from '@phosphor-icons/vue'
 
 defineProps({
   title: {

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { PaperPlaneTilt, FileArrowUp, Plus } from '@phosphor-icons/vue'
+import { PhPaperPlaneTilt, PhFileArrowUp, PhPlus } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'

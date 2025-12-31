@@ -34,7 +34,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import showToast from '@/utils/toast'
-import { Gear } from '@phosphor-icons/vue'
+import { PhGear } from '@phosphor-icons/vue'
 import MCPServers from '@/models/mcpServers'
 
 const props = defineProps({

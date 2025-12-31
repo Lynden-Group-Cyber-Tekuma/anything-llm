@@ -248,7 +248,7 @@
 
 <script setup>
 import { ref, computed, inject } from 'vue'
-import { Plus, X, CaretDown } from '@phosphor-icons/vue'
+import { PhPlus, PhX, PhCaretDown } from '@phosphor-icons/vue'
 import VariableSelect from '../VariableSelect.vue'
 
 const props = defineProps({

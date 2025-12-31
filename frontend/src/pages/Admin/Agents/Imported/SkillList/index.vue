@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { CaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@phosphor-icons/vue'
 import { sentenceCase } from 'text-case'
 
 defineProps({

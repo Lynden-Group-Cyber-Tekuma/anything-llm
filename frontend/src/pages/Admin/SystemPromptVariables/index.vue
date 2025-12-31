@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Plus } from '@phosphor-icons/vue'
+import { PhPlus } from '@phosphor-icons/vue'
 import Sidebar from '@/components/SettingsSidebar'
 import { isMobile } from 'react-device-detect'
 import CTAButton from '@/components/lib/CTAButton/index.vue'

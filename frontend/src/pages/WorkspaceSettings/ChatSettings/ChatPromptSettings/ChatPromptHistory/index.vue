@@ -56,7 +56,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { X } from '@phosphor-icons/vue';
+import { PhX } from '@phosphor-icons/vue';
 import PromptHistory from '@/models/promptHistory';
 import PromptHistoryItem from './PromptHistoryItem/index.vue';
 import LoaderSkeleton from './LoaderSkeleton.vue';

@@ -78,7 +78,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import BrowserExtensionApiKey from '@/models/browserExtensionApiKey'
 import { fullApiUrl, POPUP_BROWSER_EXTENSION_EVENT } from '@/utils/constants'
 

@@ -76,7 +76,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { DotsThreeOutline } from '@phosphor-icons/vue'
+import { PhDotsThreeOutline } from '@phosphor-icons/vue'
 import showToast from '@/utils/toast'
 import { useModal } from '@/hooks/useModal'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'

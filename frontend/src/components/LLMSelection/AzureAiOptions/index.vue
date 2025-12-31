@@ -1,5 +1,5 @@
 <script setup>
-import { Info } from '@phosphor-icons/vue'
+import { PhInfo } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 
 defineProps({
@@ -96,7 +96,7 @@ const { t } = useI18n()
             class="text-theme-text-secondary cursor-pointer hover:bg-theme-bg-primary flex items-center justify-center rounded-full"
             :title="t('llm.providers.azure_openai.model_type_tooltip')"
           >
-            <Info :size="18" class="text-theme-text-secondary" />
+            <PhInfo :size="18" class="text-theme-text-secondary" />
           </div>
         </div>
         <select

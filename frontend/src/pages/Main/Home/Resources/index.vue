@@ -1,5 +1,5 @@
 <script setup>
-import { Book, GithubLogo, Keyboard } from '@phosphor-icons/vue'
+import { PhBook, PhGithubLogo, PhKeyboard } from '@phosphor-icons/vue'
 import { KEYBOARD_SHORTCUTS_HELP_EVENT } from '@/hooks/useKeyboardShortcuts'
 
 const showKeyboardShortcuts = () => {

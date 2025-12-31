@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { SidebarSimple } from '@phosphor-icons/vue'
+import { PhSidebarSimple } from '@phosphor-icons/vue'
 import paths from '@/utils/paths'
 
 const SIDEBAR_TOGGLE_STORAGE_KEY = 'anythingllm_sidebar_toggle'

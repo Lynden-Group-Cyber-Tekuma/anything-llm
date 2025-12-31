@@ -1,5 +1,5 @@
 <script setup>
-import { Warning } from '@phosphor-icons/vue'
+import { PhWarning } from '@phosphor-icons/vue'
 
 defineProps({
   showing: {
@@ -22,7 +22,7 @@ const handleCancel = () => {
 <template>
   <div v-if="showing" class="fixed top-0 left-0 right-0 h-14 bg-dark-input flex items-center justify-end px-4 z-[999]">
     <div class="absolute ml-4 left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center gap-x-2">
-      <Warning :size="18" class="text-[#FFFFFF]" />
+      <PhWarning :size="18" class="text-[#FFFFFF]" />
       <p class="text-[#FFFFFF] font-medium text-xs">Unsaved Changes</p>
     </div>
     <div class="flex items-center gap-x-2">

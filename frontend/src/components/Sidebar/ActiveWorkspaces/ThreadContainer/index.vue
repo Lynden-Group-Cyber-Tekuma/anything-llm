@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'
-import { Plus, CircleNotch, Trash } from '@phosphor-icons/vue'
+import { PhPlus, PhCircleNotch, PhTrash } from '@phosphor-icons/vue'
 import ThreadItem from './ThreadItem/index.vue'
 
 export const THREAD_RENAME_EVENT = 'renameThread'

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { House, ArrowClockwise, Copy, Check } from '@phosphor-icons/vue'
+import { PhHouse, PhArrowPhClockwise, PhCopy, PhCheck } from '@phosphor-icons/vue'
 
 const props = defineProps({
   error: {
@@ -68,11 +68,11 @@ const resetErrorBoundary = () => {
           title="Copy error details"
         >
           <template v-if="copied">
-            <Check class="w-3.5 h-3.5" weight="bold" />
+            <PhCheck class="w-3.5 h-3.5" weight="bold" />
             Copied!
           </template>
           <template v-else>
-            <Copy class="w-3.5 h-3.5" />
+            <PhCopy class="w-3.5 h-3.5" />
             Copy Details
           </template>
         </button>
@@ -84,14 +84,14 @@ const resetErrorBoundary = () => {
         @click="resetErrorBoundary"
         class="flex items-center justify-center gap-2 px-4 py-2 bg-theme-bg-secondary text-theme-text-primary rounded-lg hover:bg-theme-sidebar-item-hover transition-all duration-300 w-full md:w-auto"
       >
-        <ArrowClockwise class="w-4 h-4" />
+        <PhArrowClockwise class="w-4 h-4" />
         Reset
       </button>
       <RouterLink
         to="/"
         class="flex items-center justify-center gap-2 px-4 py-2 bg-theme-bg-secondary text-theme-text-primary rounded-lg hover:bg-theme-sidebar-item-hover transition-all duration-300 w-full md:w-auto"
       >
-        <House class="w-4 h-4" />
+        <PhHouse class="w-4 h-4" />
         Home
       </RouterLink>
     </div>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Microphone } from '@phosphor-icons/vue'
+import { PhMicrophone } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import Appearance from '@/models/appearance'
 

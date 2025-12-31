@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { ArrowsDownUp } from '@phosphor-icons/vue'
+import { PhArrowsDownUp } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
@@ -220,7 +220,7 @@ const moveSelectedItemsToWorkspace = () => {
       @update:loadingMessage="loadingMessage = $event"
     />
     <div class="upload-modal-arrow">
-      <ArrowsDownUp class="text-white text-base font-bold rotate-90 w-11 h-11" />
+      <PhArrowsDownUp class="text-white text-base font-bold rotate-90 w-11 h-11" />
     </div>
     <WorkspaceDirectory
       :workspace="workspace"

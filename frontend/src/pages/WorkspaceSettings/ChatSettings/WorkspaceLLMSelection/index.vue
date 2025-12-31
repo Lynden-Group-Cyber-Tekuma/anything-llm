@@ -95,7 +95,7 @@ import { useI18n } from 'vue-i18n';
 import AnythingLLMIcon from '@/media/logo/anything-llm-icon.png';
 import WorkspaceLLMItem from './WorkspaceLLMItem/index.vue';
 import { AVAILABLE_LLM_PROVIDERS } from '@/pages/GeneralSettings/LLMPreference';
-import { CaretUpDown, MagnifyingGlass, X } from '@phosphor-icons/vue';
+import { PhCaretUpDown, PhMagnifyingGlass, PhX } from '@phosphor-icons/vue';
 import ChatModelSelection from './ChatModelSelection/index.vue';
 import ModelSelector from './ModelSelector.vue';
 

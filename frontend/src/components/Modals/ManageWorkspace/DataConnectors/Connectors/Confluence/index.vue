@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Warning } from '@phosphor-icons/vue'
+import { PhWarning } from '@phosphor-icons/vue'
 
 const { t } = useI18n()
 const loading = ref(false)

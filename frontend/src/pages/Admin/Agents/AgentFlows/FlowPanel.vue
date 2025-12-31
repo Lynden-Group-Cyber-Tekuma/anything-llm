@@ -29,7 +29,7 @@
 import { ref, watch } from 'vue'
 import AgentFlows from '@/models/agentFlows'
 import showToast from '@/utils/toast'
-import { FlowArrow } from '@phosphor-icons/vue'
+import { PhFlowArrow } from '@phosphor-icons/vue'
 import ManageFlowMenu from './ManageFlowMenu.vue'
 
 const props = defineProps({

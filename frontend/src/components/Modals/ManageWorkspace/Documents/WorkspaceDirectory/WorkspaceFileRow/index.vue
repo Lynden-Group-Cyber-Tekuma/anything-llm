@@ -5,7 +5,7 @@ import {
   getFileExtension,
   middleTruncate,
 } from '@/utils/directories'
-import { ArrowUUpLeft, Eye, File, PushPin } from '@phosphor-icons/vue'
+import { PhArrowUUpLeft, PhEye, PhFile, PhPushPin } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import showToast from '@/utils/toast'
 import System from '@/models/system'

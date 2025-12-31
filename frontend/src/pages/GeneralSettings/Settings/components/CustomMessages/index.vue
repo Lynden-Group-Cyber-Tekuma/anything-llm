@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import EditingChatBubble from '@/components/EditingChatBubble/index.vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Plus } from '@phosphor-icons/vue'
+import { PhPlus } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

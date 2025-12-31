@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Warning } from '@phosphor-icons/vue'
+import { PhWarning } from '@phosphor-icons/vue'
 
 const loading = ref(false)
 const showTooltip = ref(false)

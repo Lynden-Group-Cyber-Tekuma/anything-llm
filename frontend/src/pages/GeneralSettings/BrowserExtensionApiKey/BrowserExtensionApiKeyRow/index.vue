@@ -49,7 +49,7 @@
 import { ref } from 'vue'
 import BrowserExtensionApiKey from '@/models/browserExtensionApiKey'
 import showToast from '@/utils/toast'
-import { Trash, Copy, Check, Plug } from '@phosphor-icons/vue'
+import { PhTrash, PhCopy, PhCheck, PhPlug } from '@phosphor-icons/vue'
 import { POPUP_BROWSER_EXTENSION_EVENT } from '@/utils/constants'
 
 const props = defineProps({

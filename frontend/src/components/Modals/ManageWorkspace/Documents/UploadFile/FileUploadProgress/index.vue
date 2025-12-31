@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import truncate from 'truncate'
-import { CheckCircle, XCircle } from '@phosphor-icons/vue'
+import { PhPhCheckCircle, PhXCircle } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import { humanFileSize, milliToHms } from '@/utils/numbers'
 import PreLoader from '@/components/Preloader/index.vue'

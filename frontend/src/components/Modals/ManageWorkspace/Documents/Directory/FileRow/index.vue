@@ -5,7 +5,7 @@ import {
   getFileExtension,
   middleTruncate,
 } from '@/utils/directories'
-import { File } from '@phosphor-icons/vue'
+import { PhFile } from '@phosphor-icons/vue'
 
 const props = defineProps({
   item: {

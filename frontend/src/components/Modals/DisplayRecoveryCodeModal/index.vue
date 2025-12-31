@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import showToast from '@/utils/toast'
-import { DownloadSimple, Key } from '@phosphor-icons/vue'
+import { PhPhDownloadSimple, PhKey } from '@phosphor-icons/vue'
 import { saveAs } from 'file-saver'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 
@@ -49,7 +49,7 @@ const handleCopyToClipboard = () => {
     <div class="w-full max-w-2xl bg-theme-bg-secondary rounded-lg shadow border-2 border-theme-modal-border overflow-hidden">
       <div class="relative p-6 border-b rounded-t border-theme-modal-border">
         <div class="w-full flex gap-x-2 items-center">
-          <Key :size="24" class="text-white" weight="bold" />
+          <PhKey :size="24" class="text-white" weight="bold" />
           <h3 class="text-xl font-semibold text-white overflow-hidden overflow-ellipsis whitespace-nowrap">
             Recovery Codes
           </h3>
@@ -91,7 +91,7 @@ const handleCopyToClipboard = () => {
               Close
             </template>
             <template v-else>
-              <DownloadSimple weight="bold" :size="18" />
+              <PhDownloadSimple weight="bold" :size="18" />
               <p>Download</p>
             </template>
           </button>

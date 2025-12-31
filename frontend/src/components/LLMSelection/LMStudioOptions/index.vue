@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { Info, CaretDown, CaretUp } from '@phosphor-icons/vue'
+import { PhInfo, PhCaretDown, PhCaretUp } from '@phosphor-icons/vue'
 import { RouterLink } from 'vue-router'
 import paths from '@/utils/paths'
 import System from '@/models/system'
@@ -76,7 +76,7 @@ onMounted(() => {
   <div class="w-full flex flex-col gap-y-7">
     <div v-if="showAlert" class="flex flex-col md:flex-row md:items-center gap-x-2 text-white mb-6 bg-blue-800/30 w-fit rounded-lg px-4 py-2">
       <div class="gap-x-2 flex items-center">
-        <Info :size="12" class="hidden md:visible" />
+        <PhInfo :size="12" class="hidden md:visible" />
         <p class="text-sm md:text-base">
           LMStudio as your LLM requires you to set an embedding service to
           use.
@@ -134,8 +134,8 @@ onMounted(() => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls.value ? 'Hide' : 'Show' }} advanced settings
-        <CaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
 

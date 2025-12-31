@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import System from '@/models/system'
 import { useDisplay } from '@/composables/useDisplay'
@@ -56,7 +56,7 @@ onMounted(async () => {
           type="button"
           class="absolute top-4 right-4 transition-all duration-300 bg-transparent rounded-lg text-sm p-1 inline-flex items-center hover:bg-theme-modal-border hover:border-theme-modal-border hover:border-opacity-50 border-transparent border"
         >
-          <X :size="24" weight="bold" class="text-white" />
+          <PhX :size="24" weight="bold" class="text-white" />
         </button>
       </div>
       <div
@@ -91,7 +91,7 @@ onMounted(async () => {
             type="button"
             class="z-29 text-white bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center bg-sidebar-button hover:bg-theme-modal-border hover:border-theme-modal-border hover:border-opacity-50 border-transparent border"
           >
-            <X :size="20" weight="bold" class="text-white" />
+            <PhX :size="20" weight="bold" class="text-white" />
           </button>
         </div>
 

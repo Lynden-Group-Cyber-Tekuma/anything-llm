@@ -6,7 +6,7 @@ import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import EditVariableModal from './EditVariableModal/index.vue'
 import { titleCase } from 'text-case'
 import truncate from 'truncate'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 
 const props = defineProps({
   variable: {

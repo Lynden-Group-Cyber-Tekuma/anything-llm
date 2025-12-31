@@ -27,7 +27,7 @@
 import { ref, watch } from 'vue'
 import Admin from '@/models/admin'
 import showToast from '@/utils/toast'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 import { userFromStorage } from '@/utils/request'
 import System from '@/models/system'
 

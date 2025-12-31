@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Trash, DotsThreeVertical, TreeView } from '@phosphor-icons/vue'
+import { PhTrash, PhDotsThreeVertical, PhTreeView } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 
 const props = defineProps({

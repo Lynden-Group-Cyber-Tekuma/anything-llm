@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import PiperTTSClient from '@/utils/piperTTS'
-import { CircleNotch, PauseCircle, PlayCircle } from '@phosphor-icons/vue'
+import { PhCircleNotch, PhPauseCircle, PhPlayCircle } from '@phosphor-icons/vue'
 
 const props = defineProps({
   voiceId: {
@@ -73,7 +73,7 @@ onMounted(() => {
     </template>
     <template v-else>
       <template v-if="loading">
-        <CircleNotch :size="20" class="animate-spin flex-shrink-0" />
+        <PhCircleNotch :size="20" class="animate-spin flex-shrink-0" />
         <p class="text-sm flex-shrink-0">Loading voice</p>
       </template>
       <template v-else>

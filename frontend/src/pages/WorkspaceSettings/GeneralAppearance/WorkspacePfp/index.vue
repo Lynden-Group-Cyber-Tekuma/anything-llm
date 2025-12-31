@@ -50,7 +50,7 @@ import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Workspace from '@/models/workspace';
 import showToast from '@/utils/toast';
-import { Plus } from '@phosphor-icons/vue';
+import { PhPlus } from '@phosphor-icons/vue';
 
 const props = defineProps({
   workspace: {

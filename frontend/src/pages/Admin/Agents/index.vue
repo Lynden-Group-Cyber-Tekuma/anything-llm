@@ -279,13 +279,7 @@ import { RouterLink } from 'vue-router'
 import Admin from '@/models/admin'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import {
-  CaretLeft,
-  Plug,
-  Robot,
-  Hammer,
-  FlowArrow
-} from '@phosphor-icons/vue'
+import { PhCaretLeft, PhPlug, PhRobot, PhHammer, PhFlowArrow } from '@phosphor-icons/vue'
 import { castToType } from '@/utils/types'
 import FullScreenLoader from '@/components/Preloader/index.vue'
 import { defaultSkills, configurableSkills } from './skills.js'

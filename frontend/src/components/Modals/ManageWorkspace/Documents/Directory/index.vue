@@ -5,7 +5,7 @@ import UploadFile from '../UploadFile/index.vue'
 import PreLoader from '@/components/Preloader/index.vue'
 import FolderRow from './FolderRow/index.vue'
 import System from '@/models/system'
-import { MagnifyingGlass, Plus, Trash } from '@phosphor-icons/vue'
+import { PhMagnifyingGlass, PhPlus, PhTrash } from '@phosphor-icons/vue'
 import Document from '@/models/document'
 import showToast from '@/utils/toast'
 import FolderSelectionPopup from './FolderSelectionPopup/index.vue'
@@ -289,7 +289,7 @@ const closeFolderModal = () => {
                   @click="deleteFiles"
                   class="border-none text-sm font-semibold bg-white light:bg-[#E0F2FE] h-[32px] w-[32px] rounded-lg text-dark-text hover:bg-neutral-800/80 hover:text-white light:text-[#026AA2] light:hover:bg-[#026AA2] light:hover:text-white flex justify-center items-center"
                 >
-                  <Trash :size="18" weight="bold" />
+                  <PhTrash :size="18" weight="bold" />
                 </button>
               </div>
             </div>

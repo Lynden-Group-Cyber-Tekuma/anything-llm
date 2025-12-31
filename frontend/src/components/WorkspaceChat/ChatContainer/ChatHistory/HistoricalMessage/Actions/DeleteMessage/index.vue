@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 
 const DELETE_EVENT = 'delete-message'

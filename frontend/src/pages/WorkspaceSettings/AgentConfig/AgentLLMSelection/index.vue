@@ -104,7 +104,7 @@ import { useI18n } from 'vue-i18n';
 import AnythingLLMIcon from '@/media/logo/anything-llm-icon.png';
 import AgentLLMItem from './AgentLLMItem/index.vue';
 import { AVAILABLE_LLM_PROVIDERS } from '@/pages/GeneralSettings/LLMPreference';
-import { CaretUpDown, Gauge, MagnifyingGlass, X } from '@phosphor-icons/vue';
+import { PhCaretUpDown, PhGauge, PhMagnifyingGlass, PhX } from '@phosphor-icons/vue';
 import AgentModelSelection from '../AgentModelSelection/index.vue';
 
 const ENABLED_PROVIDERS = [

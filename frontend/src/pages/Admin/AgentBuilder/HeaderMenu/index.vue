@@ -121,7 +121,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { CaretDown, CaretUp, Plus, CaretLeft } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp, PhPlus, PhCaretLeft } from '@phosphor-icons/vue'
 import AnythingInfinityLogo from '@/media/logo/anything-llm-infinity.png'
 import paths from '@/utils/paths'
 

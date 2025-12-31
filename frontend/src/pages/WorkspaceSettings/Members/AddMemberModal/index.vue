@@ -94,7 +94,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { MagnifyingGlass, X } from '@phosphor-icons/vue';
+import { PhMagnifyingGlass, PhX } from '@phosphor-icons/vue';
 import Admin from '@/models/admin';
 import showToast from '@/utils/toast';
 

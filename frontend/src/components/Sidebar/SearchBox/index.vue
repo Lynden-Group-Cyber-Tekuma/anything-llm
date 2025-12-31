@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { Plus, MagnifyingGlass } from '@phosphor-icons/vue'
+import { PhPlus, PhMagnifyingGlass } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import paths from '@/utils/paths'
@@ -134,7 +134,7 @@ function handleResultClick() {
       @click="showNewWsModal"
       class="border-none flex items-center justify-center bg-white rounded-lg p-[8px] hover:bg-white/80 transition-all duration-300"
     >
-      <Plus :size="16" weight="bold" class="text-black" />
+      <PhPlus :size="16" weight="bold" class="text-black" />
     </button>
 
     <!-- Search Results -->

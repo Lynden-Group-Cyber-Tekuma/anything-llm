@@ -1,6 +1,6 @@
 <script setup>
 import { computed, defineComponent, h } from 'vue'
-import { Info, Warning } from '@phosphor-icons/vue'
+import { PhInfo, PhWarning } from '@phosphor-icons/vue'
 import UserIcon from '@/components/UserIcon/index.vue'
 import Actions from './Actions/index.vue'
 import renderMarkdown from '@/utils/chat/markdown'

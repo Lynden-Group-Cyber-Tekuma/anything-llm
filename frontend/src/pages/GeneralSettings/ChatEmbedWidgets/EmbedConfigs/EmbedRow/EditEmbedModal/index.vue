@@ -93,7 +93,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import {
   BooleanInput,
   ChatModeSelection,

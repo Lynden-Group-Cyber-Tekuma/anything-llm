@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import renderMarkdown from '@/utils/chat/markdown'
 import DOMPurify from '@/utils/chat/purify'

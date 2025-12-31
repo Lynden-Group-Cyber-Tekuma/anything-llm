@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import Admin from '@/models/admin'
 import paths from '@/utils/paths'
-import { LinkSimple, Trash } from '@phosphor-icons/vue'
+import { PhLinkSimple, PhTrash } from '@phosphor-icons/vue'
 
 const props = defineProps({
   workspace: {

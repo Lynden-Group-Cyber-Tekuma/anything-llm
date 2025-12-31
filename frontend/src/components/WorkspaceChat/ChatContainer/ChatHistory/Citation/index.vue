@@ -5,17 +5,7 @@ import { decode as HTMLDecode } from 'he'
 import truncate from 'truncate'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import { middleTruncate } from '@/utils/directories'
-import {
-  CaretRight,
-  FileText,
-  Info,
-  ArrowSquareOut,
-  GithubLogo,
-  X,
-  YoutubeLogo,
-  LinkSimple,
-  GitlabLogo,
-} from '@phosphor-icons/vue'
+import { PhCaretRight, PhFileText, PhInfo, PhArrowSquareOut, PhGithubLogo, PhX, PhYoutubeLogo, PhLinkSimple, PhGitlabLogo,  } from '@phosphor-icons/vue'
 import ConfluenceLogo from '@/media/dataConnectors/confluence.png'
 import DrupalWikiLogo from '@/media/dataConnectors/drupalwiki.png'
 import ObsidianLogo from '@/media/dataConnectors/obsidian.png'

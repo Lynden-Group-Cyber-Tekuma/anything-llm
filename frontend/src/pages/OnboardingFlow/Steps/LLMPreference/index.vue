@@ -54,7 +54,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { MagnifyingGlass } from '@phosphor-icons/vue';
+import { PhMagnifyingGlass } from '@phosphor-icons/vue';
 
 import OpenAiLogo from '@/media/llmprovider/openai.png';
 import GenericOpenAiLogo from '@/media/llmprovider/generic-openai.png';

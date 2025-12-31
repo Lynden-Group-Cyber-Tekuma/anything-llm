@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 
 defineProps({
   embed: {
@@ -51,7 +51,7 @@ defineProps({
 
 <script>
 import { ref, computed } from 'vue'
-import { CheckCircle, CopySimple } from '@phosphor-icons/vue'
+import { PhCheckCircle, PhCopySimple } from '@phosphor-icons/vue'
 import showToast from '@/utils/toast'
 import hljs from 'highlight.js'
 import '@/utils/chat/themes/github-dark.css'

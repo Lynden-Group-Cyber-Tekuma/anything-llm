@@ -98,7 +98,7 @@ import { useI18n } from 'vue-i18n';
 import PreLoader from '@/components/Preloader';
 import Workspace from '@/models/workspace';
 import showToast from '@/utils/toast';
-import { Plus, X } from '@phosphor-icons/vue';
+import { PhPlus, PhX } from '@phosphor-icons/vue';
 
 const props = defineProps({
   slug: {

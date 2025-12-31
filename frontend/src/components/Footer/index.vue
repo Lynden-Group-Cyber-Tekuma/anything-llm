@@ -2,17 +2,7 @@
 import { ref, onMounted, computed, h } from 'vue'
 import System from '@/models/system'
 import paths from '@/utils/paths'
-import {
-  BookOpen,
-  DiscordLogo,
-  GithubLogo,
-  Briefcase,
-  Envelope,
-  Globe,
-  HouseLine,
-  Info,
-  LinkSimple,
-} from '@phosphor-icons/vue'
+import { PhBookOpen, PhDiscordLogo, PhGithubLogo, PhBriefcase, PhEnvelope, PhGlobe, PhHouseLine, PhInfo, PhLinkSimple,  } from '@phosphor-icons/vue'
 import SettingsButton from '../SettingsButton/index.vue'
 
 export const MAX_ICONS = 3

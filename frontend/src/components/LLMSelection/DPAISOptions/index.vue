@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { CaretDown, CaretUp } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue'
 import System from '@/models/system'
 import PreLoader from '@/components/Preloader'
 import { DPAIS_COMMON_URLS } from '@/utils/constants'
@@ -125,8 +125,8 @@ onMounted(() => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls.value ? 'Hide' : 'Show' }} advanced settings
-        <CaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
     <div v-show="showAdvancedControls.value">

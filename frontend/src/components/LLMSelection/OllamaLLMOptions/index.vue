@@ -3,7 +3,7 @@ import { ref, watch, onMounted } from 'vue'
 import System from '@/models/system'
 import PreLoader from '@/components/Preloader'
 import { OLLAMA_COMMON_URLS } from '@/utils/constants'
-import { CaretDown, CaretUp, Info } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp, PhInfo } from '@phosphor-icons/vue'
 import { useProviderEndpointAutoDiscovery } from '@/composables/useProviderEndpointAutoDiscovery'
 
 const props = defineProps({
@@ -121,8 +121,8 @@ onMounted(() => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls.value ? 'Hide' : 'Show' }} advanced settings
-        <CaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
 

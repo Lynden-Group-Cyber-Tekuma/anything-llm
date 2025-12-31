@@ -97,7 +97,7 @@
 <script setup>
 import { ref } from 'vue';
 import { isMobile } from 'react-device-detect';
-import { ArrowLeft, ArrowRight } from '@phosphor-icons/vue';
+import { PhArrowLeft, PhArrowRight } from '@phosphor-icons/vue';
 import Home from './Home/index.vue';
 import LLMPreference from './LLMPreference/index.vue';
 import UserSetup from './UserSetup/index.vue';

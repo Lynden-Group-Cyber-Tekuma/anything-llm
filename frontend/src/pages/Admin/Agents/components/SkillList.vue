@@ -46,7 +46,7 @@
 
 <script setup>
 import { isMobile } from 'react-device-detect'
-import { CaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@phosphor-icons/vue'
 import DefaultBadge from '../Badges/default.vue'
 import { Tooltip } from 'react-tooltip'
 

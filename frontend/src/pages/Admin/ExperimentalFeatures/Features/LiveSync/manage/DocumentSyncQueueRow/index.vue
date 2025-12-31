@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 import { stripUuidAndJsonFromString } from '@/components/Modals/ManageWorkspace/Documents/Directory/utils'
 import moment from 'moment'
 import System from '@/models/system'

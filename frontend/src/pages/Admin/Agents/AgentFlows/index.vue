@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { CaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@phosphor-icons/vue'
 
 defineProps({
   flows: {

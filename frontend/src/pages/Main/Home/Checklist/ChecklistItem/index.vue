@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Check } from '@phosphor-icons/vue'
+import { PhCheck } from '@phosphor-icons/vue'
 import { CHECKLIST_STORAGE_KEY, CHECKLIST_UPDATED_EVENT } from '../constants'
 import { safeJsonParse } from '@/utils/request'
 

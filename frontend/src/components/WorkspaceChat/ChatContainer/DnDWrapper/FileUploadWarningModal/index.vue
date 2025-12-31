@@ -1,5 +1,5 @@
 <script setup>
-import { CircleNotch } from '@phosphor-icons/vue'
+import { PhCircleNotch } from '@phosphor-icons/vue'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import pluralize from 'pluralize'
 import { numberWithCommas } from '@/utils/numbers'

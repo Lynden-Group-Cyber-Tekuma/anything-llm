@@ -166,7 +166,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { CheckCircle } from '@phosphor-icons/vue';
+import { PhCheckCircle } from '@phosphor-icons/vue';
 import {
   COMPLETE_QUESTIONNAIRE,
   ONBOARDING_SURVEY_URL,

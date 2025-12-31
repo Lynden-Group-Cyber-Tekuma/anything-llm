@@ -140,7 +140,7 @@ import System from '@/models/system'
 import showToast from '@/utils/toast'
 import PreLoader from '@/components/Preloader/index.vue'
 import LLMItem from '@/components/LLMSelection/LLMItem/index.vue'
-import { CaretUpDown, MagnifyingGlass, X } from '@phosphor-icons/vue'
+import { PhCaretUpDown, PhMagnifyingGlass, PhX } from '@phosphor-icons/vue'
 import CTAButton from '@/components/lib/CTAButton/index.vue'
 
 import AnythingLLMIcon from '@/media/logo/anything-llm-icon.png'

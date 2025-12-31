@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { PaperclipHorizontal } from '@phosphor-icons/vue'
+import { PhPaperclipHorizontal } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import Workspace from '@/models/workspace'

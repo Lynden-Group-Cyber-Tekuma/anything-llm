@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { ArrowSquareOut } from '@phosphor-icons/vue'
+import { PhArrowSquareOut } from '@phosphor-icons/vue'
 
 const NEWS_CACHE_CONFIG = {
   articles: 'https://cdn.anythingllm.com/support/announcements/list.txt',

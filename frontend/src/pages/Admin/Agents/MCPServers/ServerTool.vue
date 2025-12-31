@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { CaretDown } from '@phosphor-icons/vue'
+import { PhCaretDown } from '@phosphor-icons/vue'
 import truncate from 'truncate'
 
 defineProps({

@@ -151,7 +151,7 @@
 
 <script setup>
 import { ref, computed, provide } from 'vue'
-import { X, CaretUp, CaretDown } from '@phosphor-icons/vue'
+import { PhX, PhCaretUp, PhCaretDown } from '@phosphor-icons/vue'
 import { BLOCK_TYPES, BLOCK_INFO } from './blockTypes'
 import StartNode from '../nodes/StartNode/index.vue'
 import ApiCallNode from '../nodes/ApiCallNode/index.vue'

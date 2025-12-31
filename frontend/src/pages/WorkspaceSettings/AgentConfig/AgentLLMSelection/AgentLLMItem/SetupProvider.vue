@@ -57,7 +57,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { X } from '@phosphor-icons/vue';
+import { PhX } from '@phosphor-icons/vue';
 import ModalWrapper from '@/components/ModalWrapper';
 import System from '@/models/system';
 import showToast from '@/utils/toast';

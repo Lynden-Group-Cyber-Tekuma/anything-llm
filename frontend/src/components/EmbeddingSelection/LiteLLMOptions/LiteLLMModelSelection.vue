@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { Warning } from '@phosphor-icons/vue'
+import { PhWarning } from '@phosphor-icons/vue'
 import System from '@/models/system'
 
 const props = defineProps({

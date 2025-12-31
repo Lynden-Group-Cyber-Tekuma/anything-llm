@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import FileRow from '../FileRow/index.vue'
-import { CaretDown, FolderNotch } from '@phosphor-icons/vue'
+import { PhCaretDown, PhPhFolderNotch } from '@phosphor-icons/vue'
 import { middleTruncate } from '@/utils/directories'
 
 const props = defineProps({
@@ -78,7 +78,7 @@ const handleCheckboxClick = (event) => {
             expanded ? 'rotate-360' : 'rotate-270'
           ]"
         >
-          <CaretDown class="text-base font-bold w-4 h-4" />
+          <PhCaretDown class="text-base font-bold w-4 h-4" />
         </div>
         <FolderNotch
           class="shrink-0 text-base font-bold w-4 h-4 mr-[3px]"

@@ -2,17 +2,7 @@
 import { ref, onMounted, watch } from 'vue'
 import paths from '@/utils/paths'
 import useLogo from '@/hooks/useLogo'
-import {
-  House,
-  List,
-  Robot,
-  Flask,
-  Gear,
-  UserCircleGear,
-  PencilSimpleLine,
-  Nut,
-  Toolbox,
-} from '@phosphor-icons/vue'
+import { PhHouse, PhList, PhRobot, PhFlask, PhGear, PhUserCircleGear, PhPencilSimpleLine, PhNut, PhToolbox,  } from '@phosphor-icons/vue'
 import useUser from '@/hooks/useUser'
 import { isMobile } from 'react-device-detect'
 import Footer from '../Footer/index.vue'
@@ -46,7 +36,7 @@ watch(showSidebar, (newValue) => {
         @click="showSidebar = true"
         class="rounded-md p-2 flex items-center justify-center text-theme-text-secondary"
       >
-        <List class="h-6 w-6" />
+        <PhList class="h-6 w-6" />
       </button>
       <div class="flex items-center justify-center flex-grow">
         <img
@@ -93,7 +83,7 @@ watch(showSidebar, (newValue) => {
                 :href="paths.home()"
                 class="transition-all duration-300 p-2 rounded-full text-white bg-theme-action-menu-bg hover:bg-theme-action-menu-item-hover hover:border-slate-100 hover:border-opacity-50 border-transparent border"
               >
-                <House class="h-4 w-4" />
+                <PhHouse class="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -180,15 +170,7 @@ import Option from './MenuOption/index.vue'
 import showToast from '@/utils/toast'
 import useAppVersion from '@/hooks/useAppVersion'
 import { CanViewChatHistoryProvider, useCanViewChatHistory } from '../CanViewChatHistory/index.vue'
-import {
-  Gear,
-  UserCircleGear,
-  Robot,
-  PencilSimpleLine,
-  Toolbox,
-  Nut,
-  Flask,
-} from '@phosphor-icons/vue'
+import { PhGear, PhUserCircleGear, PhRobot, PhPencilSimpleLine, PhToolbox, PhNut, PhFlask,  } from '@phosphor-icons/vue'
 
 const SupportEmail = defineComponent({
   name: 'SupportEmail',

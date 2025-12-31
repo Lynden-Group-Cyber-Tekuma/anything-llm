@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import PostgreSQLLogo from './icons/postgresql.png'
 import MySQLLogo from './icons/mysql.png'
 import MSSQLLogo from './icons/mssql.png'

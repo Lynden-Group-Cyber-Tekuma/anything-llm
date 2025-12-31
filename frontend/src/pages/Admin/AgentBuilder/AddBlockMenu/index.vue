@@ -50,7 +50,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { Plus, CaretDown } from '@phosphor-icons/vue'
+import { PhPlus, PhCaretDown } from '@phosphor-icons/vue'
 import { BLOCK_TYPES, BLOCK_INFO } from '../BlockList/blockTypes'
 
 const props = defineProps({

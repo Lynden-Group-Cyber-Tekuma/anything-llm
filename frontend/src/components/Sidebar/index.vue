@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { List, Plus } from '@phosphor-icons/vue'
+import { PhList, PhPlus } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import paths from '@/utils/paths'
 import { useAuthStore } from '@/stores/auth'

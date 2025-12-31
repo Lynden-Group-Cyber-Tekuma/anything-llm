@@ -6,7 +6,7 @@ import System from '@/models/system'
 import Appearance from '@/models/appearance'
 import { AUTH_USER } from '@/utils/constants'
 import showToast from '@/utils/toast'
-import { Info, Plus, X } from '@phosphor-icons/vue'
+import { PhInfo, PhPlus, PhX } from '@phosphor-icons/vue'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import { useTheme } from '@/hooks/useTheme'
 import { useI18n } from 'vue-i18n'
@@ -95,7 +95,7 @@ const handleUpdate = async (e) => {
           type="button"
           class="absolute top-4 right-4 transition-all duration-300 bg-transparent rounded-lg text-sm p-1 inline-flex items-center hover:bg-theme-modal-border hover:border-theme-modal-border hover:border-opacity-50 border-transparent border"
         >
-          <X :size="24" weight="bold" class="text-white" />
+          <PhX :size="24" weight="bold" class="text-white" />
         </button>
       </div>
       <div
@@ -120,7 +120,7 @@ const handleUpdate = async (e) => {
                   class="w-48 h-48 rounded-full object-cover bg-white"
                 />
                 <div v-else class="flex flex-col items-center justify-center p-3">
-                  <Plus class="w-8 h-8 text-theme-text-secondary m-2" />
+                  <PhPlus class="w-8 h-8 text-theme-text-secondary m-2" />
                   <span class="text-theme-text-secondary text-opacity-80 text-sm font-semibold">
                     {{ t('profile_settings.profile_picture') }}
                   </span>
@@ -231,7 +231,7 @@ import { useI18n } from 'vue-i18n'
 import { useLanguageOptions } from '@/hooks/useLanguageOptions'
 import { useTheme } from '@/hooks/useTheme'
 import Appearance from '@/models/appearance'
-import { Info } from '@phosphor-icons/vue'
+import { PhInfo } from '@phosphor-icons/vue'
 
 const LanguagePreference = defineComponent({
   name: 'LanguagePreference',
@@ -337,7 +337,7 @@ const AutoSubmitPreference = defineComponent({
           :title="t('customization.chat.auto_submit.description')"
           class="cursor-pointer h-fit"
         >
-          <Info :size="16" weight="bold" class="text-white" />
+          <PhInfo :size="16" weight="bold" class="text-white" />
         </div>
       </div>
       <div class="flex items-center gap-x-4">
@@ -390,7 +390,7 @@ const AutoSpeakPreference = defineComponent({
           :title="t('customization.chat.auto_speak.description')"
           class="cursor-pointer h-fit"
         >
-          <Info :size="16" weight="bold" class="text-white" />
+          <PhInfo :size="16" weight="bold" class="text-white" />
         </div>
       </div>
       <div class="flex items-center gap-x-4">

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import System from '@/models/system'
-import { CaretDown, CaretUp } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue'
 
 const props = defineProps({
   settings: {
@@ -141,8 +141,8 @@ onMounted(() => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls ? 'Hide' : 'Show' }} advanced settings
-        <CaretUp v-if="showAdvancedControls" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
     <div v-show="showAdvancedControls">

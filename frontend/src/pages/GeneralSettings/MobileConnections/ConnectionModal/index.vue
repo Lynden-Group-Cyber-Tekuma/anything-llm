@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import { RouterLink } from 'vue-router'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import BG from './bg.png'

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import useUser from '@/composables/useUser'
 import paths from '@/utils/paths'
-import { ArrowUUpLeft, Wrench } from '@phosphor-icons/vue'
+import { PhArrowUUpLeft, PhWrench } from '@phosphor-icons/vue'
 
 const route = useRoute()
 const { user } = useUser()

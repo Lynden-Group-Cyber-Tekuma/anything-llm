@@ -26,7 +26,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Gear } from '@phosphor-icons/vue'
+import { PhGear } from '@phosphor-icons/vue'
 
 const props = defineProps({
   config: {

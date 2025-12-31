@@ -2,7 +2,7 @@
 import { ref, watch, onMounted } from 'vue'
 import { titleCase } from 'text-case'
 import Admin from '@/models/admin'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 
 const props = defineProps({
   invite: {

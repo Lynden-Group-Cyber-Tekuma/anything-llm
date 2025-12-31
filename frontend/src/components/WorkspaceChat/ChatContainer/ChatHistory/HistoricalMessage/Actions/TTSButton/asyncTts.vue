@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { SpeakerHigh, PauseCircle, CircleNotch } from '@phosphor-icons/vue'
+import { PhSpeakerHigh, PhPauseCircle, PhCircleNotch } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import showToast from '@/utils/toast'
 import { useI18n } from 'vue-i18n'

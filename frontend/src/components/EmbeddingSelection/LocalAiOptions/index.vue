@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { CaretDown, CaretUp, Info } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp, PhInfo } from '@phosphor-icons/vue'
 import Preloader from '@/components/Preloader'
 import { LOCALAI_COMMON_URLS } from '@/utils/constants'
 import { useProviderEndpointAutoDiscovery } from '@/composables/useProviderEndpointAutoDiscovery'
@@ -55,7 +55,7 @@ const handleScroll = (e) => {
           :title="'Maximum length of text chunks, in characters, for embedding.'"
           class="flex gap-x-1 items-center mb-3"
         >
-          <Info :size="16" class="text-theme-text-secondary cursor-pointer" />
+          <PhInfo :size="16" class="text-theme-text-secondary cursor-pointer" />
           <label class="text-white text-sm font-semibold block">
             Max embedding chunk length
           </label>
@@ -97,8 +97,8 @@ const handleScroll = (e) => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls.value ? 'Hide' : 'Show' }} advanced settings
-        <CaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
     <div v-show="showAdvancedControls.value">

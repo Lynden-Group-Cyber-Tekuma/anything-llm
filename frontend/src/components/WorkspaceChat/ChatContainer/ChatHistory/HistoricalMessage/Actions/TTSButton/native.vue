@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { SpeakerHigh, PauseCircle } from '@phosphor-icons/vue'
+import { PhSpeakerHigh, PhPauseCircle } from '@phosphor-icons/vue'
 
 const props = defineProps({
   chatId: String,

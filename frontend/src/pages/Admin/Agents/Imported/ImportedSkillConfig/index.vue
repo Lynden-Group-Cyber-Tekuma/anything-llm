@@ -75,7 +75,7 @@
 import { ref, computed, watch } from 'vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'
-import { Gear, Plug } from '@phosphor-icons/vue'
+import { PhGear, PhPlug } from '@phosphor-icons/vue'
 import { sentenceCase } from 'text-case'
 import ManageSkillMenu from './ManageSkillMenu.vue'
 

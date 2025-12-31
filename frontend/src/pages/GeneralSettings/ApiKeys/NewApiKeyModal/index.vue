@@ -92,7 +92,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { X, Copy, Check } from '@phosphor-icons/vue'
+import { PhX, PhCopy, PhCheck } from '@phosphor-icons/vue'
 import Admin from '@/models/admin'
 import paths from '@/utils/paths'
 import { userFromStorage } from '@/utils/request'

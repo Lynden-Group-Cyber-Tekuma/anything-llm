@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'
-import { PencilSimple, Trash } from '@phosphor-icons/vue'
+import { PhPhPencilSimple, PhTrash } from '@phosphor-icons/vue'
 
 const props = defineProps({
   containerRef: {
@@ -143,7 +143,7 @@ async function handleDelete() {
       type="button"
       class="w-full rounded-md flex items-center p-2 gap-x-2 hover:bg-red-500/20 text-slate-300 light:text-theme-text-primary hover:text-red-100"
     >
-      <Trash :size="18" />
+      <PhTrash :size="18" />
       <p class="text-sm">Delete Thread</p>
     </button>
   </div>

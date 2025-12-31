@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { CaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@phosphor-icons/vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { safeJsonParse } from '@/utils/request'
 

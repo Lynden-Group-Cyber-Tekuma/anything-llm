@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { CaretDown, CaretUp } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue'
 import { safeJsonParse } from '@/utils/request'
 
 const props = defineProps({

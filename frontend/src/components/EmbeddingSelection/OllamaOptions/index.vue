@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { CaretDown, CaretUp, Info } from '@phosphor-icons/vue'
+import { PhCaretDown, PhCaretUp, PhInfo } from '@phosphor-icons/vue'
 import Preloader from '@/components/Preloader'
 import { OLLAMA_COMMON_URLS } from '@/utils/constants'
 import { useProviderEndpointAutoDiscovery } from '@/composables/useProviderEndpointAutoDiscovery'
@@ -56,7 +56,7 @@ const handleScroll = (e) => {
           <label class="text-white text-sm font-semibold block">
             Max embedding chunk length
           </label>
-          <Info :size="16" class="text-theme-text-secondary cursor-pointer" />
+          <PhInfo :size="16" class="text-theme-text-secondary cursor-pointer" />
         </div>
         <input
           type="number"
@@ -78,8 +78,8 @@ const handleScroll = (e) => {
         class="border-none text-theme-text-primary hover:text-theme-text-secondary flex items-center text-sm"
       >
         {{ showAdvancedControls.value ? 'Hide' : 'Show' }} Advanced Settings
-        <CaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
-        <CaretDown v-else :size="14" class="ml-1" />
+        <PhCaretUp v-if="showAdvancedControls.value" :size="14" class="ml-1" />
+        <PhCaretDown v-else :size="14" class="ml-1" />
       </button>
     </div>
 
@@ -122,7 +122,7 @@ const handleScroll = (e) => {
             <label class="text-white text-sm font-semibold block">
               Embedding batch size
             </label>
-            <Info :size="16" class="text-theme-text-secondary cursor-pointer" />
+            <PhInfo :size="16" class="text-theme-text-secondary cursor-pointer" />
           </div>
           <input
             type="number"

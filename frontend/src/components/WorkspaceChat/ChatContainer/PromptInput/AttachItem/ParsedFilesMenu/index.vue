@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { X, CircleNotch, Warning } from '@phosphor-icons/vue'
+import { PhX, PhCircleNotch, PhWarning } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import { useRoute } from 'vue-router'
 import { nFormatter } from '@/utils/numbers'

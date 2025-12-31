@@ -73,7 +73,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { DotsThreeVertical } from '@phosphor-icons/vue';
+import { PhDotsThreeVertical } from '@phosphor-icons/vue';
 import PromptHistory from '@/models/promptHistory';
 import moment from 'moment';
 import truncate from 'truncate';

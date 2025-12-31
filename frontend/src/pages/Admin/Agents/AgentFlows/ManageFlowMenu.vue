@@ -34,7 +34,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import AgentFlows from '@/models/agentFlows'
 import showToast from '@/utils/toast'
-import { Gear } from '@phosphor-icons/vue'
+import { PhGear } from '@phosphor-icons/vue'
 import paths from '@/utils/paths'
 
 const props = defineProps({

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, defineComponent, h } from 'vue'
-import { TextT } from '@phosphor-icons/vue'
+import { PhTextT } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from '@/hooks/useTheme'
 

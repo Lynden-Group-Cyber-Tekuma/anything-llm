@@ -80,7 +80,7 @@ import { useRoute } from 'vue-router'
 import ChatRow from './ChatRow/index.vue'
 import showToast from '@/utils/toast'
 import System from '@/models/system'
-import { CaretDown, Download, Trash } from '@phosphor-icons/vue'
+import { PhCaretDown, PhDownload, PhTrash } from '@phosphor-icons/vue'
 import { saveAs } from 'file-saver'
 import { CanViewChatHistory } from '@/components/CanViewChatHistory/index.vue'
 

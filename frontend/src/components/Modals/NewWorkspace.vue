@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import { useI18n } from 'vue-i18n'
@@ -45,7 +45,7 @@ const handleCreate = async (e) => {
           type="button"
           class="absolute top-4 right-4 transition-all duration-300 bg-transparent rounded-lg text-sm p-1 inline-flex items-center hover:bg-theme-modal-border hover:border-theme-modal-border hover:border-opacity-50 border-transparent border"
         >
-          <X :size="24" weight="bold" class="text-white" />
+          <PhX :size="24" weight="bold" class="text-white" />
         </button>
       </div>
       <div

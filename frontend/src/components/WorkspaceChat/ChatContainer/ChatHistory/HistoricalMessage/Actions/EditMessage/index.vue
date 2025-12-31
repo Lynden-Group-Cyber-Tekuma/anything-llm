@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Pencil } from '@phosphor-icons/vue'
+import { PhPencil } from '@phosphor-icons/vue'
 import Appearance from '@/models/appearance'
 import { useI18n } from 'vue-i18n'
 

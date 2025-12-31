@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { Robot, Command, ChatCircleText } from '@phosphor-icons/vue'
+import { PhRobot, PhCommand, PhChatCircleText } from '@phosphor-icons/vue'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'

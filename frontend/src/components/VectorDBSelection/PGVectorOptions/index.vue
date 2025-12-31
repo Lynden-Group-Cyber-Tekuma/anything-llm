@@ -1,5 +1,5 @@
 <script setup>
-import { Info } from '@phosphor-icons/vue'
+import { PhInfo } from '@phosphor-icons/vue'
 
 const props = defineProps({
   settings: {

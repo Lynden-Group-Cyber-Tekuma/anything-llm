@@ -55,14 +55,7 @@ import Sidebar from '@/components/Sidebar';
 import Workspace from '@/models/workspace';
 import System from '@/models/system';
 import { FullScreenLoader } from '@/components/Preloader';
-import {
-  ArrowUUpLeft,
-  ChatText,
-  Database,
-  Robot,
-  User,
-  Wrench,
-} from '@phosphor-icons/vue';
+import { PhArrowUUpLeft, PhChatText, PhDatabase, PhRobot, PhUser, PhWrench,  } from '@phosphor-icons/vue';
 import paths from '@/utils/paths';
 import GeneralAppearance from './GeneralAppearance/index.vue';
 import ChatSettings from './ChatSettings/index.vue';

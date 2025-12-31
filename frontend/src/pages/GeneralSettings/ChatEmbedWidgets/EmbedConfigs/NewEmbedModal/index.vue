@@ -86,7 +86,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import Embed from '@/models/embed'
 
 const props = defineProps({

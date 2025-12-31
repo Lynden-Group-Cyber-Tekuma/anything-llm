@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { X, Copy, Check } from '@phosphor-icons/vue'
+import { PhX, PhCopy, PhCheck } from '@phosphor-icons/vue'
 import Admin from '@/models/admin'
 import Workspace from '@/models/workspace'
 import showToast from '@/utils/toast'

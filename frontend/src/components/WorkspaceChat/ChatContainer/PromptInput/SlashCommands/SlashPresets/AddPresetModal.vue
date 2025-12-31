@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import ModalWrapper from '@/components/ModalWrapper'
 import { CMD_REGEX } from './index.vue'
 import { useI18n } from 'vue-i18n'

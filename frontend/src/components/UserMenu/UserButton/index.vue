@@ -6,7 +6,7 @@ import useUser from '@/hooks/useUser'
 import System from '@/models/system'
 import paths from '@/utils/paths'
 import { userFromStorage } from '@/utils/request'
-import { Person } from '@phosphor-icons/vue'
+import { PhPerson } from '@phosphor-icons/vue'
 import AccountModal from '../AccountModal/index.vue'
 import {
   AUTH_TIMESTAMP,

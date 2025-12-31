@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { ICON_COMPONENTS } from '@/components/Footer/index.vue'
-import { Plus, X } from '@phosphor-icons/vue'
+import { PhPlus, PhX } from '@phosphor-icons/vue'
 import { h } from 'vue'
 
 const props = defineProps({

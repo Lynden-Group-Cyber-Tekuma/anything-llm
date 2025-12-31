@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
 import { SlashCommandsButton, SlashCommands, useSlashCommands } from './SlashCommands/index.vue'
 import debounce from 'lodash.debounce'
-import { PaperPlaneRight } from '@phosphor-icons/vue'
+import { PhPaperPlaneRight } from '@phosphor-icons/vue'
 import StopGenerationButton from './StopGenerationButton/index.vue'
 import { AvailableAgentsButton, AvailableAgents, useAvailableAgents } from './AgentMenu/index.vue'
 import TextSizeButton from './TextSizeMenu/index.vue'

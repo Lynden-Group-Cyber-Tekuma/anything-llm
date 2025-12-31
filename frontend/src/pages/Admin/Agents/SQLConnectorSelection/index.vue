@@ -92,7 +92,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import DBConnection from './DBConnection.vue'
-import { Plus, Database } from '@phosphor-icons/vue'
+import { PhPlus, PhDatabase } from '@phosphor-icons/vue'
 import NewSQLConnection from './NewConnectionModal.vue'
 import SQLAgentImage from '@/media/agents/sql-agent.png'
 import Admin from '@/models/admin'

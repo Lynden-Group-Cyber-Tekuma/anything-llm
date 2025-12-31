@@ -215,7 +215,7 @@
 <script setup>
 import { ref } from 'vue'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
-import { WarningOctagon, X } from '@phosphor-icons/vue'
+import { PhWarningOctagon, PhX } from '@phosphor-icons/vue'
 import DBEngine from './DBEngine.vue'
 import System from '@/models/system'
 import showToast from '@/utils/toast'

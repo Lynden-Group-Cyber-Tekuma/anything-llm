@@ -37,7 +37,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { titleCase } from 'text-case'
-import { BookOpenText, ArrowClockwise } from '@phosphor-icons/vue'
+import { PhBookOpenText, PhArrowClockwise } from '@phosphor-icons/vue'
 import MCPLogo from '@/media/agents/mcp-logo.svg'
 import MCPServers from '@/models/mcpServers'
 import showToast from '@/utils/toast'

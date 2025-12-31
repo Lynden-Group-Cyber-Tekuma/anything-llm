@@ -36,7 +36,7 @@ import renderMarkdown from '@/utils/chat/markdown.js'
 import { WorkspaceProfileImage } from '../PromptReply/index.vue'
 import { saveAs } from 'file-saver'
 import { useGenerateImage } from 'recharts-to-png'
-import { CircleNotch, DownloadSimple } from '@phosphor-icons/vue'
+import { PhCircleNotch, PhDownloadSimple } from '@phosphor-icons/vue'
 import { h } from 'vue'
 
 const props = defineProps({

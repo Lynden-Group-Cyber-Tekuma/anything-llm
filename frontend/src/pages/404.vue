@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { House, MagnifyingGlass } from '@phosphor-icons/vue'
+import { PhHouse, PhMagnifyingGlass } from '@phosphor-icons/vue'
 </script>
 
 <template>

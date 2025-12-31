@@ -4,13 +4,7 @@ import { useRoute } from 'vue-router'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'
-import {
-  ArrowCounterClockwise,
-  DotsThree,
-  PencilSimple,
-  Trash,
-  X
-} from '@phosphor-icons/vue'
+import { PhArrowCounterClockwise, PhDotsThree, PhPencilSimple, PhTrash, PhX } from '@phosphor-icons/vue'
 import OptionsMenu from './OptionsMenu.vue'
 
 const THREAD_CALLOUT_DETAIL_WIDTH = 26

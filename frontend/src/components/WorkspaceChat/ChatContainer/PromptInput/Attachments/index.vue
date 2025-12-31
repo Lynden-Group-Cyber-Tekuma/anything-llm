@@ -1,17 +1,6 @@
 <script setup>
 import { defineComponent, h } from 'vue'
-import {
-  CircleNotch,
-  FileCode,
-  FileCsv,
-  FileDoc,
-  FileHtml,
-  FileText,
-  FileImage,
-  FilePdf,
-  WarningOctagon,
-  X,
-} from '@phosphor-icons/vue'
+import { PhCircleNotch, PhFileCode, PhFileCsv, PhFileDoc, PhFileHtml, PhFileText, PhFileImage, PhFilePdf, PhWarningOctagon, PhX,  } from '@phosphor-icons/vue'
 import { REMOVE_ATTACHMENT_EVENT } from '../../DnDWrapper'
 
 const props = defineProps({

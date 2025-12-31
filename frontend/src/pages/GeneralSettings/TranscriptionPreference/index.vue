@@ -144,7 +144,7 @@ import AnythingLLMIcon from '@/media/logo/anything-llm-icon.png'
 import OpenAiWhisperOptions from '@/components/TranscriptionSelection/OpenAiOptions/index.vue'
 import NativeTranscriptionOptions from '@/components/TranscriptionSelection/NativeTranscriptionOptions/index.vue'
 import LLMItem from '@/components/LLMSelection/LLMItem/index.vue'
-import { CaretUpDown, MagnifyingGlass, X } from '@phosphor-icons/vue'
+import { PhCaretUpDown, PhMagnifyingGlass, PhX } from '@phosphor-icons/vue'
 import CTAButton from '@/components/lib/CTAButton/index.vue'
 
 const PROVIDERS = [

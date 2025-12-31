@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import { Gear } from '@phosphor-icons/vue';
+import { PhGear } from '@phosphor-icons/vue';
 import { useModal } from '@/hooks/useModal';
 import System from '@/models/system';
 import SetupProvider from './SetupProvider.vue';

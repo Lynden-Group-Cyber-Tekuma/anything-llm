@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { Plus, X } from '@phosphor-icons/vue'
+import { PhPlus, PhX } from '@phosphor-icons/vue'
 
 const props = defineProps({
   config: {

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 import Admin from '@/models/admin'
 import { ROLE_HINT } from '../../index.vue'
 import { AUTH_USER } from '@/utils/constants'

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import renderMarkdown from '@/utils/chat/markdown'
-import { CaretDown } from '@phosphor-icons/vue'
+import { PhCaretDown } from '@phosphor-icons/vue'
 import DOMPurify from 'dompurify'
 import { isMobile } from 'react-device-detect'
 import ThinkingAnimation from '@/media/animations/thinking-animation.webm'

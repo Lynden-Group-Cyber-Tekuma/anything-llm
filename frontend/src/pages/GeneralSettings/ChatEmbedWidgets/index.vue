@@ -74,7 +74,7 @@
 import { ref } from 'vue'
 import Sidebar from '@/components/SettingsSidebar/index.vue'
 import { isMobile } from 'react-device-detect'
-import { CaretLeft, CaretRight } from '@phosphor-icons/vue'
+import { PhCaretLeft, PhCaretRight } from '@phosphor-icons/vue'
 import { useI18n } from 'vue-i18n'
 import EmbedConfigsView from './EmbedConfigs/index.vue'
 import EmbedChatsView from './EmbedChats/index.vue'
@@ -86,7 +86,7 @@ const showViewModal = ref(false)
 
 <script>
 import { isMobile } from 'react-device-detect'
-import { CaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@phosphor-icons/vue'
 
 export const WidgetLayout = {
   name: 'WidgetLayout',

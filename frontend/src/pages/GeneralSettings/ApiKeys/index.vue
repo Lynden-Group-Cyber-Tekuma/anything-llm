@@ -97,7 +97,7 @@
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { isMobile } from 'react-device-detect'
-import { PlusCircle } from '@phosphor-icons/vue'
+import { PhPlusCircle } from '@phosphor-icons/vue'
 import Sidebar from '@/components/SettingsSidebar/index.vue'
 import Skeleton from 'vue-loading-skeleton'
 import Admin from '@/models/admin'

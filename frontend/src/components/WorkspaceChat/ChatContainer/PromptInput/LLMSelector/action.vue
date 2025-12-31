@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Brain, CheckCircle } from '@phosphor-icons/vue'
+import { PhBrain, PhCheckCircle } from '@phosphor-icons/vue'
 import LLMSelectorModal from './index.vue'
 import { useTheme } from '@/hooks/useTheme'
 import useUser from '@/hooks/useUser'

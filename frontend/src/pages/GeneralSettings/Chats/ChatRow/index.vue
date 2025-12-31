@@ -41,7 +41,7 @@
 
 <script setup>
 import truncate from 'truncate'
-import { Trash } from '@phosphor-icons/vue'
+import { PhTrash } from '@phosphor-icons/vue'
 import System from '@/models/system'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 import { useModal } from '@/hooks/useModal'
@@ -82,7 +82,7 @@ const handleDelete = async () => {
 </script>
 
 <script>
-import { X } from '@phosphor-icons/vue'
+import { PhX } from '@phosphor-icons/vue'
 
 export const TextPreview = {
   name: 'TextPreview',

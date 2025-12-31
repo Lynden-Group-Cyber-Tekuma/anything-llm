@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import System from '@/models/system'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'
-import { ArrowSquareOut } from '@phosphor-icons/vue'
+import { PhArrowSquareOut } from '@phosphor-icons/vue'
 import { RouterLink } from 'vue-router'
 
 const props = defineProps({

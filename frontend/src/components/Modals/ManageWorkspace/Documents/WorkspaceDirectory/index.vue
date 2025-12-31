@@ -266,14 +266,14 @@ const hasAnyFiles = computed(() => {
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
-import { Eye, PushPin } from '@phosphor-icons/vue'
+import { PhEye, PhPushPin } from '@phosphor-icons/vue'
 import { SEEN_DOC_PIN_ALERT, SEEN_WATCH_ALERT } from '@/utils/constants'
 import paths from '@/utils/paths'
 import { RouterLink } from 'vue-router'
 
 const PinAlert = defineComponent({
   name: 'PinAlert',
-  components: { ModalWrapper, PushPin },
+  components: { ModalWrapper,PhPushPin },
   setup() {
     const { t } = useI18n()
     const showAlert = ref(false)
@@ -340,7 +340,7 @@ const PinAlert = defineComponent({
 
 const DocumentWatchAlert = defineComponent({
   name: 'DocumentWatchAlert',
-  components: { ModalWrapper, Eye, RouterLink },
+  components: { ModalWrapper, PhEye, RouterLink },
   setup() {
     const { t } = useI18n()
     const showAlert = ref(false)

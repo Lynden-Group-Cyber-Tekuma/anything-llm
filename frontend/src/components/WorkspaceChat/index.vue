@@ -7,7 +7,7 @@ import paths from '@/utils/paths'
 import ModalWrapper from '../ModalWrapper'
 import { useRoute } from 'vue-router'
 import { DnDFileUploaderProvider } from './ChatContainer/DnDWrapper'
-import { WarningCircle } from '@phosphor-icons/vue'
+import { PhWarningCircle } from '@phosphor-icons/vue'
 import {
   TTSProvider,
   useWatchForAutoPlayAssistantTTSResponse,

@@ -63,7 +63,7 @@ import { RouterLink } from 'vue-router'
 import showToast from '@/utils/toast'
 import MobileConnection from '@/models/mobile'
 import moment from 'moment'
-import { BugDroid, AppleLogo } from '@phosphor-icons/vue'
+import { PhBugDroid, PhAppleLogo } from '@phosphor-icons/vue'
 import paths from '@/utils/paths'
 
 const props = defineProps({
