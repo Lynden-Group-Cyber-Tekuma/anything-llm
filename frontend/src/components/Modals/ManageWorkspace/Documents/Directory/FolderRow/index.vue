@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import FileRow from '../FileRow/index.vue'
-import { PhCaretDown, PhPhFolderNotch } from '@phosphor-icons/vue'
+import { PhCaretDown, PhFolderNotch } from '@phosphor-icons/vue'
 import { middleTruncate } from '@/utils/directories'
 
 const props = defineProps({

@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Workspace from '@/models/workspace'
 import paths from '@/utils/paths'
 import showToast from '@/utils/toast'
-import { PhPhPencilSimple, PhTrash } from '@phosphor-icons/vue'
+import { PhPencilSimple, PhTrash } from '@phosphor-icons/vue'
 
 const props = defineProps({
   containerRef: {

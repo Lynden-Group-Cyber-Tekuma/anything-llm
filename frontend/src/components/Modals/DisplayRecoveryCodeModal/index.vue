@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import showToast from '@/utils/toast'
-import { PhPhDownloadSimple, PhKey } from '@phosphor-icons/vue'
+import { PhDownloadSimple, PhKey } from '@phosphor-icons/vue'
 import { saveAs } from 'file-saver'
 import ModalWrapper from '@/components/ModalWrapper/index.vue'
 
