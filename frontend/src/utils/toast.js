@@ -1,22 +1,27 @@
-import { toast } from "react-toastify";
+import { useToast } from "vue-toastification";
 
 // Additional Configs (opts)
-// You can also pass valid ReactToast params to override the defaults.
+// You can also pass valid vue-toastification params to override the defaults.
 // clear: false, // Will dismiss all visible toasts before rendering next toast
 const showToast = (message, type = "default", opts = {}) => {
-  const theme = localStorage?.getItem("theme") || "default";
+  const toast = useToast();
   const options = {
     position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
+    timeout: 5000,
     closeOnClick: true,
+    pauseOnFocusLoss: true,
     pauseOnHover: true,
     draggable: true,
-    theme: theme === "default" ? "dark" : "light",
+    draggablePercent: 0.6,
+    showCloseButtonOnHover: false,
+    hideProgressBar: false,
+    closeButton: "button",
+    icon: true,
+    rtl: false,
     ...opts,
   };
 
-  if (opts?.clear === true) toast.dismiss();
+  if (opts?.clear === true) toast.clear();
 
   switch (type) {
     case "success":
@@ -29,7 +34,7 @@ const showToast = (message, type = "default", opts = {}) => {
       toast.info(message, options);
       break;
     case "warning":
-      toast.warn(message, options);
+      toast.warning(message, options);
       break;
     default:
       toast(message, options);

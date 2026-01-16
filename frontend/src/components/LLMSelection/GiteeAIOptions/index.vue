@@ -1,0 +1,107 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import System from '@/models/system'
+
+const props = defineProps({
+  settings: {
+    type: Object,
+    default: () => ({})
+  }
+})
+
+const groupedModels = ref({})
+const loading = ref(true)
+
+const handleScroll = (e) => {
+  e.target.blur()
+}
+
+onMounted(async () => {
+  loading.value = true
+  const { models = [] } = await System.customModels('giteeai')
+  if (models?.length > 0) {
+    const modelsByOrganization = models.reduce((acc, model) => {
+      acc[model.organization] = acc[model.organization] || []
+      acc[model.organization].push(model)
+      return acc
+    }, {})
+    groupedModels.value = modelsByOrganization
+  }
+
+  loading.value = false
+})
+</script>
+
+<template>
+  <div class="flex gap-[36px] mt-1.5">
+    <div class="flex flex-col w-60">
+      <label class="text-white text-sm font-semibold block mb-3">
+        API Key
+      </label>
+      <input
+        type="password"
+        name="GiteeAIApiKey"
+        class="border-none bg-theme-settings-input-bg text-white placeholder:text-theme-settings-input-placeholder text-sm rounded-lg focus:outline-primary-button active:outline-primary-button outline-none block w-full p-2.5"
+        placeholder="GiteeAI API Key"
+        :value="settings?.GiteeAIApiKey ? '*'.repeat(20) : ''"
+        required
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+    <template v-if="!settings?.credentialsOnly">
+      <div class="flex flex-col w-60">
+        <label class="text-white text-sm font-semibold block mb-3">
+          Chat Model Selection
+        </label>
+        <select
+          v-if="loading"
+          name="GiteeAIModelPref"
+          disabled
+          class="border-none bg-theme-settings-input-bg border-gray-500 text-white text-sm rounded-lg block w-full p-2.5"
+        >
+          <option disabled selected>
+            -- loading available models --
+          </option>
+        </select>
+        <select
+          v-else
+          name="GiteeAIModelPref"
+          required
+          class="border-none bg-theme-settings-input-bg border-gray-500 text-white text-sm rounded-lg block w-full p-2.5"
+        >
+          <optgroup
+            v-for="organization in Object.keys(groupedModels).sort()"
+            :key="organization"
+            :label="organization"
+          >
+            <option
+              v-for="model in groupedModels[organization]"
+              :key="model.id"
+              :value="model.id"
+              :selected="settings?.GiteeAIModelPref === model.id"
+            >
+              {{ model.name }}
+            </option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="flex flex-col w-60">
+        <label class="text-white text-sm font-semibold block mb-2">
+          Token context window
+        </label>
+        <input
+          type="number"
+          name="GiteeAITokenLimit"
+          class="border-none bg-theme-settings-input-bg text-white placeholder:text-theme-settings-input-placeholder text-sm rounded-lg focus:outline-primary-button active:outline-primary-button outline-none block w-full p-2.5"
+          placeholder="Content window limit (eg: 8192)"
+          :min="1"
+          :value="settings?.GiteeAITokenLimit"
+          required
+          autocomplete="off"
+          @scroll="handleScroll"
+        />
+      </div>
+    </template>
+  </div>
+</template>

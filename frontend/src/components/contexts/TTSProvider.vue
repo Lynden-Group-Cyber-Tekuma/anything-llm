@@ -1,0 +1,132 @@
+<script setup>
+import { provide, ref, onMounted, onUnmounted } from 'vue'
+import System from '@/models/system'
+import Appearance from '@/models/appearance'
+
+const settings = ref({})
+const provider = ref('native')
+const loading = ref(true)
+
+onMounted(async () => {
+  const _settings = await System.keys()
+  provider.value = _settings?.TextToSpeechProvider ?? 'native'
+  settings.value = _settings
+  loading.value = false
+})
+
+// Provide the TTS context to child components
+provide('ttsProvider', {
+  settings,
+  provider,
+  loading,
+})
+</script>
+
+<template>
+  <slot />
+</template>
+
+<script>
+import { inject, onMounted as _onMounted, onUnmounted as _onUnmounted } from 'vue'
+import Appearance from '@/models/appearance'
+
+const ASSISTANT_MESSAGE_COMPLETE_EVENT = 'ASSISTANT_MESSAGE_COMPLETE_EVENT'
+
+/**
+ * This hook is used to get the TTS provider settings easily without
+ * having to refetch the settings from the System.keys() call each component mount.
+ *
+ * @returns {{settings: {TTSPiperTTSVoiceModel: string|null}, provider: string, loading: boolean}} The TTS provider settings.
+ */
+export function useTTSProvider() {
+  const context = inject('ttsProvider')
+  if (!context)
+    throw new Error('useTTSProvider must be used within a TTSProvider')
+  return context
+}
+
+/**
+ * This function will emit the ASSISTANT_MESSAGE_COMPLETE_EVENT event.
+ *
+ * This event is used to notify the TTSProvider that a message has been fully generated and that the TTS response
+ * should be played if the user setting is enabled.
+ *
+ * @param {string} chatId - The chatId of the message that has been fully generated.
+ */
+export function emitAssistantMessageCompleteEvent(chatId) {
+  window.dispatchEvent(
+    new CustomEvent(ASSISTANT_MESSAGE_COMPLETE_EVENT, { detail: { chatId } })
+  )
+}
+
+/**
+ * This hook will establish a listener for the ASSISTANT_MESSAGE_COMPLETE_EVENT event.
+ * When the event is triggered, the hook will attempt to play the TTS response for the given chatId.
+ * It will attempt to play the TTS response for the given chatId until it is successful or the maximum number of attempts
+ * is reached.
+ *
+ * This is accomplished by looking for a button with the data-auto-play-chat-id attribute that matches the chatId.
+ */
+export function useWatchForAutoPlayAssistantTTSResponse() {
+  const autoPlayAssistantTtsResponse = Appearance.get(
+    'autoPlayAssistantTtsResponse'
+  )
+
+  function handleAutoPlayTTSEvent(event) {
+    let autoPlayAttempts = 0
+    const { chatId } = event.detail
+
+    /**
+     * Attempt to play the TTS response for the given chatId.
+     * This is a recursive function that will attempt to play the TTS response
+     * for the given chatId until it is successful or the maximum number of attempts
+     * is reached.
+     * @returns {boolean} true if the TTS response was played, false otherwise.
+     */
+    function attemptToPlay() {
+      const playBtn = document.querySelector(
+        `[data-auto-play-chat-id="${chatId}"]`
+      )
+      if (!playBtn) {
+        autoPlayAttempts++
+        if (autoPlayAttempts > 3) return false
+        setTimeout(() => {
+          attemptToPlay()
+        }, 1000 * autoPlayAttempts)
+        return false
+      }
+      playBtn.click()
+      return true
+    }
+    setTimeout(() => {
+      attemptToPlay()
+    }, 800)
+  }
+
+  // Only bother to listen for these events if the user has autoPlayAssistantTtsResponse
+  // setting enabled.
+  _onMounted(() => {
+    if (autoPlayAssistantTtsResponse) {
+      window.addEventListener(
+        ASSISTANT_MESSAGE_COMPLETE_EVENT,
+        handleAutoPlayTTSEvent
+      )
+    } else {
+      console.log('Assistant TTS auto-play is disabled')
+    }
+  })
+
+  _onUnmounted(() => {
+    if (autoPlayAssistantTtsResponse) {
+      window.removeEventListener(
+        ASSISTANT_MESSAGE_COMPLETE_EVENT,
+        handleAutoPlayTTSEvent
+      )
+    }
+  })
+}
+
+export default {
+  name: 'TTSProvider'
+}
+</script>

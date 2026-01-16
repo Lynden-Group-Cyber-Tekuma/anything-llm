@@ -1,0 +1,95 @@
+<template>
+  <div id="workspace-chat-settings-container" class="relative">
+    <form
+      v-if="workspace"
+      ref="formEl"
+      @submit.prevent="handleUpdate"
+      id="chat-settings-form"
+      class="w-1/2 flex flex-col gap-y-6"
+    >
+      <div v-if="hasChanges" class="absolute top-0 right-0">
+        <CTAButton type="submit">
+          {{ saving ? 'Updating...' : 'Update Workspace' }}
+        </CTAButton>
+      </div>
+      <WorkspaceLLMSelection
+        :settings="settings"
+        :workspace="workspace"
+        @update:hasChanges="hasChanges = $event"
+      />
+      <ChatModeSelection
+        :workspace="workspace"
+        @update:hasChanges="hasChanges = $event"
+      />
+      <ChatHistorySettings
+        :workspace="workspace"
+        @update:hasChanges="hasChanges = $event"
+      />
+      <ChatPromptSettings
+        :workspace="workspace"
+        :hasChanges="hasChanges"
+        @update:hasChanges="hasChanges = $event"
+      />
+      <ChatQueryRefusalResponse
+        :workspace="workspace"
+        @update:hasChanges="hasChanges = $event"
+      />
+      <ChatTemperatureSettings
+        :settings="settings"
+        :workspace="workspace"
+        @update:hasChanges="hasChanges = $event"
+      />
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import System from '@/models/system';
+import Workspace from '@/models/workspace';
+import showToast from '@/utils/toast';
+import { castToType } from '@/utils/types';
+import ChatHistorySettings from './ChatHistorySettings/index.vue';
+import ChatPromptSettings from './ChatPromptSettings/index.vue';
+import ChatTemperatureSettings from './ChatTemperatureSettings/index.vue';
+import ChatModeSelection from './ChatModeSelection/index.vue';
+import WorkspaceLLMSelection from './WorkspaceLLMSelection/index.vue';
+import ChatQueryRefusalResponse from './ChatQueryRefusalResponse/index.vue';
+import CTAButton from '@/components/lib/CTAButton';
+
+const props = defineProps({
+  workspace: {
+    type: Object,
+    required: true,
+  },
+});
+
+const settings = ref({});
+const hasChanges = ref(false);
+const saving = ref(false);
+const formEl = ref(null);
+
+onMounted(async () => {
+  const _settings = await System.keys();
+  settings.value = _settings ?? {};
+});
+
+const handleUpdate = async (e) => {
+  saving.value = true;
+  const data = {};
+  const form = new FormData(formEl.value);
+  for (const [key, value] of form.entries()) data[key] = castToType(key, value);
+
+  const { workspace: updatedWorkspace, message } = await Workspace.update(
+    props.workspace.slug,
+    data
+  );
+  if (updatedWorkspace) {
+    showToast('Workspace updated!', 'success', { clear: true });
+    hasChanges.value = false;
+  } else {
+    showToast(`Error: ${message}`, 'error', { clear: true });
+  }
+  saving.value = false;
+};
+</script>

@@ -4,16 +4,17 @@ import {
   Files,
   ChatCenteredText,
   UsersThree,
-} from "@phosphor-icons/react";
-import SlashCommandIcon from "./ChecklistItem/icons/SlashCommand";
-import paths from "@/utils/paths";
-import { t } from "i18next";
+} from '@phosphor-icons/vue'
+import SlashCommandIcon from './ChecklistItem/icons/SlashCommand.vue'
+import paths from '@/utils/paths'
+import { i18n } from '@/i18n'
 
-const noop = () => {};
+const noop = () => {}
+const t = (key) => i18n.global.t(key)
 
-export const CHECKLIST_UPDATED_EVENT = "anythingllm_checklist_updated";
-export const CHECKLIST_STORAGE_KEY = "anythingllm_checklist_completed";
-export const CHECKLIST_HIDDEN = "anythingllm_checklist_dismissed";
+export const CHECKLIST_UPDATED_EVENT = 'anythingllm_checklist_updated'
+export const CHECKLIST_STORAGE_KEY = 'anythingllm_checklist_completed'
+export const CHECKLIST_HIDDEN = 'anythingllm_checklist_dismissed'
 
 /**
  * @typedef {Object} ChecklistItemHandlerParams
@@ -42,21 +43,21 @@ export const CHECKLIST_HIDDEN = "anythingllm_checklist_dismissed";
  */
 export const CHECKLIST_ITEMS = () => [
   {
-    id: "create_workspace",
-    title: t("main-page.checklist.tasks.create_workspace.title"),
-    description: t("main-page.checklist.tasks.create_workspace.description"),
-    action: t("main-page.checklist.tasks.create_workspace.action"),
+    id: 'create_workspace',
+    title: t('main-page.checklist.tasks.create_workspace.title'),
+    description: t('main-page.checklist.tasks.create_workspace.description'),
+    action: t('main-page.checklist.tasks.create_workspace.action'),
     handler: ({ showNewWsModal = noop }) => {
-      showNewWsModal();
-      return true;
+      showNewWsModal()
+      return true
     },
     icon: SquaresFour,
   },
   {
-    id: "send_chat",
-    title: t("main-page.checklist.tasks.send_chat.title"),
-    description: t("main-page.checklist.tasks.send_chat.description"),
-    action: t("main-page.checklist.tasks.send_chat.action"),
+    id: 'send_chat',
+    title: t('main-page.checklist.tasks.send_chat.title'),
+    description: t('main-page.checklist.tasks.send_chat.description'),
+    action: t('main-page.checklist.tasks.send_chat.action'),
     handler: ({
       workspaces = [],
       navigate = noop,
@@ -64,22 +65,22 @@ export const CHECKLIST_ITEMS = () => [
       showNewWsModal = noop,
     }) => {
       if (workspaces.length === 0) {
-        showToast(t("main-page.noWorkspaceError"), "warning", {
+        showToast(t('main-page.noWorkspaceError'), 'warning', {
           clear: true,
-        });
-        showNewWsModal();
-        return false;
+        })
+        showNewWsModal()
+        return false
       }
-      navigate(paths.workspace.chat(workspaces[0].slug));
-      return true;
+      navigate(paths.workspace.chat(workspaces[0].slug))
+      return true
     },
     icon: ChatDots,
   },
   {
-    id: "embed_document",
-    title: t("main-page.checklist.tasks.embed_document.title"),
-    description: t("main-page.checklist.tasks.embed_document.description"),
-    action: t("main-page.checklist.tasks.embed_document.action"),
+    id: 'embed_document',
+    title: t('main-page.checklist.tasks.embed_document.title'),
+    description: t('main-page.checklist.tasks.embed_document.description'),
+    action: t('main-page.checklist.tasks.embed_document.action'),
     handler: ({
       workspaces = [],
       setSelectedWorkspace = noop,
@@ -88,23 +89,23 @@ export const CHECKLIST_ITEMS = () => [
       showNewWsModal = noop,
     }) => {
       if (workspaces.length === 0) {
-        showToast(t("main-page.noWorkspaceError"), "warning", {
+        showToast(t('main-page.noWorkspaceError'), 'warning', {
           clear: true,
-        });
-        showNewWsModal();
-        return false;
+        })
+        showNewWsModal()
+        return false
       }
-      setSelectedWorkspace(workspaces[0]);
-      showManageWsModal();
-      return true;
+      setSelectedWorkspace(workspaces[0])
+      showManageWsModal()
+      return true
     },
     icon: Files,
   },
   {
-    id: "setup_system_prompt",
-    title: t("main-page.checklist.tasks.setup_system_prompt.title"),
-    description: t("main-page.checklist.tasks.setup_system_prompt.description"),
-    action: t("main-page.checklist.tasks.setup_system_prompt.action"),
+    id: 'setup_system_prompt',
+    title: t('main-page.checklist.tasks.setup_system_prompt.title'),
+    description: t('main-page.checklist.tasks.setup_system_prompt.description'),
+    action: t('main-page.checklist.tasks.setup_system_prompt.action'),
     handler: ({
       workspaces = [],
       navigate = noop,
@@ -112,28 +113,28 @@ export const CHECKLIST_ITEMS = () => [
       showToast = noop,
     }) => {
       if (workspaces.length === 0) {
-        showToast(t("main-page.noWorkspaceError"), "warning", {
+        showToast(t('main-page.noWorkspaceError'), 'warning', {
           clear: true,
-        });
-        showNewWsModal();
-        return false;
+        })
+        showNewWsModal()
+        return false
       }
       navigate(
         paths.workspace.settings.chatSettings(workspaces[0].slug, {
-          search: { action: "focus-system-prompt" },
+          search: { action: 'focus-system-prompt' },
         })
-      );
-      return true;
+      )
+      return true
     },
     icon: ChatCenteredText,
   },
   {
-    id: "define_slash_command",
-    title: t("main-page.checklist.tasks.define_slash_command.title"),
+    id: 'define_slash_command',
+    title: t('main-page.checklist.tasks.define_slash_command.title'),
     description: t(
-      "main-page.checklist.tasks.define_slash_command.description"
+      'main-page.checklist.tasks.define_slash_command.description'
     ),
-    action: t("main-page.checklist.tasks.define_slash_command.action"),
+    action: t('main-page.checklist.tasks.define_slash_command.action'),
     handler: ({
       workspaces = [],
       navigate = noop,
@@ -141,28 +142,28 @@ export const CHECKLIST_ITEMS = () => [
       showToast = noop,
     }) => {
       if (workspaces.length === 0) {
-        showToast(t("main-page.noWorkspaceError"), "warning", { clear: true });
-        showNewWsModal();
-        return false;
+        showToast(t('main-page.noWorkspaceError'), 'warning', { clear: true })
+        showNewWsModal()
+        return false
       }
       navigate(
         paths.workspace.chat(workspaces[0].slug, {
-          search: { action: "open-new-slash-command-modal" },
+          search: { action: 'open-new-slash-command-modal' },
         })
-      );
-      return true;
+      )
+      return true
     },
     icon: SlashCommandIcon,
   },
   {
-    id: "visit_community",
-    title: t("main-page.checklist.tasks.visit_community.title"),
-    description: t("main-page.checklist.tasks.visit_community.description"),
-    action: t("main-page.checklist.tasks.visit_community.action"),
+    id: 'visit_community',
+    title: t('main-page.checklist.tasks.visit_community.title'),
+    description: t('main-page.checklist.tasks.visit_community.description'),
+    action: t('main-page.checklist.tasks.visit_community.action'),
     handler: () => {
-      window.open(paths.communityHub.website(), "_blank");
-      return true;
+      window.open(paths.communityHub.website(), '_blank')
+      return true
     },
     icon: UsersThree,
   },
-];
+]
