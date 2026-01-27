@@ -26,7 +26,7 @@
     "prod:server": "cd server && npm run start",
     "prod:frontend": "cd frontend && npm run build",
     "verify:translations": "cd frontend/src/locales && node verifyTranslations.mjs",
-    "normalize:translations": "cd frontend/src/locales && node normalizeEn.mjs && cd ../../.. && npm run lint && npm run verify:translations"
+    "normalize:translations": "cd frontend/src/locales && node normalizeEn.mjs && cd ../../.. && cd frontend && npm run lint && npm run verify:translations"
   },
   "private": false,
   "devDependencies": {
