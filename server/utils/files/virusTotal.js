@@ -84,19 +84,21 @@ class VirusTotalScanner {
    */
   async uploadFile(filePath) {
     const url = `${VirusTotalScanner.VIRUSTOTAL_API_BASE}/files`;
-    const fileStream = fs.createReadStream(filePath);
     const fileName = path.basename(filePath);
 
-    // Dynamically import form-data for multipart uploads
-    const FormData = (await import("form-data")).default;
+    // Read file as buffer and create a Blob for native fetch compatibility
+    const fileBuffer = fs.readFileSync(filePath);
+    const fileBlob = new Blob([fileBuffer]);
+
+    // Use native FormData (Node.js 18+) which works with native fetch
     const form = new FormData();
-    form.append("file", fileStream, fileName);
+    form.append("file", fileBlob, fileName);
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "x-apikey": this.apiKey,
-        ...form.getHeaders(),
+        Accept: "application/json",
       },
       body: form,
     });
