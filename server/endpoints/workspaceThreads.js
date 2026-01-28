@@ -1,8 +1,4 @@
-const {
-  userFromSession,
-  reqBody,
-  safeJsonParse,
-} = require("../utils/http");
+const { userFromSession, reqBody, safeJsonParse } = require("../utils/http");
 const { validatedRequest } = require("../utils/middleware/validatedRequest");
 const {
   flexUserRoleValid,
