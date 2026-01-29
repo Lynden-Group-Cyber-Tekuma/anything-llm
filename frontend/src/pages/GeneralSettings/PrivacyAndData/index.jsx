@@ -5,6 +5,7 @@ import System from "@/models/system";
 import PreLoader from "@/components/Preloader";
 import { useTranslation } from "react-i18next";
 import ProviderPrivacy from "@/components/ProviderPrivacy";
+import Toggle from "@/components/lib/Toggle";
 
 export default function PrivacyAndDataHandling() {
   const [_settings, setSettings] = useState({});
@@ -54,4 +55,3 @@ export default function PrivacyAndDataHandling() {
     </div>
   );
 }
-
