@@ -1,4 +1,3 @@
-const { Telemetry } = require("../../models/telemetry");
 const {
   SUPPORTED_CONNECTION_METHODS,
 } = require("../AiProviders/bedrock/utils");
@@ -542,15 +541,6 @@ const KEY_MAPPING = {
   JWTSecret: {
     envKey: "JWT_SECRET",
     checks: [requiresForceMode],
-  },
-  DisableTelemetry: {
-    envKey: "DISABLE_TELEMETRY",
-    checks: [],
-    preUpdate: [
-      (_, __, nextValue) => {
-        if (nextValue === "true") Telemetry.sendTelemetry("telemetry_disabled");
-      },
-    ],
   },
 
   // Agent Integration ENVs
@@ -1235,10 +1225,6 @@ function dumpENV() {
     "PASSWORDNUMERIC",
     "PASSWORDSYMBOL",
     "PASSWORDREQUIREMENTS",
-    // HTTPS SETUP KEYS
-    "ENABLE_HTTPS",
-    "HTTPS_CERT_PATH",
-    "HTTPS_KEY_PATH",
     // Other Configuration Keys
     "DISABLE_VIEW_CHAT_HISTORY",
     // Simple SSO
