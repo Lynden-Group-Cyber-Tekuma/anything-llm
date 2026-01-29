@@ -2,7 +2,6 @@ const { BackgroundService } = require("../BackgroundWorkers");
 const { EncryptionManager } = require("../EncryptionManager");
 const { CommunicationKey } = require("../comKey");
 const eagerLoadContextWindows = require("./eagerLoadContextWindows");
-const markOnboarded = require("./markOnboarded");
 
 function bootHTTP(app, port = 3001) {
   if (!app) throw new Error('No "app" defined - crashing!');
