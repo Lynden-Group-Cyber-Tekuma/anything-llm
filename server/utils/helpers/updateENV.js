@@ -1231,11 +1231,13 @@ function dumpENV() {
     "SIMPLE_SSO_ENABLED",
     "SIMPLE_SSO_NO_LOGIN",
     "SIMPLE_SSO_NO_LOGIN_REDIRECT",
-    // Community Hub
-    "COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED",
-
-    // Nvidia NIM Keys that are automatically managed
-    "NVIDIA_NIM_LLM_MODEL_TOKEN_LIMIT",
+    // Microsoft Entra ID (Azure AD)
+    "ENTRA_CLIENT_ID",
+    "ENTRA_CLIENT_SECRET",
+    "ENTRA_TENANT_ID",
+    "ENTRA_REDIRECT_URI",
+    "POST_LOGIN_REDIRECT",
+    "SESSION_SECRET",
 
     // OCR Language Support
     "TARGET_OCR_LANG",
