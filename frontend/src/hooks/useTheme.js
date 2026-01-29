@@ -12,11 +12,10 @@ const availableThemes = {
  */
 export function useTheme() {
   const [theme, _setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "default";
+    return "default";
   });
 
   useEffect(() => {
-    if (localStorage.getItem("theme") !== null) return;
     if (!window.matchMedia) return;
     if (window.matchMedia("(prefers-color-scheme: light)").matches)
       return _setTheme("light");
@@ -26,7 +25,6 @@ export function useTheme() {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     document.body.classList.toggle("light", theme === "light");
-    localStorage.setItem("theme", theme);
     window.dispatchEvent(new Event(REFETCH_LOGO_EVENT));
   }, [theme]);
 
