@@ -13,22 +13,12 @@ import { KeyboardShortcutWrapper } from "@/utils/keyboardShortcuts";
 // When in single user mode we just bypass any authchecks.
 function useIsAuthenticated() {
   const [isAuthd, setIsAuthed] = useState(null);
-  const [shouldRedirectToOnboarding, setShouldRedirectToOnboarding] =
-    useState(false);
   const [multiUserMode, setMultiUserMode] = useState(false);
 
   useEffect(() => {
     const validateSession = async () => {
-      const onboardingComplete = await System.isOnboardingComplete();
       const { MultiUserMode, RequiresAuth } = await System.keys();
       setMultiUserMode(MultiUserMode);
-
-      // Check for the onboarding redirect condition
-      if (onboardingComplete === false) {
-        setShouldRedirectToOnboarding(true);
-        setIsAuthed(true);
-        return;
-      }
 
       // Single User mode without password - no auth required
       if (!MultiUserMode && !RequiresAuth) {
@@ -71,19 +61,14 @@ function useIsAuthenticated() {
     validateSession();
   }, []);
 
-  return { isAuthd, shouldRedirectToOnboarding, multiUserMode };
+  return { isAuthd, multiUserMode };
 }
 
 // Allows only admin to access the route and if in single user mode,
 // allows all users to access the route
 export function AdminRoute({ Component, hideUserMenu = false }) {
-  const { isAuthd, shouldRedirectToOnboarding, multiUserMode } =
-    useIsAuthenticated();
+  const { isAuthd, multiUserMode } = useIsAuthenticated();
   if (isAuthd === null) return <FullScreenLoader />;
-
-  if (shouldRedirectToOnboarding) {
-    return <Navigate to={paths.onboarding.home()} />;
-  }
 
   const user = userFromStorage();
   return isAuthd && (user?.role === "admin" || !multiUserMode) ? (
@@ -106,13 +91,8 @@ export function AdminRoute({ Component, hideUserMenu = false }) {
 // Allows manager and admin to access the route and if in single user mode,
 // allows all users to access the route
 export function ManagerRoute({ Component }) {
-  const { isAuthd, shouldRedirectToOnboarding, multiUserMode } =
-    useIsAuthenticated();
+  const { isAuthd, multiUserMode } = useIsAuthenticated();
   if (isAuthd === null) return <FullScreenLoader />;
-
-  if (shouldRedirectToOnboarding) {
-    return <Navigate to={paths.onboarding.home()} />;
-  }
 
   const user = userFromStorage();
   return isAuthd && (user?.role !== "default" || !multiUserMode) ? (
@@ -127,12 +107,8 @@ export function ManagerRoute({ Component }) {
 }
 
 export default function PrivateRoute({ Component }) {
-  const { isAuthd, shouldRedirectToOnboarding } = useIsAuthenticated();
+  const { isAuthd } = useIsAuthenticated();
   if (isAuthd === null) return <FullScreenLoader />;
-
-  if (shouldRedirectToOnboarding) {
-    return <Navigate to="/onboarding" />;
-  }
 
   return isAuthd ? (
     <KeyboardShortcutWrapper>

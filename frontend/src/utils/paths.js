@@ -23,29 +23,6 @@ export default {
       return "/sso/simple";
     },
   },
-  onboarding: {
-    home: () => {
-      return "/onboarding";
-    },
-    survey: () => {
-      return "/onboarding/survey";
-    },
-    llmPreference: () => {
-      return "/onboarding/llm-preference";
-    },
-    embeddingPreference: () => {
-      return "/onboarding/embedding-preference";
-    },
-    vectorDatabase: () => {
-      return "/onboarding/vector-database";
-    },
-    userSetup: () => {
-      return "/onboarding/user-setup";
-    },
-    dataHandling: () => {
-      return "/onboarding/data-handling";
-    },
-  },
   github: () => {
     return "https://github.com/Mintplex-Labs/anything-llm";
   },

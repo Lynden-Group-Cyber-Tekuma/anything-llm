@@ -8,7 +8,6 @@ import PrivateRoute, {
 } from "@/components/PrivateRoute";
 import Login from "@/pages/Login";
 import SimpleSSOPassthrough from "@/pages/Login/SSO/simple";
-import OnboardingFlow from "@/pages/OnboardingFlow";
 import "@/index.css";
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -310,15 +309,6 @@ const router = createBrowserRouter([
           );
           return { element: <ManagerRoute Component={AdminWorkspaces} /> };
         },
-      },
-      // Onboarding Flow
-      {
-        path: "/onboarding",
-        element: <OnboardingFlow />,
-      },
-      {
-        path: "/onboarding/:step",
-        element: <OnboardingFlow />,
       },
       // Experimental feature pages
       {

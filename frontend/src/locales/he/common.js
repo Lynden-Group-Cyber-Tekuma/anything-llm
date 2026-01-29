@@ -1,57 +1,5 @@
 // Anything with "null" requires a translation. Contribute to translation via a PR!
 const TRANSLATIONS = {
-  onboarding: {
-    home: {
-      title: "ברוכים הבאים ל",
-      getStarted: "להתחלה",
-    },
-    llm: {
-      title: "העדפות מודל שפה (LLM)",
-      description:
-        "AnythingLLM יכול לעבוד עם ספקי מודלי שפה (LLM) רבים. זה יהיה השירות שיטפל בצ'אט.",
-    },
-    userSetup: {
-      title: "הגדרת משתמש",
-      description: "הגדר את הגדרות המשתמש שלך.",
-      howManyUsers: "כמה משתמשים ישתמשו במופע זה?",
-      justMe: "רק אני",
-      myTeam: "הצוות שלי",
-      instancePassword: "סיסמת מופע",
-      setPassword: "האם תרצה להגדיר סיסמה?",
-      passwordReq: "סיסמאות חייבות להכיל לפחות 8 תווים.",
-      passwordWarn: "חשוב לשמור סיסמה זו מכיוון שאין שיטת שחזור.",
-      adminUsername: "שם משתמש של חשבון מנהל",
-      adminPassword: "סיסמת חשבון מנהל",
-      adminPasswordReq: "סיסמאות חייבות להכיל לפחות 8 תווים.",
-      teamHint:
-        "כברירת מחדל, אתה תהיה המנהל היחיד. לאחר סיום ההצטרפות תוכל ליצור ולהזמין אחרים להיות משתמשים או מנהלים. אל תאבד את סיסמתך, מכיוון שרק מנהלים יכולים לאפס סיסמאות.",
-    },
-    data: {
-      title: "טיפול בנתונים ופרטיות",
-      description: "אנו מחויבים לשקיפות ושליטה בכל הנוגע לנתונים האישיים שלך.",
-      settingsHint: "ניתן להגדיר מחדש הגדרות אלה בכל עת בהגדרות.",
-    },
-    survey: {
-      title: "ברוכים הבאים ל-AnythingLLM",
-      description:
-        "עזרו לנו לבנות את AnythingLLM כך שיתאים לצרכים שלכם. אופציונלי.",
-      email: "מה האימייל שלך?",
-      useCase: "לאיזו מטרה תשתמש ב-AnythingLLM?",
-      useCaseWork: "לעבודה",
-      useCasePersonal: "לשימוש אישי",
-      useCaseOther: "אחר",
-      comment: "איך שמעת על AnythingLLM?",
-      commentPlaceholder:
-        "Reddit, Twitter, GitHub, YouTube, וכו' - ספר לנו איך מצאת אותנו!",
-      skip: "דלג על הסקר",
-      thankYou: "תודה על המשוב!",
-    },
-    workspace: {
-      title: "צור את סביבת העבודה הראשונה שלך",
-      description:
-        "צור את סביבת העבודה הראשונה שלך והתחל לעבוד עם AnythingLLM.",
-    },
-  },
   common: {
     "workspaces-name": "שם סביבת העבודה",
     error: "שגיאה",
