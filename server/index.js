@@ -19,7 +19,7 @@ const { inviteEndpoints } = require("./endpoints/invite");
 const { utilEndpoints } = require("./endpoints/utils");
 const { developerEndpoints } = require("./endpoints/api");
 const { extensionEndpoints } = require("./endpoints/extensions");
-const { bootHTTP, bootSSL } = require("./utils/boot");
+const { bootHTTP } = require("./utils/boot");
 const { workspaceThreadEndpoints } = require("./endpoints/workspaceThreads");
 const { documentEndpoints } = require("./endpoints/document");
 const { agentWebsocket } = require("./endpoints/agentWebsocket");
@@ -55,11 +55,7 @@ app.use(
   })
 );
 
-if (!!process.env.ENABLE_HTTPS) {
-  bootSSL(app, process.env.SERVER_PORT || 3001);
-} else {
-  require("@mintplex-labs/express-ws").default(app); // load WebSockets in non-SSL mode.
-}
+require("@mintplex-labs/express-ws").default(app); // load WebSockets in non-SSL mode.
 
 app.use("/api", apiRouter);
 systemEndpoints(apiRouter);
@@ -152,4 +148,4 @@ app.all("*", function (_, response) {
 
 // In non-https mode we need to boot at the end since the server has not yet
 // started and is `.listen`ing.
-if (!process.env.ENABLE_HTTPS) bootHTTP(app, process.env.SERVER_PORT || 3001);
+bootHTTP(app, process.env.SERVER_PORT || 3001);
