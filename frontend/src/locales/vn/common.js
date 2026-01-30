@@ -41,7 +41,6 @@ const TRANSLATIONS = {
     "agent-skills": "Kỹ năng của Agent",
     admin: "Quản trị viên",
     tools: "Công cụ",
-    "experimental-features": "Tính năng thử nghiệm",
     contact: "Liên hệ hỗ trợ",
     "browser-extension": "Tiện ích trình duyệt",
     "system-prompt-variables": "Biến System Prompt",

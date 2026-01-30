@@ -45,7 +45,6 @@ const TRANSLATIONS = {
     admin: "מנהל",
     tools: "כלים",
     "system-prompt-variables": "משתני הנחיית מערכת",
-    "experimental-features": "תכונות ניסיוניות",
     contact: "צור קשר עם התמיכה",
     "browser-extension": "תוסף דפדפן",
   },

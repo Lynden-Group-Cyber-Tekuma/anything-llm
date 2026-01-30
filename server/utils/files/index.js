@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const { v5: uuidv5 } = require("uuid");
 const { Document } = require("../../models/documents");
-const { DocumentSyncQueue } = require("../../models/documentSyncQueue");
 const documentsPath =
   process.env.NODE_ENV === "development"
     ? path.resolve(__dirname, `../../storage/documents`)
@@ -34,7 +33,6 @@ async function fileData(filePath = null) {
 
 async function viewLocalFiles() {
   if (!fs.existsSync(documentsPath)) fs.mkdirSync(documentsPath);
-  const liveSyncAvailable = await DocumentSyncQueue.enabled();
   const directory = {
     name: "documents",
     type: "folder",
@@ -63,7 +61,6 @@ async function viewLocalFiles() {
         filePromises.push(
           fileToPickerData({
             pathToFile: path.join(folderPath, subfile),
-            liveSyncAvailable,
             cachefilename,
           })
         );
@@ -376,12 +373,10 @@ const FILE_READ_SIZE_THRESHOLD = 150 * (1024 * 1024);
 /**
  * Converts a file to picker data
  * @param {string} pathToFile - The path to the file to convert
- * @param {boolean} liveSyncAvailable - Whether live sync is available
  * @returns {Promise<{name: string, type: string, [string]: any, cached: boolean, canWatch: boolean}>} - The picker data
  */
 async function fileToPickerData({
   pathToFile,
-  liveSyncAvailable = false,
   cachefilename = null,
 }) {
   let metadata = {};
@@ -405,9 +400,7 @@ async function fileToPickerData({
       type: "file",
       ...metadata,
       cached: cachedStatus,
-      canWatch: liveSyncAvailable
-        ? DocumentSyncQueue.canWatch(metadata)
-        : false,
+      canWatch: false,
       // pinnedWorkspaces: [], // This is the list of workspaceIds that have pinned this document
       // watched: false, // boolean to indicate if this document is watched in ANY workspace
     };
@@ -455,7 +448,7 @@ async function fileToPickerData({
     type: "file",
     ...metadata,
     cached: cachedStatus,
-    canWatch: liveSyncAvailable ? DocumentSyncQueue.canWatch(metadata) : false,
+    canWatch: false,
   };
 }
 

@@ -6,7 +6,6 @@ const setLogger = require("../logger");
 class BackgroundService {
   name = "BackgroundWorkerService";
   static _instance = null;
-  documentSyncEnabled = false;
   #root = path.resolve(__dirname, "../../jobs");
 
   #alwaysRunJobs = [
@@ -14,15 +13,6 @@ class BackgroundService {
       name: "cleanup-orphan-documents",
       timeout: "1m",
       interval: "12hr",
-    },
-  ];
-
-  #documentSyncJobs = [
-    // Job for auto-sync of documents
-    // https://github.com/breejs/bree
-    {
-      name: "sync-watched-documents",
-      interval: "1hr",
     },
   ];
 
@@ -41,8 +31,6 @@ class BackgroundService {
   }
 
   async boot() {
-    const { DocumentSyncQueue } = require("../../models/documentSyncQueue");
-    this.documentSyncEnabled = await DocumentSyncQueue.enabled();
     const jobsToRun = this.jobs();
 
     this.#log("Starting...");
@@ -74,7 +62,6 @@ class BackgroundService {
   /** @returns {import("@mintplex-labs/bree").Job[]} */
   jobs() {
     const activeJobs = [...this.#alwaysRunJobs];
-    if (this.documentSyncEnabled) activeJobs.push(...this.#documentSyncJobs);
     return activeJobs;
   }
 

@@ -20,7 +20,7 @@ const SystemSettings = {
   /** A default system prompt that is used when no other system prompt is set or available to the function caller. */
   saneDefaultSystemPrompt:
     "Given the following conversation, relevant context, and a follow up question, reply with an answer to the current question the user is asking. Return only your response to the question given the above information following the users instructions as needed.",
-  protectedFields: ["multi_user_mode", "hub_api_key"],
+  protectedFields: ["multi_user_mode"],
   publicFields: [
     "footer_data",
     "support_email",
@@ -56,11 +56,6 @@ const SystemSettings = {
     "meta_page_title",
     "meta_page_favicon",
 
-    // beta feature flags
-    "experimental_live_file_sync",
-
-    // Hub settings
-    "hub_api_key",
   ],
   validations: {
     footer_data: (updates) => {
@@ -165,12 +160,6 @@ const SystemSettings = {
         return JSON.stringify(existingConnections ?? []);
       }
     },
-    experimental_live_file_sync: (update) => {
-      if (typeof update === "boolean")
-        return update === true ? "enabled" : "disabled";
-      if (!["enabled", "disabled"].includes(update)) return "disabled";
-      return String(update);
-    },
     meta_page_title: (newTitle) => {
       try {
         if (typeof newTitle !== "string" || !newTitle) return null;
@@ -191,10 +180,6 @@ const SystemSettings = {
       } finally {
         new MetaGenerator().clearConfig();
       }
-    },
-    hub_api_key: (apiKey) => {
-      if (!apiKey) return null;
-      return String(apiKey);
     },
     default_system_prompt: (prompt) => {
       if (typeof prompt !== "string" || !prompt) return null;
@@ -667,13 +652,6 @@ const SystemSettings = {
         return rest;
       });
     },
-  },
-  getFeatureFlags: async function () {
-    return {
-      experimental_live_file_sync:
-        (await SystemSettings.get({ label: "experimental_live_file_sync" }))
-          ?.value === "enabled",
-    };
   },
 
   simpleSSO: {

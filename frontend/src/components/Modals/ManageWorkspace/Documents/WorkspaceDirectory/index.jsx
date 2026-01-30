@@ -363,16 +363,6 @@ const DocumentWatchAlert = memo(() => {
               />
             </p>
             <p>{t("connectors.watching.watch_explained_block2")}</p>
-            <p>
-              {t("connectors.watching.watch_explained_block3_start")}
-              <Link
-                to={paths.experimental.liveDocumentSync.manage()}
-                className="text-blue-600 underline"
-              >
-                {t("connectors.watching.watch_explained_block3_link")}
-              </Link>
-              {t("connectors.watching.watch_explained_block3_end")}
-            </p>
           </div>
         </div>
         <div className="flex w-full justify-end items-center p-6 space-x-2 border-t border-theme-modal-border rounded-b">

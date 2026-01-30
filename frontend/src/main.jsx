@@ -237,15 +237,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/settings/beta-features",
-        lazy: async () => {
-          const { default: ExperimentalFeatures } = await import(
-            "@/pages/Admin/ExperimentalFeatures"
-          );
-          return { element: <AdminRoute Component={ExperimentalFeatures} /> };
-        },
-      },
-      {
         path: "/settings/api-keys",
         lazy: async () => {
           const { default: GeneralApiKeys } = await import(
@@ -308,18 +299,6 @@ const router = createBrowserRouter([
             "@/pages/Admin/Workspaces"
           );
           return { element: <ManagerRoute Component={AdminWorkspaces} /> };
-        },
-      },
-      // Experimental feature pages
-      {
-        path: "/settings/beta-features/live-document-sync/manage",
-        lazy: async () => {
-          const { default: LiveDocumentSyncManage } = await import(
-            "@/pages/Admin/ExperimentalFeatures/Features/LiveSync/manage"
-          );
-          return {
-            element: <AdminRoute Component={LiveDocumentSyncManage} />,
-          };
         },
       },
       // Catch-all route for 404s

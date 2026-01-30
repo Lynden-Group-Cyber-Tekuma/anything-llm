@@ -53,7 +53,7 @@ const TRANSLATIONS = {
     admin: "Admin",
     tools: "Tools",
     "system-prompt-variables": "System Prompt Variables",
-    "experimental-features": "Experimental Features",
+
     contact: "Contact Support",
     "browser-extension": "Browser Extension"
   },

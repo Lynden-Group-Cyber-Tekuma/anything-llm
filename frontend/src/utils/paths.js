@@ -138,9 +138,6 @@ export default {
     browserExtension: () => {
       return `/settings/browser-extension`;
     },
-    experimental: () => {
-      return `/settings/beta-features`;
-    },
   },
   agents: {
     builder: () => {
@@ -155,12 +152,6 @@ export default {
   documentation: {
     contextWindows: () => {
       return "https://docs.anythingllm.com/chatting-with-documents/introduction#you-exceed-the-context-window---what-now";
-    },
-  },
-
-  experimental: {
-    liveDocumentSync: {
-      manage: () => `/settings/beta-features/live-document-sync/manage`,
     },
   },
 };
