@@ -676,22 +676,6 @@ const SystemSettings = {
     };
   },
 
-  /**
-   * Get user configured Community Hub Settings
-   * Connection key is used to authenticate with the Community Hub API
-   * for your account.
-   * @returns {Promise<{connectionKey: string}>}
-   */
-  hubSettings: async function () {
-    try {
-      const hubKey = await this.get({ label: "hub_api_key" });
-      return { connectionKey: hubKey?.value || null };
-    } catch (error) {
-      console.error(error.message);
-      return { connectionKey: null };
-    }
-  },
-
   simpleSSO: {
     /**
      * Gets the no login redirect URL. If the conditions below are not met, this will return null.
