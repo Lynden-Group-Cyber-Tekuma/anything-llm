@@ -21,7 +21,6 @@ import paths from "@/utils/paths";
 import Appearance from "@/models/appearance";
 import useTextSize from "@/hooks/useTextSize";
 import useChatHistoryScrollHandle from "@/hooks/useChatHistoryScrollHandle";
-import { v4 } from "uuid";
 import { useTranslation } from "react-i18next";
 import { useChatMessageAlignment } from "@/hooks/useChatMessageAlignment";
 import { ThoughtExpansionProvider } from "./ThoughtContainer";
@@ -344,7 +343,7 @@ function buildMessages({
     } else if (isLastBotReply && props.animate) {
       acc.push(
         <PromptReply
-          key={props.uuid || v4()}
+          key={`prompt-reply-${props.uuid || index}`}
           uuid={props.uuid}
           reply={props.content}
           pending={props.pending}

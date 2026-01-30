@@ -348,7 +348,7 @@ const Workspace = {
         throw new Error("Failed to fetch TTS.");
       })
       .then((blob) => (blob ? URL.createObjectURL(blob) : null))
-      .catch((e) => {
+      .catch(() => {
         return null;
       });
   },
@@ -379,7 +379,7 @@ const Workspace = {
         throw new Error("Failed to fetch pfp.");
       })
       .then((blob) => (blob ? URL.createObjectURL(blob) : null))
-      .catch((e) => {
+      .catch(() => {
         // console.log(e);
         return null;
       });

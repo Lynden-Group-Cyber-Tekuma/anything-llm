@@ -181,7 +181,7 @@ const PinItemToWorkspace = memo(({ workspace, docPath, item }) => {
   );
 });
 
-const RemoveItemFromWorkspace = ({ item, onClick }) => {
+const RemoveItemFromWorkspace = ({ item: _item, onClick }) => {
   return (
     <div>
       <ArrowUUpLeft
