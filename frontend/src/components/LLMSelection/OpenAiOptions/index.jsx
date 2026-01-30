@@ -66,9 +66,10 @@ function OpenAIModelSelection({ apiKey, settings }) {
         <select
           name="OpenAiModelPref"
           disabled={true}
+          defaultValue=""
           className="border-none bg-theme-settings-input-bg border-gray-500 text-white text-sm rounded-lg block w-full p-2.5"
         >
-          <option disabled={true} selected={true}>
+          <option disabled={true} value="">
             -- loading available models --
           </option>
         </select>
@@ -84,6 +85,7 @@ function OpenAIModelSelection({ apiKey, settings }) {
       <select
         name="OpenAiModelPref"
         required={true}
+        defaultValue={settings?.OpenAiModelPref}
         className="border-none bg-theme-settings-input-bg border-gray-500 text-white text-sm rounded-lg block w-full p-2.5"
       >
         {Object.keys(groupedModels)
@@ -91,11 +93,7 @@ function OpenAIModelSelection({ apiKey, settings }) {
           .map((organization) => (
             <optgroup key={organization} label={organization}>
               {groupedModels[organization].map((model) => (
-                <option
-                  key={model.id}
-                  value={model.id}
-                  selected={settings?.OpenAiModelPref === model.id}
-                >
+                <option key={model.id} value={model.id}>
                   {model.name}
                 </option>
               ))}

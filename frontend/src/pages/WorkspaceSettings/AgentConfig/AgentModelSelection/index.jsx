@@ -80,9 +80,10 @@ export default function AgentModelSelection({
           name="agentModel"
           required={true}
           disabled={true}
+          defaultValue=""
           className="border-none bg-theme-settings-input-bg text-white text-sm rounded-lg focus:outline-primary-button active:outline-primary-button outline-none block w-full p-2.5"
         >
-          <option disabled={true} selected={true}>
+          <option disabled={true} value="">
             {t("agent.mode.wait")}
           </option>
         </select>
@@ -104,6 +105,7 @@ export default function AgentModelSelection({
       <select
         name="agentModel"
         required={true}
+        defaultValue={workspace?.agentModel}
         onChange={() => {
           setHasChanges(true);
         }}
@@ -114,11 +116,7 @@ export default function AgentModelSelection({
             {defaultModels.map((model) => {
               if (!supportedModel(provider, model)) return null;
               return (
-                <option
-                  key={model}
-                  value={model}
-                  selected={workspace?.agentModel === model}
-                >
+                <option key={model} value={model}>
                   {model}
                 </option>
               );
@@ -131,11 +129,7 @@ export default function AgentModelSelection({
               if (!supportedModel(provider, model.id)) return null;
 
               return (
-                <option
-                  key={model.id}
-                  value={model.id}
-                  selected={workspace?.agentModel === model.id}
-                >
+                <option key={model.id} value={model.id}>
                   {model.id}
                 </option>
               );
@@ -151,11 +145,7 @@ export default function AgentModelSelection({
                   {models.map((model) => {
                     if (!supportedModel(provider, model.id)) return null;
                     return (
-                      <option
-                        key={model.id}
-                        value={model.id}
-                        selected={workspace?.agentModel === model.id}
-                      >
+                      <option key={model.id} value={model.id}>
                         {model.name}
                       </option>
                     );

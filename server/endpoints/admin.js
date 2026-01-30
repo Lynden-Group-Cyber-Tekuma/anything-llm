@@ -442,7 +442,7 @@ function adminEndpoints(app) {
             (await SystemSettings.get({ label: "agent_search_provider" }))
               ?.value || null,
           agent_sql_connections:
-            await SystemSettings.brief.agent_sql_connections(),
+            await SystemSettings.agent_sql_connections(),
           default_agent_skills:
             safeJsonParse(
               (await SystemSettings.get({ label: "default_agent_skills" }))
@@ -459,7 +459,7 @@ function adminEndpoints(app) {
           custom_app_name:
             (await SystemSettings.get({ label: "custom_app_name" }))?.value ||
             null,
-          feature_flags: (await SystemSettings.getFeatureFlags()) || {},
+          feature_flags: {},
           meta_page_title: await SystemSettings.getValueOrFallback(
             { label: "meta_page_title" },
             null
