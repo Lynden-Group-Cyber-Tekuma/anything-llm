@@ -48,7 +48,6 @@ const TRANSLATIONS = {
     interface: "Tùy chọn Giao diện",
     branding: "Thương hiệu & Nhãn trắng",
     chat: "Trò chuyện",
-    "mobile-app": "AnythingLLM Di động",
   },
   login: {
     "multi-user": {
@@ -166,7 +165,6 @@ const TRANSLATIONS = {
         clearAllConfirm:
           "Bạn có chắc chắn muốn xóa tất cả lịch sử? Hành động này không thể hoàn tác.",
         expand: "Mở rộng",
-        publish: "Đăng lên Community Hub",
       },
     },
     refusal: {
@@ -825,11 +823,6 @@ const TRANSLATIONS = {
           description: "Tạo các lệnh tùy chỉnh cho trợ lý của bạn",
           action: "Định nghĩa",
         },
-        visit_community: {
-          title: "Truy cập Community Hub",
-          description: "Khám phá tài nguyên và mẫu cộng đồng",
-          action: "Duyệt",
-        },
       },
     },
     quickLinks: {
@@ -888,106 +881,6 @@ const TRANSLATIONS = {
       chatSettings: "Cài đặt Trò chuyện",
       help: "Hiện trợ giúp phím tắt",
       showLLMSelector: "Hiện Bộ chọn LLM không gian làm việc",
-    },
-  },
-  community_hub: {
-    publish: {
-      system_prompt: {
-        success_title: "Thành công!",
-        success_description:
-          "System Prompt của bạn đã được đăng lên Community Hub!",
-        success_thank_you: "Cảm ơn bạn đã chia sẻ với Cộng đồng!",
-        view_on_hub: "Xem trên Community Hub",
-        modal_title: "Đăng System Prompt",
-        name_label: "Tên",
-        name_description: "Đây là tên hiển thị của system prompt của bạn.",
-        name_placeholder: "System Prompt của tôi",
-        description_label: "Mô tả",
-        description_description:
-          "Đây là mô tả của system prompt của bạn. Sử dụng điều này để mô tả mục đích của system prompt của bạn.",
-        tags_label: "Thẻ",
-        tags_description:
-          "Thẻ được sử dụng để gắn nhãn system prompt của bạn để dễ tìm kiếm hơn. Bạn có thể thêm nhiều thẻ. Tối đa 5 thẻ. Tối đa 20 ký tự mỗi thẻ.",
-        tags_placeholder: "Nhập và nhấn Enter để thêm thẻ",
-        visibility_label: "Hiển thị",
-        public_description:
-          "System prompt công khai hiển thị cho tất cả mọi người.",
-        private_description: "System prompt riêng tư chỉ hiển thị cho bạn.",
-        publish_button: "Đăng lên Community Hub",
-        submitting: "Đang đăng...",
-        submit: "Đăng lên Community Hub",
-        prompt_label: "Prompt",
-        prompt_description:
-          "Đây là system prompt thực tế sẽ được sử dụng để hướng dẫn LLM.",
-        prompt_placeholder: "Nhập system prompt của bạn ở đây...",
-      },
-      agent_flow: {
-        public_description:
-          "Luồng agent công khai hiển thị cho tất cả mọi người.",
-        private_description: "Luồng agent riêng tư chỉ hiển thị cho bạn.",
-        success_title: "Thành công!",
-        success_description:
-          "Luồng Agent của bạn đã được đăng lên Community Hub!",
-        success_thank_you: "Cảm ơn bạn đã chia sẻ với Cộng đồng!",
-        view_on_hub: "Xem trên Community Hub",
-        modal_title: "Đăng Luồng Agent",
-        name_label: "Tên",
-        name_description: "Đây là tên hiển thị của luồng agent của bạn.",
-        name_placeholder: "Luồng Agent của tôi",
-        description_label: "Mô tả",
-        description_description:
-          "Đây là mô tả của luồng agent của bạn. Sử dụng điều này để mô tả mục đích của luồng agent của bạn.",
-        tags_label: "Thẻ",
-        tags_description:
-          "Thẻ được sử dụng để gắn nhãn luồng agent của bạn để dễ tìm kiếm hơn. Bạn có thể thêm nhiều thẻ. Tối đa 5 thẻ. Tối đa 20 ký tự mỗi thẻ.",
-        tags_placeholder: "Nhập và nhấn Enter để thêm thẻ",
-        visibility_label: "Hiển thị",
-        publish_button: "Đăng lên Community Hub",
-        submitting: "Đang đăng...",
-        submit: "Đăng lên Community Hub",
-        privacy_note:
-          "Luồng agent luôn được tải lên dưới dạng riêng tư để bảo vệ bất kỳ dữ liệu nhạy cảm nào. Bạn có thể thay đổi khả năng hiển thị trong Community Hub sau khi đăng. Vui lòng xác minh luồng của bạn không chứa bất kỳ thông tin nhạy cảm hoặc riêng tư nào trước khi đăng.",
-      },
-      slash_command: {
-        success_title: "Thành công!",
-        success_description:
-          "Lệnh Gạch chéo của bạn đã được đăng lên Community Hub!",
-        success_thank_you: "Cảm ơn bạn đã chia sẻ với Cộng đồng!",
-        view_on_hub: "Xem trên Community Hub",
-        modal_title: "Đăng Lệnh Gạch chéo",
-        name_label: "Tên",
-        name_description: "Đây là tên hiển thị của lệnh gạch chéo của bạn.",
-        name_placeholder: "Lệnh Gạch chéo của tôi",
-        description_label: "Mô tả",
-        description_description:
-          "Đây là mô tả của lệnh gạch chéo của bạn. Sử dụng điều này để mô tả mục đích của lệnh gạch chéo của bạn.",
-        command_label: "Lệnh",
-        command_description:
-          "Đây là lệnh gạch chéo mà người dùng sẽ nhập để kích hoạt cài đặt sẵn này.",
-        command_placeholder: "lệnh-của-tôi",
-        tags_label: "Thẻ",
-        tags_description:
-          "Thẻ được sử dụng để gắn nhãn lệnh gạch chéo của bạn để dễ tìm kiếm hơn. Bạn có thể thêm nhiều thẻ. Tối đa 5 thẻ. Tối đa 20 ký tự mỗi thẻ.",
-        tags_placeholder: "Nhập và nhấn Enter để thêm thẻ",
-        visibility_label: "Hiển thị",
-        public_description:
-          "Lệnh gạch chéo công khai hiển thị cho tất cả mọi người.",
-        private_description: "Lệnh gạch chéo riêng tư chỉ hiển thị cho bạn.",
-        publish_button: "Đăng lên Community Hub",
-        submitting: "Đang đăng...",
-        prompt_label: "Prompt",
-        prompt_description:
-          "Đây là prompt sẽ được sử dụng khi lệnh gạch chéo được kích hoạt.",
-        prompt_placeholder: "Nhập prompt của bạn ở đây...",
-      },
-      generic: {
-        unauthenticated: {
-          title: "Yêu cầu Xác thực",
-          description:
-            "Bạn cần xác thực với AnythingLLM Community Hub trước khi đăng các mục.",
-          button: "Kết nối với Community Hub",
-        },
-      },
     },
   },
   security: {

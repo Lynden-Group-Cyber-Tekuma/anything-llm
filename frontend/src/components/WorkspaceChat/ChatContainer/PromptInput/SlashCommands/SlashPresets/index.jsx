@@ -8,7 +8,6 @@ import { DotsThree, Plus } from "@phosphor-icons/react";
 import showToast from "@/utils/toast";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import PublishEntityModal from "@/components/CommunityHub/PublishEntityModal";
 
 export const CMD_REGEX = new RegExp(/[^a-zA-Z0-9_-]/g);
 export default function SlashPresets({ setShowing, sendCommand, promptRef }) {
@@ -151,12 +150,6 @@ export default function SlashPresets({ setShowing, sendCommand, promptRef }) {
           preset={selectedPreset}
         />
       )}
-      <PublishEntityModal
-        show={isPublishModalOpen}
-        onClose={closePublishModal}
-        entityType="slash-command"
-        entity={presetToPublish}
-      />
     </>
   );
 }

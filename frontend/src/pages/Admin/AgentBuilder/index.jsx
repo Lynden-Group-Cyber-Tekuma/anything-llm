@@ -9,7 +9,6 @@ import AgentFlows from "@/models/agentFlows";
 import { useTheme } from "@/hooks/useTheme";
 import HeaderMenu from "./HeaderMenu";
 import paths from "@/utils/paths";
-import PublishEntityModal from "@/components/CommunityHub/PublishEntityModal";
 
 const DEFAULT_BLOCKS = [
   {
@@ -340,12 +339,6 @@ export default function AgentBuilder() {
       }}
       className="w-full h-screen flex bg-theme-bg-primary"
     >
-      <PublishEntityModal
-        show={showPublishModal}
-        onClose={() => setShowPublishModal(false)}
-        entityType="agent-flow"
-        entity={flowEntity}
-      />
       <div className="w-full flex flex-col">
         <HeaderMenu
           agentName={agentName}

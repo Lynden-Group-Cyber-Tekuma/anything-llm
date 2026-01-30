@@ -48,7 +48,6 @@ const TRANSLATIONS = {
     "experimental-features": "תכונות ניסיוניות",
     contact: "צור קשר עם התמיכה",
     "browser-extension": "תוסף דפדפן",
-    "mobile-app": "AnythingLLM Mobile",
   },
   login: {
     "multi-user": {
@@ -101,11 +100,6 @@ const TRANSLATIONS = {
           title: "הגדר פקודת סלאש",
           description: "צור פקודות מותאמות אישית עבור העוזר שלך",
           action: "הגדר",
-        },
-        visit_community: {
-          title: "בקר במרכז הקהילה",
-          description: "גלה משאבים ותבניות מהקהילה",
-          action: "עיין",
         },
       },
     },
@@ -241,7 +235,6 @@ const TRANSLATIONS = {
         noHistory: "אין היסטוריית הנחיות מערכת זמינה",
         restore: "שחזר",
         delete: "מחק",
-        publish: "פרסם במרכז הקהילה",
         deleteConfirm: "האם אתה בטוח שברצונך למחוק פריט היסטוריה זה?",
         clearAllConfirm:
           "האם אתה בטוח שברצונך לנקות את כל ההיסטוריה? לא ניתן לבטל פעולה זו.",
@@ -864,98 +857,6 @@ const TRANSLATIONS = {
       chatSettings: "הגדרות צ'אט",
       help: "הצג עזרה לקיצורי מקלדת",
       showLLMSelector: "הצג בורר מודלי שפה לסביבת עבודה",
-    },
-  },
-  community_hub: {
-    publish: {
-      system_prompt: {
-        success_title: "הצלחה!",
-        success_description: "הנחיית המערכת שלך פורסמה במרכז הקהילה!",
-        success_thank_you: "תודה על השיתוף בקהילה!",
-        view_on_hub: "צפה במרכז הקהילה",
-        modal_title: "פרסם הנחיית מערכת",
-        name_label: "שם",
-        name_description: "זהו שם התצוגה של הנחיית המערכת שלך.",
-        name_placeholder: "הנחיית המערכת שלי",
-        description_label: "תיאור",
-        description_description:
-          "זהו התיאור של הנחיית המערכת שלך. השתמש בזה כדי לתאר את מטרת ההנחיה.",
-        tags_label: "תגיות",
-        tags_description:
-          "תגיות משמשות לתיוג הנחיית המערכת שלך לחיפוש קל יותר. ניתן להוסיף מספר תגיות. עד 5 תגיות. עד 20 תווים לתגית.",
-        tags_placeholder: "הקלד והקש אנטר להוספת תגיות",
-        visibility_label: "נראות",
-        public_description: "הנחיות מערכת ציבוריות נראות לכולם.",
-        private_description: "הנחיות מערכת פרטיות נראות רק לך.",
-        publish_button: "פרסם במרכז הקהילה",
-        submitting: "מפרסם...",
-        submit: "פרסם במרכז הקהילה",
-        prompt_label: "הנחיה",
-        prompt_description: "זוהי הנחיית המערכת בפועל שתשמש להנחיית מודל השפה.",
-        prompt_placeholder: "הזן את הנחיית המערכת שלך כאן...",
-      },
-      agent_flow: {
-        public_description: "זרימות סוכן ציבוריות נראות לכולם.",
-        private_description: "זרימות סוכן פרטיות נראות רק לך.",
-        success_title: "הצלחה!",
-        success_description: "זרימת הסוכן שלך פורסמה במרכז הקהילה!",
-        success_thank_you: "תודה על השיתוף בקהילה!",
-        view_on_hub: "צפה במרכז הקהילה",
-        modal_title: "פרסם זרימת סוכן",
-        name_label: "שם",
-        name_description: "זהו שם התצוגה של זרימת הסוכן שלך.",
-        name_placeholder: "זרימת הסוכן שלי",
-        description_label: "תיאור",
-        description_description:
-          "זהו התיאור של זרימת הסוכן שלך. השתמש בזה כדי לתאר את מטרת הזרימה.",
-        tags_label: "תגיות",
-        tags_description:
-          "תגיות משמשות לתיוג זרימת הסוכן שלך לחיפוש קל יותר. ניתן להוסיף מספר תגיות. עד 5 תגיות. עד 20 תווים לתגית.",
-        tags_placeholder: "הקלד והקש אנטר להוספת תגיות",
-        visibility_label: "נראות",
-        publish_button: "פרסם במרכז הקהילה",
-        submitting: "מפרסם...",
-        submit: "פרסם במרכז הקהילה",
-        privacy_note:
-          "זרימות סוכן תמיד מועלות כפרטיות כדי להגן על נתונים רגישים. תוכל לשנות את הנראות במרכז הקהילה לאחר הפרסום. אנא ודא שהזרימה שלך אינה מכילה מידע רגיש או פרטי לפני הפרסום.",
-      },
-      slash_command: {
-        success_title: "הצלחה!",
-        success_description: "פקודת הסלאש שלך פורסמה במרכז הקהילה!",
-        success_thank_you: "תודה על השיתוף בקהילה!",
-        view_on_hub: "צפה במרכז הקהילה",
-        modal_title: "פרסם פקודת סלאש",
-        name_label: "שם",
-        name_description: "זהו שם התצוגה של פקודת הסלאש שלך.",
-        name_placeholder: "פקודת הסלאש שלי",
-        description_label: "תיאור",
-        description_description:
-          "זהו התיאור של פקודת הסלאש שלך. השתמש בזה כדי לתאר את מטרת הפקודה.",
-        command_label: "פקודה",
-        command_description:
-          "זוהי פקודת הסלאש שמשתמשים יקלידו כדי להפעיל הגדרה קבועה זו.",
-        command_placeholder: "הפקודה-שלי",
-        tags_label: "תגיות",
-        tags_description:
-          "תגיות משמשות לתיוג פקודת הסלאש שלך לחיפוש קל יותר. ניתן להוסיף מספר תגיות. עד 5 תגיות. עד 20 תווים לתגית.",
-        tags_placeholder: "הקלד והקש אנטר להוספת תגיות",
-        visibility_label: "נראות",
-        public_description: "פקודות סלאש ציבוריות נראות לכולם.",
-        private_description: "פקודות סלאש פרטיות נראות רק לך.",
-        publish_button: "פרסם במרכז הקהילה",
-        submitting: "מפרסם...",
-        prompt_label: "הנחיה",
-        prompt_description: "זוהי ההנחיה שתשמש כאשר פקודת הסלאש תופעל.",
-        prompt_placeholder: "הזן את ההנחיה שלך כאן...",
-      },
-      generic: {
-        unauthenticated: {
-          title: "נדרש אימות",
-          description:
-            "עליך להתאמת עם מרכז הקהילה של AnythingLLM לפני פרסום פריטים.",
-          button: "התחבר למרכז הקהילה",
-        },
-      },
     },
   },
   security: {
