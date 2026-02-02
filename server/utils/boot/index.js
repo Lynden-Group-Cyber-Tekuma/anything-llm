@@ -1,7 +1,6 @@
 const { BackgroundService } = require("../BackgroundWorkers");
 const { EncryptionManager } = require("../EncryptionManager");
 const { CommunicationKey } = require("../comKey");
-const eagerLoadContextWindows = require("./eagerLoadContextWindows");
 
 function bootHTTP(app, port = 3001) {
   if (!app) throw new Error('No "app" defined - crashing!');
@@ -11,7 +10,6 @@ function bootHTTP(app, port = 3001) {
       new CommunicationKey(true);
       new EncryptionManager();
       new BackgroundService().boot();
-      await eagerLoadContextWindows();
       console.log(`Primary server in HTTP mode listening on port ${port}`);
     })
     .on("error", catchSigTerms);
