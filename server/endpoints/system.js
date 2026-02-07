@@ -12,7 +12,6 @@ const {
   queryParams,
 } = require("../utils/http");
 const { handleAssetUpload, handlePfpUpload } = require("../utils/files/multer");
-const { v4 } = require("uuid");
 const { SystemSettings } = require("../models/systemSettings");
 const { User } = require("../models/user");
 const { validatedRequest } = require("../utils/middleware/validatedRequest");
@@ -45,7 +44,6 @@ const {
   generateRecoveryCodes,
 } = require("../utils/PasswordRecovery");
 const { SlashCommandPresets } = require("../models/slashCommandsPresets");
-const { EncryptionManager } = require("../utils/EncryptionManager");
 const {
   chatHistoryViewable,
 } = require("../utils/middleware/chatHistoryViewable");
@@ -464,91 +462,6 @@ function systemEndpoints(app) {
         );
         response.status(200).json({ newValues, error });
       } catch (e) {
-        console.error(e.message, e);
-        response.sendStatus(500).end();
-      }
-    }
-  );
-
-  app.post(
-    "/system/update-password",
-    [validatedRequest],
-    async (request, response) => {
-      try {
-        // Cannot update password in multi - user mode.
-        if (multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
-        let error = null;
-        const { usePassword, newPassword } = reqBody(request);
-        if (!usePassword) {
-          // Password is being disabled so directly unset everything to bypass validation.
-          process.env.AUTH_TOKEN = "";
-          process.env.JWT_SECRET = "";
-        } else {
-          error = await updateENV(
-            {
-              AuthToken: newPassword,
-              JWTSecret: v4(),
-            },
-            true
-          )?.error;
-        }
-        response.status(200).json({ success: !error, error });
-      } catch (e) {
-        console.error(e.message, e);
-        response.sendStatus(500).end();
-      }
-    }
-  );
-
-  app.post(
-    "/system/enable-multi-user",
-    [validatedRequest],
-    async (request, response) => {
-      try {
-        if (response.locals.multiUserMode) {
-          response.status(200).json({
-            success: false,
-            error: "Multi-user mode is already enabled.",
-          });
-          return;
-        }
-
-        const { username, password } = reqBody(request);
-        const { user, error } = await User.create({
-          username,
-          password,
-          role: ROLES.admin,
-        });
-
-        if (error || !user) {
-          response.status(400).json({
-            success: false,
-            error: error || "Failed to enable multi-user mode.",
-          });
-          return;
-        }
-
-        await SystemSettings._updateSettings({
-          multi_user_mode: true,
-        });
-        await updateENV(
-          {
-            JWTSecret: process.env.JWT_SECRET || v4(),
-          },
-          true
-        );
-        await EventLogs.logEvent("multi_user_mode_enabled", {}, user?.id);
-        response.status(200).json({ success: !!user, error });
-      } catch (e) {
-        await User.delete({});
-        await SystemSettings._updateSettings({
-          multi_user_mode: false,
-        });
-
         console.error(e.message, e);
         response.sendStatus(500).end();
       }
