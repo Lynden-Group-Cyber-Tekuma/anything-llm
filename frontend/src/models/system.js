@@ -161,41 +161,8 @@ const System = {
         return { newValues: null, error: e.message };
       });
   },
-  updateSystemPassword: async (data) => {
-    return await fetch(`${API_BASE}/system/update-password`, {
-      method: "POST",
-      headers: baseHeaders(),
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .catch((e) => {
-        console.error(e);
-        return { success: false, error: e.message };
-      });
-  },
-  setupMultiUser: async (data) => {
-    return await fetch(`${API_BASE}/system/enable-multi-user`, {
-      method: "POST",
-      headers: baseHeaders(),
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .catch((e) => {
-        console.error(e);
-        return { success: false, error: e.message };
-      });
-  },
   isMultiUserMode: async () => {
-    return await fetch(`${API_BASE}/system/multi-user-mode`, {
-      method: "GET",
-      headers: baseHeaders(),
-    })
-      .then((res) => res.json())
-      .then((res) => res?.multiUserMode)
-      .catch((e) => {
-        console.error(e);
-        return false;
-      });
+    return true;
   },
   deleteDocument: async (name) => {
     return await fetch(`${API_BASE}/system/remove-document`, {

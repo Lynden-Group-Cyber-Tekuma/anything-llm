@@ -534,10 +534,6 @@ const KEY_MAPPING = {
   },
 
   // System Settings
-  AuthToken: {
-    envKey: "AUTH_TOKEN",
-    checks: [requiresForceMode, noRestrictedChars],
-  },
   JWTSecret: {
     envKey: "JWT_SECRET",
     checks: [requiresForceMode],

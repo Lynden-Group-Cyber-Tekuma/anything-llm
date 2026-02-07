@@ -6,7 +6,7 @@ const { Workspace } = require("../../../models/workspace");
 const { WorkspaceChats } = require("../../../models/workspaceChats");
 const { WorkspaceUser } = require("../../../models/workspaceUsers");
 const { canModifyAdmin } = require("../../../utils/helpers/admin");
-const { multiUserMode, reqBody } = require("../../../utils/http");
+const { reqBody } = require("../../../utils/http");
 const { validApiKey } = require("../../../utils/middleware/validApiKey");
 
 function apiAdminEndpoints(app) {
@@ -34,8 +34,7 @@ function apiAdminEndpoints(app) {
       }
     }
     */
-    const isMultiUser = multiUserMode(response);
-    response.status(200).json({ isMultiUser });
+    response.status(200).json({ isMultiUser: true });
   });
 
   app.get("/v1/admin/users", [validApiKey], async (request, response) => {
@@ -69,11 +68,6 @@ function apiAdminEndpoints(app) {
     }
     */
     try {
-      if (!multiUserMode(response)) {
-        response.sendStatus(401).end();
-        return;
-      }
-
       const users = await User.where();
       response.status(200).json({ users });
     } catch (e) {
@@ -126,11 +120,6 @@ function apiAdminEndpoints(app) {
     }
     */
     try {
-      if (!multiUserMode(response)) {
-        response.sendStatus(401).end();
-        return;
-      }
-
       const newUserParams = reqBody(request);
       const { user: newUser, error } = await User.create(newUserParams);
       response.status(newUser ? 200 : 400).json({ user: newUser, error });
@@ -187,11 +176,6 @@ function apiAdminEndpoints(app) {
     }
     */
     try {
-      if (!multiUserMode(response)) {
-        response.sendStatus(401).end();
-        return;
-      }
-
       const { id } = request.params;
       const updates = reqBody(request);
       const user = await User.get({ id: Number(id) });
@@ -248,11 +232,6 @@ function apiAdminEndpoints(app) {
     }
     */
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const { id } = request.params;
         const user = await User.get({ id: Number(id) });
         await User.delete({ id: user.id });
@@ -300,11 +279,6 @@ function apiAdminEndpoints(app) {
     }
     */
     try {
-      if (!multiUserMode(response)) {
-        response.sendStatus(401).end();
-        return;
-      }
-
       const invites = await Invite.whereWithUsers();
       response.status(200).json({ invites });
     } catch (e) {
@@ -355,11 +329,6 @@ function apiAdminEndpoints(app) {
     }
     */
     try {
-      if (!multiUserMode(response)) {
-        response.sendStatus(401).end();
-        return;
-      }
-
       const body = reqBody(request);
       const { invite, error } = await Invite.create({
         workspaceIds: body?.workspaceIds ?? [],
@@ -407,11 +376,6 @@ function apiAdminEndpoints(app) {
     }
     */
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const { id } = request.params;
         const { success, error } = await Invite.deactivate(id);
         response.status(200).json({ success, error });
@@ -461,11 +425,6 @@ function apiAdminEndpoints(app) {
       */
 
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const workspaceId = request.params.workspaceId;
         const users = await Workspace.workspaceUsers(workspaceId);
 
@@ -525,11 +484,6 @@ function apiAdminEndpoints(app) {
     }
     */
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const { workspaceId } = request.params;
         const { userIds } = reqBody(request);
         const { success, error } = await Workspace.updateUsers(
@@ -596,11 +550,6 @@ function apiAdminEndpoints(app) {
     }
     */
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const { workspaceSlug } = request.params;
         const { userIds: _uids, reset = false } = reqBody(request);
         const userIds = (
@@ -756,11 +705,6 @@ function apiAdminEndpoints(app) {
     }
     */
       try {
-        if (!multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
         const updates = reqBody(request);
         await SystemSettings.updateSettings(updates);
         response.status(200).json({ success: true, error: null });

@@ -9,7 +9,6 @@ const {
   reqBody,
   makeJWT,
   userFromSession,
-  multiUserMode,
   queryParams,
 } = require("../utils/http");
 const { handleAssetUpload, handlePfpUpload } = require("../utils/files/multer");
@@ -30,13 +29,11 @@ const {
   isDefaultFilename,
 } = require("../utils/files/logo");
 const { WelcomeMessages } = require("../models/welcomeMessages");
-const { ApiKey } = require("../models/apiKeys");
 const { getCustomModels } = require("../utils/helpers/customModels");
 const { WorkspaceChats } = require("../models/workspaceChats");
 const {
   flexUserRoleValid,
   ROLES,
-  isMultiUserSetup,
 } = require("../utils/middleware/multiUserProtected");
 const { fetchPfp, determinePfpFilepath } = require("../utils/files/pfp");
 const { exportChatsAsType } = require("../utils/helpers/chat/convertTo");
@@ -48,8 +45,6 @@ const {
   generateRecoveryCodes,
 } = require("../utils/PasswordRecovery");
 const { SlashCommandPresets } = require("../models/slashCommandsPresets");
-const { EncryptionManager } = require("../utils/EncryptionManager");
-const { BrowserExtensionApiKey } = require("../models/browserExtensionApiKey");
 const {
   chatHistoryViewable,
 } = require("../utils/middleware/chatHistoryViewable");
@@ -94,14 +89,9 @@ function systemEndpoints(app) {
     [validatedRequest],
     async (request, response) => {
       try {
-        if (multiUserMode(response)) {
-          const user = await userFromSession(request, response);
-          if (!user || user.suspended) {
-            response.sendStatus(403).end();
-            return;
-          }
-
-          response.sendStatus(200).end();
+        const user = await userFromSession(request, response);
+        if (!user || user.suspended) {
+          response.sendStatus(403).end();
           return;
         }
 
@@ -124,11 +114,6 @@ function systemEndpoints(app) {
     [validatedRequest],
     async (request, response) => {
       try {
-        if (!multiUserMode(response))
-          return response
-            .status(200)
-            .json({ success: true, user: null, message: null });
-
         const user = await userFromSession(request, response);
         if (!user)
           return response.status(200).json({
@@ -163,142 +148,105 @@ function systemEndpoints(app) {
     try {
       const bcrypt = require("bcryptjs");
 
-      if (await SystemSettings.isMultiUserMode()) {
-        if (simpleSSOLoginDisabled()) {
-          response.status(403).json({
-            user: null,
-            valid: false,
-            token: null,
-            message:
-              "[005] Login via credentials has been disabled by the administrator.",
-          });
-          return;
-        }
+      if (simpleSSOLoginDisabled()) {
+        response.status(403).json({
+          user: null,
+          valid: false,
+          token: null,
+          message:
+            "[005] Login via credentials has been disabled by the administrator.",
+        });
+        return;
+      }
 
-        const { username, password } = reqBody(request);
-        const existingUser = await User._get({ username: String(username) });
+      const { username, password } = reqBody(request);
+      const existingUser = await User._get({ username: String(username) });
 
-        if (!existingUser) {
-          await EventLogs.logEvent(
-            "failed_login_invalid_username",
-            {
-              ip: request.ip || "Unknown IP",
-              username: username || "Unknown user",
-            },
-            existingUser?.id
-          );
-          response.status(200).json({
-            user: null,
-            valid: false,
-            token: null,
-            message: "[001] Invalid login credentials.",
-          });
-          return;
-        }
-
-        if (!bcrypt.compareSync(String(password), existingUser.password)) {
-          await EventLogs.logEvent(
-            "failed_login_invalid_password",
-            {
-              ip: request.ip || "Unknown IP",
-              username: username || "Unknown user",
-            },
-            existingUser?.id
-          );
-          response.status(200).json({
-            user: null,
-            valid: false,
-            token: null,
-            message: "[002] Invalid login credentials.",
-          });
-          return;
-        }
-
-        if (existingUser.suspended) {
-          await EventLogs.logEvent(
-            "failed_login_account_suspended",
-            {
-              ip: request.ip || "Unknown IP",
-              username: username || "Unknown user",
-            },
-            existingUser?.id
-          );
-          response.status(200).json({
-            user: null,
-            valid: false,
-            token: null,
-            message: "[004] Account suspended by admin.",
-          });
-          return;
-        }
-
+      if (!existingUser) {
         await EventLogs.logEvent(
-          "login_event",
+          "failed_login_invalid_username",
           {
             ip: request.ip || "Unknown IP",
-            username: existingUser.username || "Unknown user",
+            username: username || "Unknown user",
           },
           existingUser?.id
         );
+        response.status(200).json({
+          user: null,
+          valid: false,
+          token: null,
+          message: "[001] Invalid login credentials.",
+        });
+        return;
+      }
 
-        // Generate a session token for the user then check if they have seen the recovery codes
-        // and if not, generate recovery codes and return them to the frontend.
-        const sessionToken = makeJWT(
-          { id: existingUser.id, username: existingUser.username },
-          process.env.JWT_EXPIRY
+      if (!bcrypt.compareSync(String(password), existingUser.password)) {
+        await EventLogs.logEvent(
+          "failed_login_invalid_password",
+          {
+            ip: request.ip || "Unknown IP",
+            username: username || "Unknown user",
+          },
+          existingUser?.id
         );
-        if (!existingUser.seen_recovery_codes) {
-          const plainTextCodes = await generateRecoveryCodes(existingUser.id);
-          response.status(200).json({
-            valid: true,
-            user: User.filterFields(existingUser),
-            token: sessionToken,
-            message: null,
-            recoveryCodes: plainTextCodes,
-          });
-          return;
-        }
+        response.status(200).json({
+          user: null,
+          valid: false,
+          token: null,
+          message: "[002] Invalid login credentials.",
+        });
+        return;
+      }
 
+      if (existingUser.suspended) {
+        await EventLogs.logEvent(
+          "failed_login_account_suspended",
+          {
+            ip: request.ip || "Unknown IP",
+            username: username || "Unknown user",
+          },
+          existingUser?.id
+        );
+        response.status(200).json({
+          user: null,
+          valid: false,
+          token: null,
+          message: "[004] Account suspended by admin.",
+        });
+        return;
+      }
+
+      await EventLogs.logEvent(
+        "login_event",
+        {
+          ip: request.ip || "Unknown IP",
+          username: existingUser.username || "Unknown user",
+        },
+        existingUser?.id
+      );
+
+      const sessionToken = makeJWT(
+        { id: existingUser.id, username: existingUser.username },
+        process.env.JWT_EXPIRY
+      );
+      if (!existingUser.seen_recovery_codes) {
+        const plainTextCodes = await generateRecoveryCodes(existingUser.id);
         response.status(200).json({
           valid: true,
           user: User.filterFields(existingUser),
           token: sessionToken,
           message: null,
+          recoveryCodes: plainTextCodes,
         });
         return;
-      } else {
-        const { password } = reqBody(request);
-        if (
-          !bcrypt.compareSync(
-            password,
-            bcrypt.hashSync(process.env.AUTH_TOKEN, 10)
-          )
-        ) {
-          await EventLogs.logEvent("failed_login_invalid_password", {
-            ip: request.ip || "Unknown IP",
-            multiUserMode: false,
-          });
-          response.status(401).json({
-            valid: false,
-            token: null,
-            message: "[003] Invalid password provided",
-          });
-          return;
-        }
-
-        await EventLogs.logEvent("login_event", {
-          ip: request.ip || "Unknown IP",
-          multiUserMode: false,
-        });
-        response.status(200).json({
-          valid: true,
-          token: makeJWT(
-            { p: new EncryptionManager().encrypt(password) },
-            process.env.JWT_EXPIRY
-          ),
-          message: null,
-        });
       }
+
+      response.status(200).json({
+        valid: true,
+        user: User.filterFields(existingUser),
+        token: sessionToken,
+        message: null,
+      });
     } catch (e) {
       console.error(e.message, e);
       response.sendStatus(500).end();
@@ -345,7 +293,7 @@ function systemEndpoints(app) {
 
   app.post(
     "/system/recover-account",
-    [isMultiUserSetup],
+    [],
     async (request, response) => {
       try {
         const { username, recoveryCodes } = reqBody(request);
@@ -370,7 +318,7 @@ function systemEndpoints(app) {
 
   app.post(
     "/system/reset-password",
-    [isMultiUserSetup],
+    [],
     async (request, response) => {
       try {
         const { token, newPassword, confirmPassword } = reqBody(request);
@@ -521,97 +469,9 @@ function systemEndpoints(app) {
     }
   );
 
-  app.post(
-    "/system/update-password",
-    [validatedRequest],
-    async (request, response) => {
-      try {
-        // Cannot update password in multi - user mode.
-        if (multiUserMode(response)) {
-          response.sendStatus(401).end();
-          return;
-        }
-
-        let error = null;
-        const { usePassword, newPassword } = reqBody(request);
-        if (!usePassword) {
-          // Password is being disabled so directly unset everything to bypass validation.
-          process.env.AUTH_TOKEN = "";
-          process.env.JWT_SECRET = "";
-        } else {
-          error = await updateENV(
-            {
-              AuthToken: newPassword,
-              JWTSecret: v4(),
-            },
-            true
-          )?.error;
-        }
-        response.status(200).json({ success: !error, error });
-      } catch (e) {
-        console.error(e.message, e);
-        response.sendStatus(500).end();
-      }
-    }
-  );
-
-  app.post(
-    "/system/enable-multi-user",
-    [validatedRequest],
-    async (request, response) => {
-      try {
-        if (response.locals.multiUserMode) {
-          response.status(200).json({
-            success: false,
-            error: "Multi-user mode is already enabled.",
-          });
-          return;
-        }
-
-        const { username, password } = reqBody(request);
-        const { user, error } = await User.create({
-          username,
-          password,
-          role: ROLES.admin,
-        });
-
-        if (error || !user) {
-          response.status(400).json({
-            success: false,
-            error: error || "Failed to enable multi-user mode.",
-          });
-          return;
-        }
-
-        await SystemSettings._updateSettings({
-          multi_user_mode: true,
-        });
-        await BrowserExtensionApiKey.migrateApiKeysToMultiUser(user.id);
-
-        await updateENV(
-          {
-            JWTSecret: process.env.JWT_SECRET || v4(),
-          },
-          true
-        );
-        await EventLogs.logEvent("multi_user_mode_enabled", {}, user?.id);
-        response.status(200).json({ success: !!user, error });
-      } catch (e) {
-        await User.delete({});
-        await SystemSettings._updateSettings({
-          multi_user_mode: false,
-        });
-
-        console.error(e.message, e);
-        response.sendStatus(500).end();
-      }
-    }
-  );
-
   app.get("/system/multi-user-mode", async (_, response) => {
     try {
-      const multiUserMode = await SystemSettings.isMultiUserMode();
-      response.status(200).json({ multiUserMode });
+      response.status(200).json({ multiUserMode: true });
     } catch (e) {
       console.error(e.message, e);
       response.sendStatus(500).end();
@@ -972,80 +832,6 @@ function systemEndpoints(app) {
     }
   );
 
-  app.get("/system/api-keys", [validatedRequest], async (_, response) => {
-    try {
-      if (response.locals.multiUserMode) {
-        return response.sendStatus(401).end();
-      }
-
-      const apiKeys = await ApiKey.where({});
-      return response.status(200).json({
-        apiKeys,
-        error: null,
-      });
-    } catch (error) {
-      console.error(error);
-      response.status(500).json({
-        apiKey: null,
-        error: "Could not find an API Key.",
-      });
-    }
-  });
-
-  app.post(
-    "/system/generate-api-key",
-    [validatedRequest],
-    async (_, response) => {
-      try {
-        if (response.locals.multiUserMode) {
-          return response.sendStatus(401).end();
-        }
-
-        const { apiKey, error } = await ApiKey.create();
-        await EventLogs.logEvent(
-          "api_key_created",
-          {},
-          response?.locals?.user?.id
-        );
-        return response.status(200).json({
-          apiKey,
-          error,
-        });
-      } catch (error) {
-        console.error(error);
-        response.status(500).json({
-          apiKey: null,
-          error: "Error generating api key.",
-        });
-      }
-    }
-  );
-
-  // TODO: This endpoint is replicated in the admin endpoints file.
-  // and should be consolidated to be a single endpoint with flexible role protection.
-  app.delete(
-    "/system/api-key/:id",
-    [validatedRequest],
-    async (request, response) => {
-      try {
-        if (response.locals.multiUserMode)
-          return response.sendStatus(401).end();
-        const { id } = request.params;
-        if (!id || isNaN(Number(id))) return response.sendStatus(400).end();
-
-        await ApiKey.delete({ id: Number(id) });
-        await EventLogs.logEvent(
-          "api_key_deleted",
-          { deletedBy: response.locals?.user?.username },
-          response?.locals?.user?.id
-        );
-        return response.status(200).end();
-      } catch (error) {
-        console.error(error);
-        response.status(500).end();
-      }
-    }
-  );
 
   app.post(
     "/system/custom-models",

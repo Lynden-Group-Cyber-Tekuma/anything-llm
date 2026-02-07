@@ -1,6 +1,5 @@
 const { User } = require("../../../models/user");
 const { TemporaryAuthToken } = require("../../../models/temporaryAuthToken");
-const { multiUserMode } = require("../../../utils/http");
 const {
   simpleSSOEnabled,
 } = require("../../../utils/middleware/simpleSSOEnabled");
@@ -46,11 +45,6 @@ function apiUserManagementEndpoints(app) {
     }
       */
     try {
-      if (!multiUserMode(response))
-        return response
-          .status(401)
-          .send("Instance is not in Multi-User mode. Permission denied.");
-
       const users = await User.where();
       const filteredUsers = users.map((user) => ({
         id: user.id,
