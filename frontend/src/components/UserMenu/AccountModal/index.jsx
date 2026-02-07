@@ -6,7 +6,6 @@ import { AUTH_USER } from "@/utils/constants";
 import showToast from "@/utils/toast";
 import { Info, Plus, X } from "@phosphor-icons/react";
 import ModalWrapper from "@/components/ModalWrapper";
-import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { Tooltip } from "react-tooltip";
@@ -194,7 +193,6 @@ export default function AccountModal({ user, hideModal }) {
               </div>
               <div className="flex gap-x-16">
                 <div className="flex flex-col gap-y-6">
-                  <ThemePreference />
                   <LanguagePreference />
                 </div>
                 <div className="flex flex-col gap-y-6">
@@ -254,33 +252,6 @@ function LanguagePreference() {
             </option>
           );
         })}
-      </select>
-    </div>
-  );
-}
-
-function ThemePreference() {
-  const { theme, setTheme, availableThemes } = useTheme();
-  const { t } = useTranslation();
-  return (
-    <div>
-      <label
-        htmlFor="theme"
-        className="block mb-2 text-sm font-medium text-white"
-      >
-        {t("profile_settings.theme")}
-      </label>
-      <select
-        name="theme"
-        value={theme}
-        onChange={(e) => setTheme(e.target.value)}
-        className="border-none bg-theme-settings-input-bg w-fit px-4 focus:outline-primary-button active:outline-primary-button outline-none text-white text-sm rounded-lg block py-2"
-      >
-        {Object.entries(availableThemes).map(([key, value]) => (
-          <option key={key} value={key}>
-            {value}
-          </option>
-        ))}
       </select>
     </div>
   );

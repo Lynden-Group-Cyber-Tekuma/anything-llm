@@ -2,7 +2,6 @@ import Sidebar from "@/components/SettingsSidebar";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from "react-i18next";
 import LanguagePreference from "../components/LanguagePreference";
-import ThemePreference from "../components/ThemePreference";
 import { MessageDirection } from "../components/MessageDirection";
 
 export default function InterfaceSettings() {
@@ -26,7 +25,6 @@ export default function InterfaceSettings() {
               {t("customization.interface.description")}
             </p>
           </div>
-          <ThemePreference />
           <LanguagePreference />
           <MessageDirection />
         </div>
