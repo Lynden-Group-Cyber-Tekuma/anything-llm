@@ -30,16 +30,34 @@ export const ICON_COMPONENTS = {
   Info: Info,
 };
 
-export default function Footer() {
+export default function Footer({ minimal = false }) {
   const [footerData, setFooterData] = useState(false);
 
   useEffect(() => {
+    if (minimal) return;
     async function fetchFooterData() {
       const { footerData } = await System.fetchCustomFooterIcons();
       setFooterData(footerData);
     }
     fetchFooterData();
-  }, []);
+  }, [minimal]);
+
+  // Settings sidebar: only Back to Workspace button
+  if (minimal) {
+    return (
+      <div className="flex justify-center mb-2">
+        <div className="flex space-x-4">
+          <SettingsButton />
+        </div>
+        <Tooltip
+          id="footer-item"
+          place="top"
+          delayShow={300}
+          className="tooltip !text-xs z-99"
+        />
+      </div>
+    );
+  }
 
   // wait for some kind of non-false response from footer data first
   // to prevent pop-in.
