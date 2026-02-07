@@ -3,12 +3,10 @@ import SettingsButton from "../SettingsButton";
 import { isMobile } from "react-device-detect";
 import { Tooltip } from "react-tooltip";
 
-export default function Footer({ minimal = false }) {
+export default function Footer() {
   return (
     <div className="flex justify-center mb-2">
-      <div className="flex space-x-4">
-        {!minimal && !isMobile && <SettingsButton />}
-      </div>
+      <div className="flex space-x-4">{!isMobile && <SettingsButton />}</div>
       <Tooltip
         id="footer-item"
         place="top"
