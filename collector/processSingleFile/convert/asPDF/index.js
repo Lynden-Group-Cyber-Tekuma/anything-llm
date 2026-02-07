@@ -7,7 +7,8 @@ const {
 const { tokenizeString } = require("../../../utils/tokenizer");
 const { default: slugify } = require("slugify");
 const PDFLoader = require("./PDFLoader");
-const OCRLoader = require("../../../utils/OCRLoader");
+const LanguageDetector = require("./LanguageDetector");
+const Translator = require("./Translator");
 
 async function asPdf({
   fullFilePath = "",
@@ -21,16 +22,7 @@ async function asPdf({
 
   console.log(`-- Working ${filename} --`);
   const pageContent = [];
-  let docs = await pdfLoader.load();
-
-  if (docs.length === 0) {
-    console.log(
-      `[asPDF] No text content found for ${filename}. Will attempt OCR parse.`
-    );
-    docs = await new OCRLoader({
-      targetLanguages: options?.ocr?.langList,
-    }).ocrPDF(fullFilePath);
-  }
+  const docs = await pdfLoader.load();
 
   for (const doc of docs) {
     console.log(
@@ -52,19 +44,64 @@ async function asPdf({
     };
   }
 
-  const content = pageContent.join("");
+  // Step 1: Detect language and translate if not predominantly English
+  let translationSection = "";
+  const languageEndpoint = process.env.AZURE_LANGUAGE_ENDPOINT;
+  const languageKey = process.env.AZURE_LANGUAGE_KEY;
+  const translatorEndpoint = process.env.AZURE_TRANSLATOR_ENDPOINT;
+  const translatorKey = process.env.AZURE_TRANSLATOR_KEY;
+  const translatorRegion = process.env.AZURE_TRANSLATOR_REGION;
+
+  const hasLanguageConfig = languageEndpoint && languageKey;
+  const hasTranslatorConfig = translatorEndpoint && translatorKey;
+
+  if (hasLanguageConfig && hasTranslatorConfig) {
+    const detectedLangs = await LanguageDetector.detectLanguage(
+      pageContent,
+      languageKey,
+      languageEndpoint
+    );
+
+    const totalLangs = detectedLangs.length;
+    const unknownLangs = detectedLangs.filter(
+      (lang) => lang === "(Unknown)"
+    ).length;
+    const englishLangs = detectedLangs.filter(
+      (lang) => lang === "English"
+    ).length;
+
+    // Check if English is not dominant
+    const nonUnknownLangs = totalLangs - unknownLangs;
+    if (
+      totalLangs === unknownLangs ||
+      englishLangs / nonUnknownLangs < 0.9
+    ) {
+      console.log("[asPDF] English is not dominant, translating...");
+      const translatedContent = await Translator.translate(
+        pageContent,
+        translatorKey,
+        translatorEndpoint,
+        translatorRegion
+      );
+
+      // Only append translation section if translation actually produced different content
+      const translatedText = translatedContent.join("");
+      const originalText = pageContent.join("");
+      if (translatedText && translatedText !== originalText) {
+        translationSection =
+          "\n\n---\n\n## English Translation\n\n" + translatedText;
+        console.log("[asPDF] English translation section appended.");
+      }
+    }
+  }
+
+  const content = pageContent.join("") + translationSection;
   const data = {
     id: v4(),
     url: "file://" + fullFilePath,
     title: metadata.title || filename,
-    docAuthor:
-      metadata.docAuthor ||
-      docs[0]?.metadata?.pdf?.info?.Creator ||
-      "no author found",
-    description:
-      metadata.description ||
-      docs[0]?.metadata?.pdf?.info?.Title ||
-      "No description found.",
+    docAuthor: metadata.docAuthor || "no author found",
+    description: metadata.description || "No description found.",
     docSource: metadata.docSource || "pdf file uploaded by the user.",
     chunkSource: metadata.chunkSource || "",
     published: createdDate(fullFilePath),

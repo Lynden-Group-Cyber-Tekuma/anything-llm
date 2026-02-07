@@ -46,7 +46,6 @@ const TRANSLATIONS = {
     tools: "כלים",
     "system-prompt-variables": "משתני הנחיית מערכת",
     contact: "צור קשר עם התמיכה",
-    "browser-extension": "תוסף דפדפן",
   },
   login: {
     "multi-user": {
@@ -426,27 +425,6 @@ const TRANSLATIONS = {
         "double-click": "לחץ פעמיים לעריכה...",
         save: "שמור הודעות",
       },
-      "browser-appearance": {
-        title: "מראה הדפדפן",
-        description:
-          "התאם אישית את מראה לשונית הדפדפן והכותרת כשהאפליקציה פתוחה.",
-        tab: {
-          title: "כותרת",
-          description:
-            "הגדר כותרת לשונית מותאמת אישית כשהאפליקציה פתוחה בדפדפן.",
-        },
-        favicon: {
-          title: "סמל אתר (Favicon)",
-          description: "השתמש בסמל אתר מותאם אישית עבור לשונית הדפדפן.",
-        },
-      },
-      "sidebar-footer": {
-        title: "פריטי כותרת תחתונה בסרגל הצד",
-        description:
-          "התאם אישית את פריטי הכותרת התחתונה המוצגים בתחתית סרגל הצד.",
-        icon: "סמל",
-        link: "קישור",
-      },
       "render-html": {
         title: "הצגת קוד HTML בשיחת צ'אט",
         description:
@@ -576,136 +554,8 @@ const TRANSLATIONS = {
     anonymous: "טלמטריה אנונימית מופעלת",
   },
   connectors: {
-    "search-placeholder": "חפש מחברי נתונים",
-    "no-connectors": "לא נמצאו מחברי נתונים.",
-    obsidian: {
-      name: "Obsidian",
-      description: "ייבא כספת Obsidian בלחיצה אחת.",
-      vault_location: "מיקום כספת",
-      vault_description:
-        "בחר את תיקיית כספת ה-Obsidian שלך כדי לייבא את כל ההערות והחיבורים ביניהן.",
-      selected_files: "נמצאו {{count}} קבצי markdown",
-      importing: "מייבא כספת...",
-      import_vault: "ייבא כספת",
-      processing_time: "זה עשוי לקחת זמן מה, תלוי בגודל הכספת שלך.",
-      vault_warning:
-        "כדי למנוע התנגשויות, ודא שכספת ה-Obsidian שלך אינה פתוחה כעת.",
-    },
-    github: {
-      name: "מאגר GitHub",
-      description: "ייבא מאגר GitHub ציבורי או פרטי שלם בלחיצה אחת.",
-      URL: "כתובת URL של מאגר GitHub",
-      URL_explained: "כתובת ה-URL של מאגר ה-GitHub שברצונך לאסוף.",
-      token: "אסימון גישה של GitHub",
-      optional: "אופציונלי",
-      token_explained: "אסימון גישה למניעת הגבלת קצב.",
-      token_explained_start: "ללא ",
-      token_explained_link1: "אסימון גישה אישי",
-      token_explained_middle:
-        ", ה-API של GitHub עשוי להגביל את מספר הקבצים שניתן לאסוף עקב הגבלות קצב. תוכל ",
-      token_explained_link2: "ליצור אסימון גישה זמני",
-      token_explained_end: " כדי למנוע בעיה זו.",
-      ignores: "התעלמות מקבצים",
-      git_ignore:
-        "רשום בפורמט .gitignore כדי להתעלם מקבצים ספציפיים במהלך האיסוף. הקש אנטר לאחר כל ערך שברצונך לשמור.",
-      task_explained:
-        "לאחר השלמה, כל הקבצים יהיו זמינים להטמעה בסביבות עבודה בבורר המסמכים.",
-      branch: "ענף שממנו ברצונך לאסוף קבצים.",
-      branch_loading: "-- טוען ענפים זמינים --",
-      branch_explained: "ענף שממנו ברצונך לאסוף קבצים.",
-      token_information:
-        "ללא מילוי <b>אסימון הגישה של GitHub</b>, מחבר נתונים זה יוכל לאסוף רק את הקבצים ב<b>רמה העליונה</b> של המאגר עקב הגבלות הקצב של ה-API הציבורי של GitHub.",
-      token_personal: "קבל אסימון גישה אישי בחינם עם חשבון GitHub כאן.",
-    },
-    gitlab: {
-      name: "מאגר GitLab",
-      description: "ייבא מאגר GitLab ציבורי או פרטי שלם בלחיצה אחת.",
-      URL: "כתובת URL של מאגר GitLab",
-      URL_explained: "כתובת ה-URL של מאגר ה-GitLab שברצונך לאסוף.",
-      token: "אסימון גישה של GitLab",
-      optional: "אופציונלי",
-      token_explained: "אסימון גישה למניעת הגבלת קצב.",
-      token_description: "בחר ישויות נוספות לאחזור מה-API של GitLab.",
-      token_explained_start: "ללא ",
-      token_explained_link1: "אסימון גישה אישי",
-      token_explained_middle:
-        ", ה-API של GitLab עשוי להגביל את מספר הקבצים שניתן לאסוף עקב הגבלות קצב. תוכל ",
-      token_explained_link2: "ליצור אסימון גישה זמני",
-      token_explained_end: " כדי למנוע בעיה זו.",
-      fetch_issues: "אחזר בעיות (Issues) כמסמכים",
-      ignores: "התעלמות מקבצים",
-      git_ignore:
-        "רשום בפורמט .gitignore כדי להתעלם מקבצים ספציפיים במהלך האיסוף. הקש אנטר לאחר כל ערך שברצונך לשמור.",
-      task_explained:
-        "לאחר השלמה, כל הקבצים יהיו זמינים להטמעה בסביבות עבודה בבורר המסמכים.",
-      branch: "ענף שממנו ברצונך לאסוף קבצים",
-      branch_loading: "-- טוען ענפים זמינים --",
-      branch_explained: "ענף שממנו ברצונך לאסוף קבצים.",
-      token_information:
-        "ללא מילוי <b>אסימון הגישה של GitLab</b>, מחבר נתונים זה יוכל לאסוף רק את הקבצים ב<b>רמה העליונה</b> של המאגר עקב הגבלות הקצב של ה-API הציבורי של GitLab.",
-      token_personal: "קבל אסימון גישה אישי בחינם עם חשבון GitLab כאן.",
-    },
-    youtube: {
-      name: "תמלול YouTube",
-      description: "ייבא את התמלול של סרטון YouTube שלם מקישור.",
-      URL: "כתובת URL של סרטון YouTube",
-      URL_explained_start:
-        "הזן את כתובת ה-URL של כל סרטון YouTube כדי לאחזר את התמלול שלו. לסרטון חייבות להיות ",
-      URL_explained_link: "כתוביות סגורות",
-      URL_explained_end: " זמינות.",
-      task_explained:
-        "לאחר השלמה, התמלול יהיה זמין להטמעה בסביבות עבודה בבורר המסמכים.",
-      language: "שפת התמלול",
-      language_explained: "בחר את שפת התמלול שברצונך לאסוף.",
-      loading_languages: "-- טוען שפות זמינות --",
-    },
-    "website-depth": {
-      name: "גרדן קישורים המוני",
-      description: "גרד אתר ואת קישורי המשנה שלו עד לעומק מסוים.",
-      URL: "כתובת אתר אינטרנט",
-      URL_explained: "כתובת ה-URL של האתר שברצונך לגרד.",
-      depth: "עומק זחילה",
-      depth_explained:
-        "זהו מספר קישורי הילד שהעובד יעקוב אחריהם מכתובת ה-URL המקורית.",
-      max_pages: "מספר עמודים מרבי",
-      max_pages_explained: "המספר המרבי של קישורים לגירוד.",
-      task_explained:
-        "לאחר השלמה, כל התוכן שנגרד יהיה זמין להטמעה בסביבות עבודה בבורר המסמכים.",
-    },
-    confluence: {
-      name: "Confluence",
-      description: "ייבא עמוד Confluence שלם בלחיצה אחת.",
-      deployment_type: "סוג פריסת Confluence",
-      deployment_type_explained:
-        "קבע אם מופע ה-Confluence שלך מתארח בענן של Atlassian או באירוח עצמי.",
-      base_url: "כתובת בסיס של Confluence",
-      base_url_explained: "זוהי כתובת הבסיס של מרחב ה-Confluence שלך.",
-      space_key: "מפתח מרחב של Confluence",
-      space_key_explained:
-        "זהו מפתח המרחבים של מופע ה-Confluence שלך שישמש. בדרך כלל מתחיל ב-~",
-      username: "שם משתמש ב-Confluence",
-      username_explained: "שם המשתמש שלך ב-Confluence",
-      auth_type: "סוג אימות Confluence",
-      auth_type_explained:
-        "בחר את סוג האימות שבו ברצונך להשתמש כדי לגשת לדפי ה-Confluence שלך.",
-      auth_type_username: "שם משתמש ואסימון גישה",
-      auth_type_personal: "אסימון גישה אישי",
-      token: "אסימון גישה של Confluence",
-      token_explained_start:
-        "עליך לספק אסימון גישה לאימות. תוכל ליצור אסימון גישה",
-      token_explained_link: "כאן",
-      token_desc: "אסימון גישה לאימות",
-      pat_token: "אסימון גישה אישי של Confluence",
-      pat_token_explained: "אסימון הגישה האישי שלך ב-Confluence.",
-      task_explained:
-        "לאחר השלמה, תוכן העמוד יהיה זמין להטמעה בסביבות עבודה בבורר המסמכים.",
-      bypass_ssl: "התעלמות מאימות תעודת SSL",
-      bypass_ssl_explained:
-        "אפשר להפעיל את האפשרות זו כדי לעקוף את אימות תעודת ה-SSL עבור מופעי Confluence המאוחסנים באופן עצמאי עם תעודה שחתמה באופן עצמי.",
-    },
     manage: {
       documents: "מסמכים",
-      "data-connectors": "מחברי נתונים",
       "desktop-only":
         "עריכת הגדרות אלה זמינה רק במחשב שולחני. אנא גש לדף זה משולחן העבודה שלך כדי להמשיך.",
       dismiss: "התעלם",

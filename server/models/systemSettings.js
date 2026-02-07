@@ -5,7 +5,6 @@ process.env.NODE_ENV === "development"
 const { default: slugify } = require("slugify");
 const { isValidUrl, safeJsonParse } = require("../utils/http");
 const prisma = require("../utils/prisma");
-const { MetaGenerator } = require("../utils/boot/MetaGenerator");
 const { PGVector } = require("../utils/vectorDbProviders/pgvector");
 const { NativeEmbedder } = require("../utils/EmbeddingEngines/native");
 const { getBaseLLMProviderModel } = require("../utils/helpers");
@@ -24,7 +23,6 @@ const SystemSettings = {
     "Given the following conversation, relevant context, and a follow up question, reply with an answer to the current question the user is asking. Return only your response to the question given the above information following the users instructions as needed.",
   protectedFields: [],
   publicFields: [
-    "footer_data",
     "support_email",
     "text_splitter_chunk_size",
     "text_splitter_chunk_overlap",
@@ -36,13 +34,10 @@ const SystemSettings = {
     "imported_agent_skills",
     "custom_app_name",
     "feature_flags",
-    "meta_page_title",
-    "meta_page_favicon",
   ],
   supportedFields: [
     "logo_filename",
     "telemetry_id",
-    "footer_data",
     "support_email",
 
     "text_splitter_chunk_size",
@@ -53,23 +48,8 @@ const SystemSettings = {
     "agent_sql_connections",
     "custom_app_name",
     "default_system_prompt",
-
-    // Meta page customization
-    "meta_page_title",
-    "meta_page_favicon",
   ],
   validations: {
-    footer_data: (updates) => {
-      try {
-        const array = JSON.parse(updates)
-          .filter((setting) => isValidUrl(setting.url))
-          .slice(0, 3); // max of 3 items in footer.
-        return JSON.stringify(array);
-      } catch (e) {
-        console.error(`Failed to run validation function on footer_data`);
-        return JSON.stringify([]);
-      }
-    },
     text_splitter_chunk_size: (update) => {
       try {
         if (isNullOrNaN(update)) throw new Error("Value is not a number.");
@@ -159,27 +139,6 @@ const SystemSettings = {
       } catch (e) {
         console.error(`Failed to merge connections`);
         return JSON.stringify(existingConnections ?? []);
-      }
-    },
-    meta_page_title: (newTitle) => {
-      try {
-        if (typeof newTitle !== "string" || !newTitle) return null;
-        return String(newTitle);
-      } catch {
-        return null;
-      } finally {
-        new MetaGenerator().clearConfig();
-      }
-    },
-    meta_page_favicon: (faviconUrl) => {
-      if (!faviconUrl) return null;
-      try {
-        const url = new URL(faviconUrl);
-        return url.toString();
-      } catch {
-        return null;
-      } finally {
-        new MetaGenerator().clearConfig();
       }
     },
     default_system_prompt: (prompt) => {

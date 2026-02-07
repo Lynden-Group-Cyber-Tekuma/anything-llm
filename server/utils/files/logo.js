@@ -5,15 +5,14 @@ const { v4 } = require("uuid");
 const { SystemSettings } = require("../../models/systemSettings");
 const { normalizePath, isWithin } = require(".");
 const LOGO_FILENAME = "lynden.png";
-const LOGO_FILENAME_DARK = "lynden.png";
 
 /**
- * Checks if the filename is the default logo filename for dark or light mode.
+ * Checks if the filename is the default logo filename.
  * @param {string} filename - The filename to check.
  * @returns {boolean} Whether the filename is the default logo filename.
  */
 function isDefaultFilename(filename) {
-  return [LOGO_FILENAME, LOGO_FILENAME_DARK].includes(filename);
+  return filename === LOGO_FILENAME;
 }
 
 function validFilename(newFilename = "") {
@@ -21,13 +20,11 @@ function validFilename(newFilename = "") {
 }
 
 /**
- * Shows the logo for the current theme. In dark mode, it shows the light logo
- * and vice versa.
- * @param {boolean} darkMode - Whether the logo should be for dark mode.
+ * Returns the default logo filename.
  * @returns {string} The filename of the logo.
  */
-function getDefaultFilename(darkMode = true) {
-  return darkMode ? LOGO_FILENAME : LOGO_FILENAME_DARK;
+function getDefaultFilename() {
+  return LOGO_FILENAME;
 }
 
 async function determineLogoFilepath(defaultFilename = LOGO_FILENAME) {

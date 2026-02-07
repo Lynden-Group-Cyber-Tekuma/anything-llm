@@ -6,6 +6,13 @@
  */
 
 /**
+ * Fixed browser appearance — edit these to change the tab title and favicon.
+ * Used for server-rendered index.html and manifest.json.
+ */
+const FIXED_PAGE_TITLE = "AnythingLLM | Your personal LLM trained on anything";
+const FIXED_FAVICON_URL = "/favicon.png";
+
+/**
  * This class serves the default index.html page that is not present when built in production.
  * and therefore this class should not be called when in development mode since it is unused.
  * All this class does is basically emulate SSR for the meta-tag generation of the root index page.
@@ -27,14 +34,14 @@ class MetaGenerator {
   #customConfig = null;
 
   #defaultManifest = {
-    name: "AnythingLLM",
-    short_name: "AnythingLLM",
+    name: FIXED_PAGE_TITLE.split(" | ")[0],
+    short_name: FIXED_PAGE_TITLE.split(" | ")[0],
     display: "standalone",
     orientation: "portrait",
     start_url: "/",
     icons: [
       {
-        src: "/favicon.png",
+        src: FIXED_FAVICON_URL,
         sizes: "any",
       },
     ],
@@ -53,27 +60,27 @@ class MetaGenerator {
     return [
       {
         tag: "link",
-        props: { type: "image/svg+xml", href: "/favicon.png" },
+        props: { type: "image/svg+xml", href: FIXED_FAVICON_URL },
         content: null,
       },
       {
         tag: "title",
         props: null,
-        content: "AnythingLLM | Your personal LLM trained on anything",
+        content: FIXED_PAGE_TITLE,
       },
 
       {
         tag: "meta",
         props: {
           name: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
       {
         tag: "meta",
         props: {
           description: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
 
@@ -87,14 +94,14 @@ class MetaGenerator {
         tag: "meta",
         props: {
           property: "og:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
       {
         tag: "meta",
         props: {
           property: "og:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
       {
@@ -119,14 +126,14 @@ class MetaGenerator {
         tag: "meta",
         props: {
           property: "twitter:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
       {
         tag: "meta",
         props: {
           property: "twitter:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: FIXED_PAGE_TITLE,
         },
       },
       {
@@ -138,8 +145,11 @@ class MetaGenerator {
         },
       },
 
-      { tag: "link", props: { rel: "icon", href: "/favicon.png" } },
-      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.png" } },
+      { tag: "link", props: { rel: "icon", href: FIXED_FAVICON_URL } },
+      {
+        tag: "link",
+        props: { rel: "apple-touch-icon", href: FIXED_FAVICON_URL },
+      },
 
       // PWA specific tags
       {
@@ -187,106 +197,8 @@ class MetaGenerator {
     return output.join("\n");
   }
 
-  #validUrl(faviconUrl = null) {
-    if (faviconUrl === null) return "/favicon.png";
-    try {
-      const url = new URL(faviconUrl);
-      return url.toString();
-    } catch {
-      return "/favicon.png";
-    }
-  }
-
   async #fetchConfg() {
-    this.#log(`fetching custom meta tag settings...`);
-    const { SystemSettings } = require("../../models/systemSettings");
-    const customTitle = await SystemSettings.getValueOrFallback(
-      { label: "meta_page_title" },
-      null
-    );
-    const faviconURL = await SystemSettings.getValueOrFallback(
-      { label: "meta_page_favicon" },
-      null
-    );
-
-    // If nothing defined - assume defaults.
-    if (customTitle === null && faviconURL === null) {
-      this.#customConfig = this.#defaultMeta();
-    } else {
-      // When custom settings exist, include all default meta tags but override specific ones
-      this.#customConfig = this.#defaultMeta().map((tag) => {
-        // Override favicon link
-        if (tag.tag === "link" && tag.props?.rel === "icon") {
-          return {
-            tag: "link",
-            props: { rel: "icon", href: this.#validUrl(faviconURL) },
-          };
-        }
-        // Override page title
-        if (tag.tag === "title") {
-          return {
-            tag: "title",
-            props: null,
-            content:
-              customTitle ??
-              "AnythingLLM | Your personal LLM trained on anything",
-          };
-        }
-        // Override meta title
-        if (tag.tag === "meta" && tag.props?.name === "title") {
-          return {
-            tag: "meta",
-            props: {
-              name: "title",
-              content:
-                customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
-            },
-          };
-        }
-        // Override og:title
-        if (tag.tag === "meta" && tag.props?.property === "og:title") {
-          return {
-            tag: "meta",
-            props: {
-              property: "og:title",
-              content:
-                customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
-            },
-          };
-        }
-        // Override twitter:title
-        if (tag.tag === "meta" && tag.props?.property === "twitter:title") {
-          return {
-            tag: "meta",
-            props: {
-              property: "twitter:title",
-              content:
-                customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
-            },
-          };
-        }
-        // Override apple-touch-icon if custom favicon is set
-        if (
-          tag.tag === "link" &&
-          tag.props?.rel === "apple-touch-icon" &&
-          faviconURL
-        ) {
-          return {
-            tag: "link",
-            props: {
-              rel: "apple-touch-icon",
-              href: this.#validUrl(faviconURL),
-            },
-          };
-        }
-        // Return original tag for everything else (including PWA tags)
-        return tag;
-      });
-    }
-
+    this.#customConfig = this.#defaultMeta();
     return this.#customConfig;
   }
 
@@ -326,50 +238,21 @@ class MetaGenerator {
    * @param {number} code
    */
   async generateManifest(response) {
-    try {
-      const { SystemSettings } = require("../../models/systemSettings");
-      const manifestName = await SystemSettings.getValueOrFallback(
-        { label: "meta_page_title" },
-        "AnythingLLM"
-      );
-      const faviconURL = await SystemSettings.getValueOrFallback(
-        { label: "meta_page_favicon" },
-        null
-      );
-
-      let iconUrl = "/favicon.png";
-      if (faviconURL) {
-        try {
-          new URL(faviconURL);
-          iconUrl = faviconURL;
-        } catch {
-          iconUrl = "/favicon.png";
-        }
-      }
-
-      const manifest = {
-        name: manifestName,
-        short_name: manifestName,
-        display: "standalone",
-        orientation: "portrait",
-        start_url: "/",
-        icons: [
-          {
-            src: iconUrl,
-            sizes: "any",
-          },
-        ],
-      };
-
-      response.type("application/json").status(200).send(manifest).end();
-    } catch (error) {
-      this.#log(`error generating manifest: ${error.message}`, error);
-      response
-        .type("application/json")
-        .status(200)
-        .send(this.#defaultManifest)
-        .end();
-    }
+    const manifestName = FIXED_PAGE_TITLE.split(" | ")[0];
+    const manifest = {
+      name: manifestName,
+      short_name: manifestName,
+      display: "standalone",
+      orientation: "portrait",
+      start_url: "/",
+      icons: [
+        {
+          src: FIXED_FAVICON_URL,
+          sizes: "any",
+        },
+      ],
+    };
+    response.type("application/json").status(200).send(manifest).end();
   }
 }
 

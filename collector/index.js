@@ -12,7 +12,6 @@ const { reqBody } = require("./utils/http");
 const { processSingleFile } = require("./processSingleFile");
 const { processLink, getLinkText } = require("./processLink");
 const { wipeCollectorStorage } = require("./utils/files");
-const extensions = require("./extensions");
 const { processRawText } = require("./processRawText");
 const { verifyPayloadIntegrity } = require("./middleware/verifyIntegrity");
 const { httpLogger } = require("./middleware/httpLogger");
@@ -174,8 +173,6 @@ app.post(
     return;
   }
 );
-
-extensions(app);
 
 app.get("/accepts", function (_, response) {
   response.status(200).json(ACCEPTED_MIMES);

@@ -120,6 +120,15 @@ This monorepo consists of six main sections:
 
 [Learn about vector caching](./server/storage/vector-cache/VECTOR_CACHE.md)
 
+### Browser title and favicon
+
+The browser tab title and favicon are fixed in code (no settings UI). To change them, edit the constants at the top of `server/utils/boot/MetaGenerator.js`:
+
+- **`FIXED_PAGE_TITLE`** — The text shown in the browser tab (and used as the app name in the PWA manifest).
+- **`FIXED_FAVICON_URL`** — The favicon URL (e.g. `"/favicon.png"` for a file in `frontend/public/`, or a full URL).
+
+Restart the server after editing; the next page load will use the new values.
+
 ## Version Conflicts
 
 When running `npm install` in the frontend, server, or collector directories, you may encounter peer dependency conflicts. These have been resolved using npm `overrides` in each `package.json`.
