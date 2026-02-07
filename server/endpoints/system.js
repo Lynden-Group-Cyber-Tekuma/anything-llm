@@ -49,7 +49,6 @@ const {
 } = require("../utils/PasswordRecovery");
 const { SlashCommandPresets } = require("../models/slashCommandsPresets");
 const { EncryptionManager } = require("../utils/EncryptionManager");
-const { BrowserExtensionApiKey } = require("../models/browserExtensionApiKey");
 const {
   chatHistoryViewable,
 } = require("../utils/middleware/chatHistoryViewable");
@@ -586,8 +585,6 @@ function systemEndpoints(app) {
         await SystemSettings._updateSettings({
           multi_user_mode: true,
         });
-        await BrowserExtensionApiKey.migrateApiKeysToMultiUser(user.id);
-
         await updateENV(
           {
             JWTSecret: process.env.JWT_SECRET || v4(),

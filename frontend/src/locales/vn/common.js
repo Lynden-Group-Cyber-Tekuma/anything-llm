@@ -42,7 +42,6 @@ const TRANSLATIONS = {
     admin: "Quản trị viên",
     tools: "Công cụ",
     contact: "Liên hệ hỗ trợ",
-    "browser-extension": "Tiện ích trình duyệt",
     "system-prompt-variables": "Biến System Prompt",
     interface: "Tùy chọn Giao diện",
     branding: "Thương hiệu & Nhãn trắng",

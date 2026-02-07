@@ -46,7 +46,6 @@ const TRANSLATIONS = {
     tools: "כלים",
     "system-prompt-variables": "משתני הנחיית מערכת",
     contact: "צור קשר עם התמיכה",
-    "browser-extension": "תוסף דפדפן",
   },
   login: {
     "multi-user": {
