@@ -1,6 +1,5 @@
 import { API_BASE, AUTH_TIMESTAMP, fullApiUrl } from "@/utils/constants";
 import { baseHeaders, safeJsonParse } from "@/utils/request";
-import DataConnector from "./dataConnector";
 import SystemPromptVariable from "./systemPromptVariable";
 
 const System = {
@@ -655,7 +654,6 @@ const System = {
         return { success: false, error: e.message };
       });
   },
-  dataConnectors: DataConnector,
 
   getSlashCommandPresets: async function () {
     return await fetch(`${API_BASE}/system/slash-command-presets`, {

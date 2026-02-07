@@ -406,128 +406,8 @@ const TRANSLATIONS = {
     anonymous: "Đã Bật Telemetry Ẩn danh",
   },
   connectors: {
-    "search-placeholder": "Tìm kiếm trình kết nối dữ liệu",
-    "no-connectors": "Không tìm thấy trình kết nối dữ liệu.",
-    github: {
-      name: "Kho GitHub",
-      description:
-        "Nhập toàn bộ kho GitHub công khai hoặc riêng tư chỉ với một cú nhấp chuột.",
-      URL: "URL Kho GitHub",
-      URL_explained: "URL của kho GitHub bạn muốn thu thập.",
-      token: "Token Truy cập GitHub",
-      optional: "tùy chọn",
-      token_explained: "Token truy cập để ngăn giới hạn tốc độ.",
-      token_explained_start: "Nếu không có ",
-      token_explained_link1: "Token Truy cập Cá nhân",
-      token_explained_middle:
-        ", API GitHub có thể giới hạn số lượng tệp có thể thu thập do giới hạn tốc độ. Bạn có thể ",
-      token_explained_link2: "tạo Token Truy cập tạm thời",
-      token_explained_end: " để tránh vấn đề này.",
-      ignores: "Bỏ qua Tệp",
-      git_ignore:
-        "Danh sách theo định dạng .gitignore để bỏ qua các tệp cụ thể trong quá trình thu thập. Nhấn enter sau mỗi mục bạn muốn lưu.",
-      task_explained:
-        "Khi hoàn tất, tất cả các tệp sẽ có sẵn để nhúng vào không gian làm việc trong bộ chọn tài liệu.",
-      branch: "Nhánh bạn muốn thu thập tệp.",
-      branch_loading: "-- đang tải các nhánh có sẵn --",
-      branch_explained: "Nhánh bạn muốn thu thập tệp.",
-      token_information:
-        "Nếu không điền <b>Token Truy cập GitHub</b>, trình kết nối dữ liệu này chỉ có thể thu thập các tệp <b>cấp cao nhất</b> của kho do giới hạn tốc độ API công khai của GitHub.",
-      token_personal:
-        "Nhận Token Truy cập Cá nhân miễn phí với tài khoản GitHub tại đây.",
-    },
-    gitlab: {
-      name: "Kho GitLab",
-      description:
-        "Nhập toàn bộ kho GitLab công khai hoặc riêng tư chỉ với một cú nhấp chuột.",
-      URL: "URL Kho GitLab",
-      URL_explained: "URL của kho GitLab bạn muốn thu thập.",
-      token: "Token Truy cập GitLab",
-      optional: "tùy chọn",
-      token_explained: "Token truy cập để ngăn giới hạn tốc độ.",
-      token_description: "Chọn các thực thể bổ sung để lấy từ API GitLab.",
-      token_explained_start: "Nếu không có ",
-      token_explained_link1: "Token Truy cập Cá nhân",
-      token_explained_middle:
-        ", API GitLab có thể giới hạn số lượng tệp có thể thu thập do giới hạn tốc độ. Bạn có thể ",
-      token_explained_link2: "tạo Token Truy cập tạm thời",
-      token_explained_end: " để tránh vấn đề này.",
-      fetch_issues: "Lấy Issues dưới dạng Tài liệu",
-      ignores: "Bỏ qua Tệp",
-      git_ignore:
-        "Danh sách theo định dạng .gitignore để bỏ qua các tệp cụ thể trong quá trình thu thập. Nhấn enter sau mỗi mục bạn muốn lưu.",
-      task_explained:
-        "Khi hoàn tất, tất cả các tệp sẽ có sẵn để nhúng vào không gian làm việc trong bộ chọn tài liệu.",
-      branch: "Nhánh bạn muốn thu thập tệp",
-      branch_loading: "-- đang tải các nhánh có sẵn --",
-      branch_explained: "Nhánh bạn muốn thu thập tệp.",
-      token_information:
-        "Nếu không điền <b>Token Truy cập GitLab</b>, trình kết nối dữ liệu này chỉ có thể thu thập các tệp <b>cấp cao nhất</b> của kho do giới hạn tốc độ API công khai của GitLab.",
-      token_personal:
-        "Nhận Token Truy cập Cá nhân miễn phí với tài khoản GitLab tại đây.",
-    },
-    youtube: {
-      name: "Bản ghi YouTube",
-      description: "Nhập bản ghi của toàn bộ video YouTube từ một liên kết.",
-      URL: "URL Video YouTube",
-      URL_explained_start:
-        "Nhập URL của bất kỳ video YouTube nào để lấy bản ghi. Video phải có ",
-      URL_explained_link: "phụ đề đóng",
-      URL_explained_end: " có sẵn.",
-      task_explained:
-        "Khi hoàn tất, bản ghi sẽ có sẵn để nhúng vào không gian làm việc trong bộ chọn tài liệu.",
-      language: "Ngôn ngữ Bản ghi",
-      language_explained: "Chọn ngôn ngữ của bản ghi bạn muốn thu thập.",
-      loading_languages: "-- đang tải các ngôn ngữ có sẵn --",
-    },
-    "website-depth": {
-      name: "Trình thu thập Liên kết Hàng loạt",
-      description:
-        "Thu thập một website và các liên kết con của nó đến một độ sâu nhất định.",
-      URL: "URL Website",
-      URL_explained: "URL của website bạn muốn thu thập.",
-      depth: "Độ sâu Thu thập",
-      depth_explained:
-        "Đây là số lượng liên kết con mà worker sẽ theo dõi từ URL gốc.",
-      max_pages: "Số trang Tối đa",
-      max_pages_explained: "Số lượng liên kết tối đa để thu thập.",
-      task_explained:
-        "Khi hoàn tất, tất cả nội dung đã thu thập sẽ có sẵn để nhúng vào không gian làm việc trong bộ chọn tài liệu.",
-    },
-    confluence: {
-      name: "Confluence",
-      description: "Nhập toàn bộ trang Confluence chỉ với một cú nhấp chuột.",
-      deployment_type: "Loại triển khai Confluence",
-      deployment_type_explained:
-        "Xác định phiên bản Confluence của bạn được lưu trữ trên đám mây Atlassian hay tự lưu trữ.",
-      base_url: "URL cơ sở Confluence",
-      base_url_explained: "Đây là URL cơ sở của không gian Confluence của bạn.",
-      space_key: "Khóa không gian Confluence",
-      space_key_explained:
-        "Đây là khóa không gian của phiên bản confluence của bạn sẽ được sử dụng. Thường bắt đầu bằng ~",
-      username: "Tên người dùng Confluence",
-      username_explained: "Tên người dùng Confluence của bạn",
-      auth_type: "Loại Xác thực Confluence",
-      auth_type_explained:
-        "Chọn loại xác thực bạn muốn sử dụng để truy cập các trang Confluence của mình.",
-      auth_type_username: "Tên người dùng và Token Truy cập",
-      auth_type_personal: "Token Truy cập Cá nhân",
-      token: "Token Truy cập Confluence",
-      token_explained_start:
-        "Bạn cần cung cấp token truy cập để xác thực. Bạn có thể tạo token truy cập ",
-      token_explained_link: "tại đây",
-      token_desc: "Token truy cập để xác thực",
-      pat_token: "Token Truy cập Cá nhân Confluence",
-      pat_token_explained: "Token truy cập cá nhân Confluence của bạn.",
-      task_explained:
-        "Khi hoàn tất, nội dung trang sẽ có sẵn để nhúng vào không gian làm việc trong bộ chọn tài liệu.",
-      bypass_ssl: "Bỏ qua Xác thực Chứng chỉ SSL",
-      bypass_ssl_explained:
-        "Bật tùy chọn này để bỏ qua xác thực chứng chỉ SSL cho các phiên bản confluence tự lưu trữ với chứng chỉ tự ký",
-    },
     manage: {
       documents: "Tài liệu",
-      "data-connectors": "Trình kết nối Dữ liệu",
       "desktop-only":
         "Chỉnh sửa các cài đặt này chỉ có sẵn trên thiết bị máy tính để bàn. Vui lòng truy cập trang này trên máy tính để bàn của bạn để tiếp tục.",
       dismiss: "Đóng",
@@ -589,20 +469,6 @@ const TRANSLATIONS = {
       watch_explained_block3_link: "Trình quản lý tệp",
       watch_explained_block3_end: " chế độ xem quản trị.",
       accept: "Ok, tôi hiểu rồi",
-    },
-    obsidian: {
-      name: "Obsidian",
-      description: "Nhập kho Obsidian chỉ với một cú nhấp chuột.",
-      vault_location: "Vị trí Kho",
-      vault_description:
-        "Chọn thư mục kho Obsidian của bạn để nhập tất cả ghi chú và kết nối của chúng.",
-      selected_files: "Tìm thấy {{count}} tệp markdown",
-      importing: "Đang nhập kho...",
-      import_vault: "Nhập Kho",
-      processing_time:
-        "Điều này có thể mất một lúc tùy thuộc vào kích thước kho của bạn.",
-      vault_warning:
-        "Để tránh xung đột, hãy đảm bảo kho Obsidian của bạn hiện không mở.",
     },
   },
   chat_window: {

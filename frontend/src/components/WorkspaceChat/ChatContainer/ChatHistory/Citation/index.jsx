@@ -8,16 +8,9 @@ import {
   FileText,
   Info,
   ArrowSquareOut,
-  GithubLogo,
   X,
-  YoutubeLogo,
   LinkSimple,
-  GitlabLogo,
 } from "@phosphor-icons/react";
-import ConfluenceLogo from "@/media/dataConnectors/confluence.png";
-import DrupalWikiLogo from "@/media/dataConnectors/drupalwiki.png";
-import ObsidianLogo from "@/media/dataConnectors/obsidian.png";
-import PaperlessNgxLogo from "@/media/dataConnectors/paperlessngx.png";
 import { toPercentString } from "@/utils/numbers";
 import { useTranslation } from "react-i18next";
 import pluralize from "pluralize";
@@ -209,13 +202,6 @@ function CitationDetailModal({ source, onClose }) {
 
 const supportedSources = [
   "link://",
-  "confluence://",
-  "github://",
-  "gitlab://",
-  "drupalwiki://",
-  "youtube://",
-  "obsidian://",
-  "paperless-ngx://",
 ];
 
 /**
@@ -261,41 +247,6 @@ function parseChunkSource({ title = "", chunks = [] }) {
         icon = "link";
         break;
 
-      case "youtube://":
-        text = title;
-        icon = "youtube";
-        break;
-
-      case "github://":
-        text = title;
-        icon = "github";
-        break;
-
-      case "gitlab://":
-        text = title;
-        icon = "gitlab";
-        break;
-
-      case "confluence://":
-        text = title;
-        icon = "confluence";
-        break;
-
-      case "drupalwiki://":
-        text = title;
-        icon = "drupalwiki";
-        break;
-
-      case "obsidian://":
-        text = title;
-        icon = "obsidian";
-        break;
-
-      case "paperless-ngx://":
-        text = title;
-        icon = "paperlessNgx";
-        break;
-
       default:
         text = url.host + url.pathname;
         icon = "link";
@@ -314,32 +265,7 @@ function parseChunkSource({ title = "", chunks = [] }) {
   return nullResponse;
 }
 
-const ConfluenceIcon = ({ size = 16, ...props }) => (
-  <img src={ConfluenceLogo} {...props} width={size} height={size} />
-);
-const DrupalWikiIcon = ({ size = 16, ...props }) => (
-  <img src={DrupalWikiLogo} {...props} width={size} height={size} />
-);
-const ObsidianIcon = ({ size = 16, ...props }) => (
-  <img src={ObsidianLogo} {...props} width={size} height={size} />
-);
-const PaperlessNgxIcon = ({ size = 16, ...props }) => (
-  <img
-    src={PaperlessNgxLogo}
-    {...props}
-    width={size}
-    height={size}
-    className="rounded-sm bg-white"
-  />
-);
 const ICONS = {
   file: FileText,
   link: LinkSimple,
-  youtube: YoutubeLogo,
-  github: GithubLogo,
-  gitlab: GitlabLogo,
-  confluence: ConfluenceIcon,
-  drupalwiki: DrupalWikiIcon,
-  obsidian: ObsidianIcon,
-  paperlessNgx: PaperlessNgxIcon,
 };
