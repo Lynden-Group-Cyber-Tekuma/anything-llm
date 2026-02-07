@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const { reqBody, userFromSession, multiUserMode } = require("../utils/http");
+const { reqBody, userFromSession } = require("../utils/http");
 const { validatedRequest } = require("../utils/middleware/validatedRequest");
 const { streamChatWithWorkspace } = require("../utils/chats/stream");
 const {
@@ -47,7 +47,7 @@ function chatEndpoints(app) {
         response.setHeader("Connection", "keep-alive");
         response.flushHeaders();
 
-        if (multiUserMode(response) && !(await User.canSendChat(user))) {
+        if (!(await User.canSendChat(user))) {
           writeResponseChunk(response, {
             id: uuidv4(),
             type: "abort",
@@ -125,7 +125,7 @@ function chatEndpoints(app) {
         response.setHeader("Connection", "keep-alive");
         response.flushHeaders();
 
-        if (multiUserMode(response) && !(await User.canSendChat(user))) {
+        if (!(await User.canSendChat(user))) {
           writeResponseChunk(response, {
             id: uuidv4(),
             type: "abort",

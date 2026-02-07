@@ -1,4 +1,4 @@
-const { reqBody, multiUserMode, userFromSession } = require("../utils/http");
+const { reqBody, userFromSession } = require("../utils/http");
 const { handleFileUpload } = require("../utils/files/multer");
 const { validatedRequest } = require("../utils/middleware/validatedRequest");
 const {
@@ -29,7 +29,7 @@ function workspaceParsedFilesEndpoints(app) {
           await WorkspaceParsedFiles.getContextMetadataAndLimits(
             workspace,
             thread || null,
-            multiUserMode(response) ? user : null
+            user
           );
 
         return response

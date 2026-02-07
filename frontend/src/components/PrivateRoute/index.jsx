@@ -5,41 +5,14 @@ import validateSessionTokenForUser from "@/utils/session";
 import paths from "@/utils/paths";
 import { AUTH_TIMESTAMP, AUTH_TOKEN, AUTH_USER } from "@/utils/constants";
 import { userFromStorage } from "@/utils/request";
-import System from "@/models/system";
 import UserMenu from "../UserMenu";
 import { KeyboardShortcutWrapper } from "@/utils/keyboardShortcuts";
 
-// Used only for Multi-user mode only as we permission specific pages based on auth role.
-// When in single user mode we just bypass any authchecks.
 function useIsAuthenticated() {
   const [isAuthd, setIsAuthed] = useState(null);
-  const [multiUserMode, setMultiUserMode] = useState(false);
 
   useEffect(() => {
     const validateSession = async () => {
-      const { MultiUserMode, RequiresAuth } = await System.keys();
-      setMultiUserMode(MultiUserMode);
-
-      // Single User mode without password - no auth required
-      if (!MultiUserMode && !RequiresAuth) {
-        setIsAuthed(true);
-        return;
-      }
-
-      // Single User password mode check
-      if (!MultiUserMode && RequiresAuth) {
-        const localAuthToken = localStorage.getItem(AUTH_TOKEN);
-        if (!localAuthToken) {
-          setIsAuthed(false);
-          return;
-        }
-
-        const isValid = await validateSessionTokenForUser();
-        setIsAuthed(isValid);
-        return;
-      }
-
-      // Multi-user mode checks
       const localUser = localStorage.getItem(AUTH_USER);
       const localAuthToken = localStorage.getItem(AUTH_TOKEN);
       if (!localUser || !localAuthToken) {
@@ -61,17 +34,16 @@ function useIsAuthenticated() {
     validateSession();
   }, []);
 
-  return { isAuthd, multiUserMode };
+  return { isAuthd };
 }
 
-// Allows only admin to access the route and if in single user mode,
-// allows all users to access the route
+// Allows only admin to access the route
 export function AdminRoute({ Component, hideUserMenu = false }) {
-  const { isAuthd, multiUserMode } = useIsAuthenticated();
+  const { isAuthd } = useIsAuthenticated();
   if (isAuthd === null) return <FullScreenLoader />;
 
   const user = userFromStorage();
-  return isAuthd && (user?.role === "admin" || !multiUserMode) ? (
+  return isAuthd && user?.role === "admin" ? (
     hideUserMenu ? (
       <KeyboardShortcutWrapper>
         <Component />
@@ -88,14 +60,13 @@ export function AdminRoute({ Component, hideUserMenu = false }) {
   );
 }
 
-// Allows manager and admin to access the route and if in single user mode,
-// allows all users to access the route
+// Allows manager and admin to access the route
 export function ManagerRoute({ Component }) {
-  const { isAuthd, multiUserMode } = useIsAuthenticated();
+  const { isAuthd } = useIsAuthenticated();
   if (isAuthd === null) return <FullScreenLoader />;
 
   const user = userFromStorage();
-  return isAuthd && (user?.role !== "default" || !multiUserMode) ? (
+  return isAuthd && user?.role !== "default" ? (
     <KeyboardShortcutWrapper>
       <UserMenu>
         <Component />

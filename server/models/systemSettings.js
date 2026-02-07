@@ -21,7 +21,7 @@ const SystemSettings = {
   /** A default system prompt that is used when no other system prompt is set or available to the function caller. */
   saneDefaultSystemPrompt:
     "Given the following conversation, relevant context, and a follow up question, reply with an answer to the current question the user is asking. Return only your response to the question given the above information following the users instructions as needed.",
-  protectedFields: ["multi_user_mode"],
+  protectedFields: [],
   publicFields: [
     "support_email",
     "text_splitter_chunk_size",
@@ -157,11 +157,9 @@ const SystemSettings = {
       // --------------------------------------------------------
       // General Settings
       // --------------------------------------------------------
-      RequiresAuth: !!process.env.AUTH_TOKEN,
-      AuthToken: !!process.env.AUTH_TOKEN,
       JWTSecret: !!process.env.JWT_SECRET,
       StorageDir: process.env.STORAGE_DIR,
-      MultiUserMode: await this.isMultiUserMode(),
+      MultiUserMode: true,
       DisableTelemetry: process.env.DISABLE_TELEMETRY || "false",
 
       // --------------------------------------------------------
@@ -347,13 +345,7 @@ const SystemSettings = {
   },
 
   isMultiUserMode: async function () {
-    try {
-      const setting = await this.get({ label: "multi_user_mode" });
-      return setting?.value === "true";
-    } catch (error) {
-      console.error(error.message);
-      return false;
-    }
+    return true;
   },
 
   currentLogoFilename: async function () {
