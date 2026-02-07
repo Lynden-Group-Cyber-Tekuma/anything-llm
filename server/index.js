@@ -23,7 +23,6 @@ const { bootHTTP } = require("./utils/boot");
 const { workspaceThreadEndpoints } = require("./endpoints/workspaceThreads");
 const { documentEndpoints } = require("./endpoints/document");
 const { agentWebsocket } = require("./endpoints/agentWebsocket");
-const { browserExtensionEndpoints } = require("./endpoints/browserExtension");
 const { agentFlowEndpoints } = require("./endpoints/agentFlows");
 const { mcpServersEndpoints } = require("./endpoints/mcpServers");
 const { httpLogger } = require("./middleware/httpLogger");
@@ -72,9 +71,6 @@ mcpServersEndpoints(apiRouter);
 
 // Externally facing embedder endpoints
 embeddedEndpoints(apiRouter);
-
-// Externally facing browser extension endpoints
-browserExtensionEndpoints(apiRouter);
 
 if (process.env.NODE_ENV !== "development") {
   const { MetaGenerator } = require("./utils/boot/MetaGenerator");

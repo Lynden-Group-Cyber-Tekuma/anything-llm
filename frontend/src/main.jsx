@@ -257,17 +257,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/settings/browser-extension",
-        lazy: async () => {
-          const { default: GeneralBrowserExtension } = await import(
-            "@/pages/GeneralSettings/BrowserExtensionApiKey"
-          );
-          return {
-            element: <ManagerRoute Component={GeneralBrowserExtension} />,
-          };
-        },
-      },
-      {
         path: "/settings/workspace-chats",
         lazy: async () => {
           const { default: GeneralChats } = await import(

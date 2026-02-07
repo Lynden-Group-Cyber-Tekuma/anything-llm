@@ -54,8 +54,7 @@ const TRANSLATIONS = {
     tools: "Tools",
     "system-prompt-variables": "System Prompt Variables",
 
-    contact: "Contact Support",
-    "browser-extension": "Browser Extension"
+    contact: "Contact Support"
   },
 
   // Page Definitions

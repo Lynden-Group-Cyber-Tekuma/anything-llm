@@ -135,9 +135,6 @@ export default {
     embedChatWidgets: () => {
       return `/settings/embed-chat-widgets`;
     },
-    browserExtension: () => {
-      return `/settings/browser-extension`;
-    },
   },
   agents: {
     builder: () => {

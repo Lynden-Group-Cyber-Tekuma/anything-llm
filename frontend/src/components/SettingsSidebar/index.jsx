@@ -356,12 +356,6 @@ const SidebarOptions = ({ user = null, t }) => (
               flex: true,
               roles: ["admin"],
             },
-            {
-              btnText: t("settings.browser-extension"),
-              href: paths.settings.browserExtension(),
-              flex: true,
-              roles: ["admin", "manager"],
-            },
           ]}
         />
         <Option

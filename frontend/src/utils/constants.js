@@ -64,5 +64,3 @@ export function fullApiUrl() {
   if (API_BASE !== "/api") return API_BASE;
   return `${window.location.origin}/api`;
 }
-
-export const POPUP_BROWSER_EXTENSION_EVENT = "NEW_BROWSER_EXTENSION_CONNECTION";
