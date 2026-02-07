@@ -8,7 +8,7 @@ import { File } from "@phosphor-icons/react";
 
 export default function FileRow({ item, selected, toggleSelection }) {
   return (
-    <tr
+    <div
       onClick={() => toggleSelection(item)}
       className={`text-theme-text-primary text-xs grid grid-cols-12 py-2 pl-3.5 pr-8 hover:bg-theme-file-picker-hover cursor-pointer file-row ${
         selected ? "selected light:text-white" : ""
@@ -48,6 +48,6 @@ export default function FileRow({ item, selected, toggleSelection }) {
           </div>
         )}
       </div>
-    </tr>
+    </div>
   );
 }
