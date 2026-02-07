@@ -626,26 +626,6 @@ const TRANSLATIONS = {
         "double-click": "Nhấp đúp để chỉnh sửa...",
         save: "Lưu Tin nhắn",
       },
-      "browser-appearance": {
-        title: "Giao diện Trình duyệt",
-        description:
-          "Tùy chỉnh giao diện của tab trình duyệt và tiêu đề khi ứng dụng đang mở.",
-        tab: {
-          title: "Tiêu đề",
-          description:
-            "Đặt tiêu đề tab tùy chỉnh khi ứng dụng đang mở trong trình duyệt.",
-        },
-        favicon: {
-          title: "Favicon",
-          description: "Sử dụng favicon tùy chỉnh cho tab trình duyệt.",
-        },
-      },
-      "sidebar-footer": {
-        title: "Mục Chân trang Thanh bên",
-        description: "Tùy chỉnh các mục chân trang hiển thị ở cuối thanh bên.",
-        icon: "Biểu tượng",
-        link: "Liên kết",
-      },
       "render-html": {
         title: "Hiển thị HTML trong trò chuyện",
         description:

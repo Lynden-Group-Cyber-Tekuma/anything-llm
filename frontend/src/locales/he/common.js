@@ -425,27 +425,6 @@ const TRANSLATIONS = {
         "double-click": "לחץ פעמיים לעריכה...",
         save: "שמור הודעות",
       },
-      "browser-appearance": {
-        title: "מראה הדפדפן",
-        description:
-          "התאם אישית את מראה לשונית הדפדפן והכותרת כשהאפליקציה פתוחה.",
-        tab: {
-          title: "כותרת",
-          description:
-            "הגדר כותרת לשונית מותאמת אישית כשהאפליקציה פתוחה בדפדפן.",
-        },
-        favicon: {
-          title: "סמל אתר (Favicon)",
-          description: "השתמש בסמל אתר מותאם אישית עבור לשונית הדפדפן.",
-        },
-      },
-      "sidebar-footer": {
-        title: "פריטי כותרת תחתונה בסרגל הצד",
-        description:
-          "התאם אישית את פריטי הכותרת התחתונה המוצגים בתחתית סרגל הצד.",
-        icon: "סמל",
-        link: "קישור",
-      },
       "render-html": {
         title: "הצגת קוד HTML בשיחת צ'אט",
         description:

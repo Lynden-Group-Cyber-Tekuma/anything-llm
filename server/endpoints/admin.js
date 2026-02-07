@@ -335,8 +335,6 @@ function adminEndpoints(app) {
           "agent_sql_connections",
           "imported_agent_skills",
           "feature_flags",
-          "meta_page_title",
-          "meta_page_favicon",
         ];
 
         for (const label of labels) {
@@ -353,9 +351,6 @@ function adminEndpoints(app) {
             : await SystemSettings.get({ label });
 
           switch (label) {
-            case "footer_data":
-              requestedSettings[label] = setting?.value ?? JSON.stringify([]);
-              break;
             case "support_email":
               requestedSettings[label] = setting?.value || null;
               break;
@@ -393,14 +388,6 @@ function adminEndpoints(app) {
               requestedSettings[label] =
                 (await SystemSettings.getFeatureFlags()) || {};
               break;
-            case "meta_page_title":
-              requestedSettings[label] =
-                await SystemSettings.getValueOrFallback({ label }, null);
-              break;
-            case "meta_page_favicon":
-              requestedSettings[label] =
-                await SystemSettings.getValueOrFallback({ label }, null);
-              break;
             default:
               break;
           }
@@ -423,9 +410,6 @@ function adminEndpoints(app) {
       try {
         const embedder = getEmbeddingEngineSelection();
         const settings = {
-          footer_data:
-            (await SystemSettings.get({ label: "footer_data" }))?.value ||
-            JSON.stringify([]),
           support_email:
             (await SystemSettings.get({ label: "support_email" }))?.value ||
             null,
@@ -459,14 +443,6 @@ function adminEndpoints(app) {
             (await SystemSettings.get({ label: "custom_app_name" }))?.value ||
             null,
           feature_flags: {},
-          meta_page_title: await SystemSettings.getValueOrFallback(
-            { label: "meta_page_title" },
-            null
-          ),
-          meta_page_favicon: await SystemSettings.getValueOrFallback(
-            { label: "meta_page_favicon" },
-            null
-          ),
         };
         response.status(200).json({ settings });
       } catch (e) {

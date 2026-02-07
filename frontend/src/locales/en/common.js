@@ -463,27 +463,6 @@ const TRANSLATIONS = {
         "double-click": "Double click to edit...",
         save: "Save Messages",
       },
-      "browser-appearance": {
-        title: "Browser Appearance",
-        description:
-          "Customize the appearance of the browser tab and title when the app is open.",
-        tab: {
-          title: "Title",
-          description:
-            "Set a custom tab title when the app is open in a browser.",
-        },
-        favicon: {
-          title: "Favicon",
-          description: "Use a custom favicon for the browser tab.",
-        },
-      },
-      "sidebar-footer": {
-        title: "Sidebar Footer Items",
-        description:
-          "Customize the footer items displayed on the bottom of the sidebar.",
-        icon: "Icon",
-        link: "Link",
-      },
       "render-html": {
         title: "Render HTML in chat",
         description:
