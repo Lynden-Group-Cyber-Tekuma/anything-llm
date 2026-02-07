@@ -10,9 +10,6 @@ const {
   determineContentType,
   processAsFile,
 } = require("../helpers");
-const {
-  loadYouTubeTranscript,
-} = require("../../utils/extensions/YoutubeTranscript");
 const RuntimeSettings = require("../../utils/runtimeSettings");
 
 /**
@@ -44,11 +41,6 @@ async function scrapeGenericUrl({
    */
   if (processVia === "file")
     return await processAsFile({ uri: link, saveAsDocument });
-  else if (processVia === "youtube")
-    return await loadYouTubeTranscript(
-      { url: link },
-      { parseOnly: saveAsDocument === false }
-    );
 
   // Otherwise, assume the content is a webpage and scrape the content from the webpage
   const content = await getPageContent({

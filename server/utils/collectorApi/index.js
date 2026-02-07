@@ -15,14 +15,6 @@ const { Agent } = require("undici");
 // so no additional security is needed on the endpoint directly. Auth is done however by the express
 // middleware prior to leaving the node-side of the application so that is good enough >:)
 class CollectorApi {
-  /** @type {number} - The maximum timeout for extension requests in milliseconds */
-  extensionRequestTimeout = 15 * 60_000; // 15 minutes
-  /** @type {Agent} - The agent for extension requests */
-  extensionRequestAgent = new Agent({
-    headersTimeout: this.extensionRequestTimeout,
-    bodyTimeout: this.extensionRequestTimeout,
-  });
-
   constructor() {
     const { CommunicationKey } = require("../comKey");
     this.comkey = new CommunicationKey();
@@ -182,36 +174,6 @@ class CollectorApi {
       .catch((e) => {
         this.log(e.message);
         return { success: false, reason: e.message, documents: [] };
-      });
-  }
-
-  // We will not ever expose the document processor to the frontend API so instead we relay
-  // all requests through the server. You can use this function to directly expose a specific endpoint
-  // on the document processor.
-  async forwardExtensionRequest({ endpoint, method, body }) {
-    const data = typeof body === "string" ? body : JSON.stringify(body);
-    return await fetch(`${this.endpoint}${endpoint}`, {
-      method,
-      body: data,
-      headers: {
-        "Content-Type": "application/json",
-        "X-Integrity": this.comkey.sign(data),
-        "X-Payload-Signer": this.comkey.encrypt(
-          new EncryptionManager().xPayload
-        ),
-      },
-      // Extensions do a lot of work, and may take a while to complete so we need to increase the timeout
-      // substantially so that they do not show a failure to the user early.
-      dispatcher: this.extensionRequestAgent,
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Response could not be completed");
-        return res.json();
-      })
-      .then((res) => res)
-      .catch((e) => {
-        this.log(e.message);
-        return { success: false, data: {}, reason: e.message };
       });
   }
 
